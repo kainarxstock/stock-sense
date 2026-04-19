@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-surface-0: #131822;
+  --color-surface-1: #181e2c;
+  --color-surface-2: #1d2433;
+  --color-surface-3: #232b3b;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-strong: rgba(255, 255, 255, 0.14);
+  --color-muted: #a8b0c2;
+  --color-muted-2: #788299;
+  --color-foreground: #f6f7fb;
+  --color-accent: #8ec9bc;
+  --color-accent-muted: rgba(142, 201, 188, 0.15);
+  --color-up: #8ab9a4;
+  --color-down: #c9a09e;
+  --color-side: #aeb4c2;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-h-screen antialiased;
+    font-family: var(--font-sans);
+    color: var(--color-foreground);
+    background-color: #141a26;
+    background-image:
+      radial-gradient(ellipse 130% 90% at 50% -22%, rgba(78, 105, 145, 0.22), transparent 55%),
+      radial-gradient(ellipse 80% 60% at 100% 0%, rgba(58, 70, 108, 0.18), transparent 45%),
+      radial-gradient(ellipse 70% 50% at 0% 28%, rgba(45, 56, 78, 0.3), transparent 50%),
+      linear-gradient(165deg, #1a2130 0%, #151b28 45%, #121720 100%);
+  }
+
+  ::selection {
+    @apply bg-accent-muted text-foreground;
+  }
+}
