@@ -3,6 +3,7 @@ import { AnalyzeSection } from "./components/AnalyzeSection";
 import { DeeperAnalysisSection } from "./components/DeeperAnalysisSection";
 import { HeroSection } from "./components/HeroSection";
 import { HowItWorksSection } from "./components/HowItWorksSection";
+import { InterpretationSnapshotCard } from "./components/InterpretationSnapshotCard";
 import { LanguageSwitcher } from "./components/LanguageSwitcher";
 import { LiveExampleSection } from "./components/LiveExampleSection";
 import { MarketSwitch } from "./components/MarketSwitch";
@@ -120,6 +121,7 @@ export default function App() {
           <div id="results" className="scroll-mt-24 space-y-12 px-4 sm:px-6 sm:space-y-14">
             {ready ? (
               <>
+                <InterpretationSnapshotCard analysis={analysis!} explainSimply={explainSimply} />
                 <TrustDisclaimer />
                 <StockChart market={market} ticker={state.ticker} series={state.series} />
                 <PrimaryInsightCard analysis={analysis!} market={market} explainSimply={explainSimply} />
@@ -139,8 +141,14 @@ export default function App() {
               </>
             ) : loading ? (
               <div className="space-y-6">
-                <div className="h-[300px] animate-pulse rounded-2xl border border-white/[0.09] bg-white/[0.05]" />
-                <div className="h-[220px] animate-pulse rounded-2xl border border-white/[0.09] bg-white/[0.05]" />
+                <div className="rounded-2xl border border-white/[0.09] bg-white/[0.05] p-6 sm:p-8">
+                  <p className="text-sm font-medium text-foreground">{t("loading.analyzing")}</p>
+                  <p className="mt-2 text-xs text-muted-2">{t("loading.subtitle")}</p>
+                  <div className="mt-5 h-2 w-full overflow-hidden rounded-full bg-white/[0.08]">
+                    <div className="h-full w-1/3 animate-[pulse_1.2s_ease-in-out_infinite] rounded-full bg-accent/60" />
+                  </div>
+                </div>
+                <div className="h-[260px] animate-pulse rounded-2xl border border-white/[0.09] bg-white/[0.05]" />
                 <div className="h-[180px] animate-pulse rounded-2xl border border-white/[0.09] bg-white/[0.05]" />
               </div>
             ) : null}

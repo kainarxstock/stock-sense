@@ -187,6 +187,41 @@
   "footer": {
     "disclaimer": "Educational tool. Not financial advice."
   },
+  "loading": {
+    "analyzing": "Analyzing market structure...",
+    "subtitle": "Generating a demo interpretation from recent price behavior."
+  },
+  "snapshot": {
+    "kicker": "Instant Market Read",
+    "title": "Structured Interpretation Snapshot",
+    "subtitle": "Clear signal quality in one view - built for first-time users.",
+    "metrics": {
+      "trend": "Trend",
+      "momentum": "Momentum",
+      "volatility": "Volatility",
+      "risk": "Risk Level",
+      "confidence": "Confidence Score"
+    },
+    "values": {
+      "trend": {
+        "upward": "Upward",
+        "downward": "Downward",
+        "sideways": "Sideways"
+      },
+      "momentum": {
+        "strong": "Strong",
+        "weak": "Weak",
+        "neutral": "Neutral"
+      },
+      "volatility": {
+        "high": "High",
+        "moderate": "Moderate",
+        "low": "Low"
+      }
+    },
+    "plainEnglish": "Plain English Interpretation",
+    "whyMatters": "Why This Matters"
+  },
   "tips": {
     "trend": "Direction over time. Use it to see who has control lately - not to time the next tick.",
     "momentum": "Shows how fast price is moving. Slowing often means the trend is losing force.",

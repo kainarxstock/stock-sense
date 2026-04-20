@@ -93,34 +93,38 @@ export async function fetchAlphaVantageDaily(
   ticker: string,
   apiKey: string,
 ): Promise<OHLCV[] | null> {
-  const symbol = encodeURIComponent(ticker.trim().toUpperCase());
-  const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=compact&apikey=${encodeURIComponent(apiKey)}`;
+  try {
+    const symbol = encodeURIComponent(ticker.trim().toUpperCase());
+    const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=compact&apikey=${encodeURIComponent(apiKey)}`;
 
-  const res = await fetch(url);
-  if (!res.ok) return null;
-  const json: unknown = await res.json();
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    const json: unknown = await res.json();
 
-  if (!json || typeof json !== "object") return null;
-  const root = json as {
-    "Time Series (Daily)"?: Record<string, AvDailyBar>;
-    Note?: string;
-    "Error Message"?: string;
-  };
-  if (root["Error Message"] || root.Note) return null;
-  const series = root["Time Series (Daily)"];
-  if (!series) return null;
+    if (!json || typeof json !== "object") return null;
+    const root = json as {
+      "Time Series (Daily)"?: Record<string, AvDailyBar>;
+      Note?: string;
+      "Error Message"?: string;
+    };
+    if (root["Error Message"] || root.Note) return null;
+    const series = root["Time Series (Daily)"];
+    if (!series) return null;
 
-  const rows: OHLCV[] = Object.entries(series)
-    .map(([date, bar]) => ({
-      date,
-      open: Number(bar["1. open"]),
-      high: Number(bar["2. high"]),
-      low: Number(bar["3. low"]),
-      close: Number(bar["4. close"]),
-      volume: Number(bar["5. volume"]),
-    }))
-    .filter((r) => Number.isFinite(r.close))
-    .sort((a, b) => a.date.localeCompare(b.date));
+    const rows: OHLCV[] = Object.entries(series)
+      .map(([date, bar]) => ({
+        date,
+        open: Number(bar["1. open"]),
+        high: Number(bar["2. high"]),
+        low: Number(bar["3. low"]),
+        close: Number(bar["4. close"]),
+        volume: Number(bar["5. volume"]),
+      }))
+      .filter((r) => Number.isFinite(r.close))
+      .sort((a, b) => a.date.localeCompare(b.date));
 
-  return rows.length ? rows : null;
+    return rows.length ? rows : null;
+  } catch {
+    return null;
+  }
 }
