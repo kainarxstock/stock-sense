@@ -1,4 +1,5 @@
 import type { Market } from "../types";
+import { useI18n } from "../i18n";
 
 type Props = {
   value: Market;
@@ -6,11 +7,12 @@ type Props = {
 };
 
 export function MarketSwitch({ value, onChange }: Props) {
+  const { t } = useI18n();
   return (
     <div
       className="inline-flex rounded-full border border-white/[0.12] bg-surface-2/80 p-0.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
       role="tablist"
-      aria-label="Market"
+      aria-label={t("nav.market")}
     >
       <button
         type="button"
@@ -23,7 +25,7 @@ export function MarketSwitch({ value, onChange }: Props) {
             : "text-muted hover:text-foreground"
         }`}
       >
-        Stocks
+        {t("marketSwitch.stocks")}
       </button>
       <button
         type="button"
@@ -36,7 +38,7 @@ export function MarketSwitch({ value, onChange }: Props) {
             : "text-muted hover:text-foreground"
         }`}
       >
-        Crypto
+        {t("marketSwitch.crypto")}
       </button>
     </div>
   );

@@ -1,18 +1,16 @@
 import { useCallback, useEffect, useState } from "react";
-import { analyzeSeries } from "../lib/analyze";
 import { fetchCoinGeckoDaily, validateCryptoSymbol } from "../lib/cryptoMarket";
 import { fetchAlphaVantageDaily, generateSimulatedCryptoSeries, generateSimulatedSeries } from "../lib/series";
-import type { AnalysisResult, DataSource, Market, OHLCV } from "../types";
+import type { DataSource, Market, OHLCV } from "../types";
 
 type LoadState =
   | { status: "idle" }
   | { status: "loading"; ticker: string }
-  | { status: "error"; message: string }
+  | { status: "error"; messageKey: "symbolRequired" | "equityFormat" | "cryptoFormat" | "loadFailed" }
   | {
       status: "ready";
       ticker: string;
       series: OHLCV[];
-      analysis: AnalysisResult;
       source: DataSource;
     };
 
@@ -25,7 +23,7 @@ export function useStockSeries(market: Market) {
     async (raw: string) => {
       const trimmed = raw.trim().toUpperCase();
       if (!trimmed) {
-        setState({ status: "error", message: "Symbol required." });
+        setState({ status: "error", messageKey: "symbolRequired" });
         return;
       }
 
@@ -33,7 +31,7 @@ export function useStockSeries(market: Market) {
         if (!/^[A-Z]{1,6}$/.test(trimmed)) {
           setState({
             status: "error",
-            message: "Equities: letters only, 1–6 characters (e.g. AAPL).",
+            messageKey: "equityFormat",
           });
           return;
         }
@@ -42,7 +40,7 @@ export function useStockSeries(market: Market) {
         if (!ok) {
           setState({
             status: "error",
-            message: "Crypto: 2–12 chars, A–Z and 0–9, must start with a letter (e.g. BTC, PEPE).",
+            messageKey: "cryptoFormat",
           });
           return;
         }
@@ -72,12 +70,11 @@ export function useStockSeries(market: Market) {
           }
         }
 
-        const analysis = analyzeSeries(series, { market, ticker });
-        setState({ status: "ready", ticker, series, analysis, source });
+        setState({ status: "ready", ticker, series, source });
       } catch {
         setState({
           status: "error",
-          message: "Load failed. Check your connection and try again.",
+          messageKey: "loadFailed",
         });
       }
     },

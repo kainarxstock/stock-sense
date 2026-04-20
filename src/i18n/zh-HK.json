@@ -1,0 +1,324 @@
+{
+  "meta": {
+    "title": "Stock Sense - 市場解讀引擎"
+  },
+  "brand": {
+    "name": "Stock Sense",
+    "tagline": "以解讀為先的市場洞察"
+  },
+  "nav": {
+    "input": "輸入",
+    "market": "市場",
+    "explainSimply": "簡明解釋",
+    "language": "語言"
+  },
+  "language": {
+    "en": "EN",
+    "zh-CN": "简体",
+    "zh-HK": "繁體",
+    "kz": "KZ"
+  },
+  "hero": {
+    "badge": "Stock Sense - 市場解讀引擎",
+    "titleLine1": "唔好只睇價格。",
+    "titleLine2": "要讀懂背後結構。",
+    "subtitle": "用冷靜、清晰嘅方式解讀近期走勢：資金做緊乜、要睇邊啲位、訊號一致性有幾高。先畀結論，再睇深度。",
+    "cta": "解讀市場",
+    "viewOutput": "查看結果"
+  },
+  "marketSwitch": {
+    "stocks": "股票",
+    "crypto": "加密"
+  },
+  "analyze": {
+    "titleTicker": "代號",
+    "titleSymbol": "符號",
+    "subtitleStocks": "美股標的。每次都用同一套解讀框架。",
+    "subtitleCrypto": "現貨風格符號。載入後使用同一解讀框架。",
+    "labelTicker": "代號",
+    "labelSymbol": "符號",
+    "run": "開始",
+    "running": "分析中..."
+  },
+  "errors": {
+    "symbolRequired": "請輸入符號。",
+    "equityFormat": "股票：只支援英文字母，1-6位（例如 AAPL）。",
+    "cryptoFormat": "加密：2-12位，可用 A-Z 同 0-9，並且要以字母開頭（例如 BTC、PEPE）。",
+    "loadFailed": "載入失敗，請檢查網絡後再試。"
+  },
+  "trust": {
+    "primary": "本頁係對近期價格行為嘅解讀，唔係預測。歷史形態唔保證未來結果。",
+    "secondary": "校驗說明：方法論審閱仍在進行中 - 目前結果只供教育參考。"
+  },
+  "chart": {
+    "title": "價格背景",
+    "subtitleStocks": "日收市序列：解讀引擎主要讀取嘅窗口。",
+    "subtitleCrypto": "以 24/7 行情抽樣嘅日收市 - 每根柱只代表收市，唔代表完整路徑。",
+    "cryptoNote": "加密資產波幅通常大過股票，請同時留意離散度同斜率。",
+    "close": "收市"
+  },
+  "primary": {
+    "atAGlance": "重點速覽",
+    "marketState": "市場狀態",
+    "whatToDo": "應對建議",
+    "why": "原因",
+    "riskLevel": "風險級別",
+    "riskNotesCrypto": "風險提示 - 加密"
+  },
+  "riskLevel": {
+    "low": "低",
+    "medium": "中",
+    "high": "高"
+  },
+  "shortBias": {
+    "compositeLean": "綜合偏向",
+    "leansUpward": "偏向上行",
+    "leansDownward": "偏向下行",
+    "noClearLean": "未有清晰方向",
+    "simpleHorizon": "基於近幾星期走勢嘅解讀 - 唔係預測。",
+    "advancedHorizon": "時間框架：短線（多日窗口）",
+    "live": "即時",
+    "demo": "示範",
+    "notForecast": "呢個係對近期價格行為嘅解讀，唔係預測。",
+    "cryptoFragile": "加密市場波動更快更闊 - 任何偏向都可能好脆弱。",
+    "confidence": "置信度",
+    "strongAgreement": "內部訊號高度一致",
+    "mixedSignals": "訊號分歧",
+    "conflictingSignals": "訊號衝突",
+    "confidenceExplain": "置信度反映訊號一致性，唔代表結果機率。"
+  },
+  "deeper": {
+    "show": "展開深入分析",
+    "hide": "收起深入分析",
+    "trend": "趨勢",
+    "momentum": "動能",
+    "structure": "結構",
+    "volatility": "波動率",
+    "rsiContext": "RSI（語境）",
+    "volHighSwing": "高擺幅",
+    "volMediumSwing": "中等擺幅",
+    "volLowSwing": "較低擺幅",
+    "compositeBiasDetail": "綜合偏向（細節）",
+    "whatThisMeansExtended": "進一步解讀",
+    "behindRead": "解讀背後",
+    "behindReadSubtitle": "簡短說明每個輸入目前發揮嘅作用 - 仍然係解讀，不是數據堆砌。"
+  },
+  "riskProfile": {
+    "title": "風險輪廓",
+    "subtitleStocks": "該標的喺壓力情境下嘅常見表現 - 定性描述，唔係 VaR 數字。",
+    "subtitleCrypto": "該資產嘅典型行為特徵 - 定性描述，唔係最壞情境模型。",
+    "riskFromRecent": "風險級別（基於近期波幅）",
+    "context": "補充背景",
+    "contextStocks": "公司消息、業績、宏觀事件可令價格隔夜跳空。本頁只睇圖表歷史。",
+    "contextCrypto": "流動性同情緒可喺冇基本面觸發下造成跳空。先處理交易場同尾部風險。"
+  },
+  "speculative": {
+    "title": "投機資產警示",
+    "memeP1": "呢類資產主要靠關注度同資金流，唔係現金流基本面。敘事一轉，價格重估速度可快過鏈上或技術指標更新。",
+    "memeP2": "結果高度不確定；當流動性變薄或社群買盤消退，回撤可以好急。",
+    "otherP1": "此符號不在我哋大型資產清單內。價格對深度、錢包流向同消息風險更敏感，而非慢變估值指標。",
+    "otherP2": "喺你自行確認流動性、交易場同託管安排前，請先假設存在較大滑點同跳空風險。"
+  },
+  "trade": {
+    "title": "風險 / 回報",
+    "subtitle": "固定持倉股數。美元風險同回報只由你輸入價格決定 - 並非倉位建議。",
+    "entry": "入場價",
+    "stop": "止蝕價",
+    "target": "目標價",
+    "size": "數量",
+    "shares": "股數",
+    "side": "方向",
+    "long": "做多",
+    "short": "做空",
+    "sharesUnit": "股",
+    "riskDollars": "風險（$）",
+    "rewardDollars": "回報（$）",
+    "rr": "盈虧比",
+    "perShare": "每股：承擔風險 ${{risk}}，到目標可得 ${{reward}}。",
+    "shapeLongShort": "做多：目標高於入場，止蝕低於入場。做空：目標低於入場，止蝕高於入場。",
+    "shapeBracket": "止蝕與目標必須圍繞你設定嘅入場價。",
+    "enterNumeric": "請輸入有效數值，並確保股數大於 0。"
+  },
+  "footer": {
+    "disclaimer": "教育用途工具，並非投資建議。"
+  },
+  "tips": {
+    "trend": "趨勢反映一段時間內主方向，用嚟睇邊方主導，唔係估下一跳。",
+    "momentum": "動能反映價格推進速度。動能放慢通常代表趨勢力度減弱。",
+    "structure": "結構反映走勢是否有序。越混亂，越容易被掃止蝕同出現突發波動。",
+    "volatility": "波動率反映振幅。讀數越高，跳空同來回抽動風險越大。",
+    "bias": "綜合多個輸入得出嘅方向傾向。用作總結，唔係預測。",
+    "confidence": "置信度係內部訊號一致程度，唔係命中率機率。",
+    "risk": "風險反映近期盤面有幾激烈。風險高時應減倉並預留容錯空間。",
+    "marketState": "用白話概括趨勢同節奏，建議先睇呢行先。",
+    "rsi": "RSI 反映買賣力量是否持續。要配合價格行為一齊睇。",
+    "compositeLean": "由趨勢、節奏同均線組合而成嘅輕度偏向，唔保證後續方向。",
+    "whatMeans": "這裡的「{{term}}」代表什麼"
+  },
+  "analysis": {
+    "summary": {
+      "up": "此週期綜合偏向較建設性 - 作為倉位與風險框架參考，唔係目標價。",
+      "down": "此週期綜合偏向較防守 - 只係其中一個視角，資金流同消息面仍未納入。",
+      "sideways": "綜合偏向中性 - 目前輸入未形成清晰方向。"
+    },
+    "common": {
+      "trend": { "bullish": "偏多", "bearish": "偏淡", "neutral": "中性" },
+      "momentum": { "strong": "強", "slowing": "放慢", "weak": "弱" },
+      "structure": { "stable": "穩定", "volatile": "高波動" },
+      "snapshotBias": { "slightly_bullish": "輕度偏多", "bearish": "偏淡", "sideways": "橫行" },
+      "volLabel": { "low": "低", "moderate": "中等", "high": "高" }
+    },
+    "interpretation": {
+      "trendMeanings": {
+        "bullish": "均線同斜率顯示當前窗口由買方主導。",
+        "bearish": "相對慢線仍受壓，空方喺此樣本中較佔優。",
+        "neutral": "趨勢優勢未成形：結構同均線訊號混合。"
+      },
+      "momentumMeanings": {
+        "strong": "近期回報同斜率同向，推進力仍具延續性。",
+        "slowing": "方向未必改變，但推進速度正降溫。",
+        "weak": "淨推進有限，即使有波幅都欠缺持續動能。"
+      },
+      "structureMeanings": {
+        "stable": "相對高波動階段，日常波幅較可控。",
+        "volatile": "已實現波動偏高，管理區間比死守點位更重要。"
+      },
+      "biasMeanings": {
+        "slightly_bullish": "綜合讀數輕度偏正，但唔構成預測。",
+        "bearish": "綜合讀數於此週期偏負面。",
+        "sideways": "訊號互相抵消，方向仍未定。"
+      }
+    },
+    "reasons": {
+      "titles": { "trend": "趨勢", "momentum": "動能", "rsi": "RSI", "volatility": "波動率" },
+      "trendTooFew": "樣本不足以穩定評估 SMA20/50，現階段趨勢判斷只作暫時參考。",
+      "trendAboveBothGolden": "價格處於 SMA20/50 之上且快線在上，現時由買盤主導；若斜率過陡，回吐風險會上升。",
+      "trendBelowBothDeath": "價格與 SMA20 同在 SMA50 下方，供應主導；未能收復前，反彈多屬戰術性。",
+      "trendBetween20and50": "價格在 SMA20 之上但仍受 SMA50 壓制，屬修復而非乾淨趨勢。",
+      "trendBetween50and20": "失守 SMA20 但仍在 SMA50 之上，介乎正常回調與早期轉弱。",
+      "trendTightBundleSupport": "均線緊密並提供支持，方向未決；一旦突破通常會加速。",
+      "trendTightBundlePressure": "均線緊密並形成壓力，方向未決；一旦突破通常會加速。",
+      "momentumBody": "約 20 個交易日變動 {{ret}}%，短斜率為 {{slopeWord}}。反映趨勢是否仍有支付意願，唔係預測終點。",
+      "slopeWord": { "positive": "明顯向上", "negative": "明顯向下", "flat": "走平" },
+      "rsiHigh": "RSI 約 {{rsi}}：買盤持續性較強，上方擠迫風險提升，但不代表即時見頂。",
+      "rsiLow": "RSI 約 {{rsi}}：賣壓持續性較強，短線衰竭風險上升，仍要價格確認。",
+      "rsiMid": "RSI 約 {{rsi}} 位於中段，優勢主要來自趨勢與斜率，而非指標本身。",
+      "volHigh": "已實現年化波動約 {{vol}}%（{{label}}）- 區間同跳空風險高於單點位。",
+      "volLow": "已實現年化波動約 {{vol}}%（{{label}}）- 盤面相對平穩，關鍵位較易發揮。"
+    },
+    "beginner": {
+      "riskExplain": {
+        "highCrypto": "現時波幅較大 - 建議縮細倉位並放寬止蝕容錯。",
+        "highStock": "現時波動擴大 - 突發走勢可比平靜市況更快出現。",
+        "medium": "波動屬正常偏高 - 需預期雙向來回。",
+        "low": "此窗口下日常波動相對可控。"
+      },
+      "marketState": {
+        "range": "區間橫行 / 無明顯優勢",
+        "upWeakening": "上行趨勢（動能轉弱）",
+        "upUnstable": "上行趨勢（結構未穩）",
+        "upFirm": "上行趨勢（較穩）",
+        "up": "上行趨勢",
+        "downUnstable": "下行趨勢（結構未穩）",
+        "downEasing": "下行趨勢（壓力放緩）",
+        "downFirm": "下行趨勢（較穩）",
+        "down": "下行趨勢",
+        "mixed": "訊號混合 / 過渡狀態"
+      },
+      "whatToDo": {
+        "waitConfirm": "等確認",
+        "avoidChasing": "避免追價 - 動能正在放慢",
+        "dontRushReversal": "唔好急住博反轉 - 賣壓只係放緩，未算扭轉。",
+        "sizeDown": "趨勢概念可能仲在，但區間未收窄前應減倉。",
+        "standAside": "先觀望，或只保留細風險倉位等明確訊號。",
+        "upWatchPullback": "趨勢未破，但節奏過熱要防回吐。",
+        "downPressure": "下行壓力仍主導，反彈先當脆弱處理。"
+      },
+      "why": {
+        "sideways": "近期淨變動約 {{ret}}%，但方向訊號仍未一致。",
+        "slowing": "此窗口價格約變動 {{ret}}%，但推進速度正降溫。",
+        "strong": "此窗口價格約變動 {{ret}}%，延續性仍存在。",
+        "neutralTrend": "均線同斜率未形成單一結論（淨變動 {{ret}}%）。",
+        "default": "RSI 約 {{rsi}}，宜作背景參考而非時點訊號。"
+      },
+      "simple": {
+        "marketState": {
+          "sideways": "橫行中 - 暫時未有清晰勝方。",
+          "up": "最近整體偏上。",
+          "down": "最近整體偏下。",
+          "mixed": "訊號混雜，畫面未夠乾淨。"
+        },
+        "whatToDo": {
+          "waitBreak": "唔好估方向，等更清晰突破。",
+          "dontBuySpike": "唔好追高，先等走勢自己證明。",
+          "sizeDown": "波動未收斂前先縮倉。",
+          "default": "只有當計劃已定義失效位先加風險。"
+        },
+        "risk": {
+          "high": "風險高 - 大波幅機會較高。",
+          "medium": "風險中等 - 一般震盪仍會出現。",
+          "low": "現時風險相對較低 - 但唔代表無風險。"
+        }
+      },
+      "cryptoWhyAddon": "同等解讀下，加密資產一般比大型股票波幅更大。",
+      "cryptoSimpleWhyAddon": "加密資產通常比一般股票走得更快。"
+    },
+    "layer2": {
+      "trend": {
+        "bullish": "樣本內價格整體高於均值路徑，買方較佔優。",
+        "bearish": "樣本內價格整體低於均值路徑，賣方較佔優。",
+        "neutral": "此窗口多空較平衡，未見單邊路徑。"
+      },
+      "momentum": {
+        "strong": "推進仍有力度，跟隨性仍見於數據。",
+        "slowing": "推進在放慢，趨勢可延續但追價風險上升。",
+        "weak": "淨推進有限，硬押方向容易被來回消耗。"
+      },
+      "structure": {
+        "stable": "日常波動較溫和，關鍵位通常更有效。",
+        "volatile": "波幅偏闊，一條消息都可快速重定價。"
+      },
+      "volatility": {
+        "low": "年化擺幅偏低（{{label}}）- 唔係安全，只係較平靜。",
+        "medium": "年化擺幅中等（{{label}}）- 預期正常雙向波動。",
+        "high": "年化擺幅偏高（{{label}}）- 日常意外波動會更大。"
+      },
+      "rsi": {
+        "high": "買盤持續性較強，回吐可在無預警下出現。",
+        "low": "賣壓持續性較強，反彈可出現，但仍要確認。",
+        "mid": "RSI 位於中段，優勢主要來自趨勢同節奏。"
+      }
+    },
+    "cryptoNotes": {
+      "faster": "加密市場通常比股票走得更快、更難預期。",
+      "highVol": "高波動環境 - 避免過大倉位。",
+      "reversal": "可能出現急速反轉。",
+      "wideRange": "區間偏闊 - 進出場要留更大緩衝。",
+      "memeRisk": "迷因/薄流動性風險：情緒變化可短時間觸發跳空。"
+    },
+    "narrative": {
+      "marketState": {
+        "highVol": { "label": "高波動擴張", "detail": "已實現波動偏高，區間主導。倉位若唔配合波動，優勢會快速流失。" },
+        "rangeStable": { "label": "區間整固", "detail": "價格在可控失序中壓縮，供需暫時平衡，等待催化劑打破平衡。" },
+        "twoWay": { "label": "雙向拉鋸 / 未定", "detail": "闊幅震盪但未有有效突破，雙向風險主導。" },
+        "trendContinuation": { "label": "趨勢延續", "detail": "慢結構與短期動能同向，重點在延伸還是衰竭。" },
+        "transition": { "label": "過渡階段", "detail": "不同時間框架分歧或節奏轉換，方向清晰度下降。" },
+        "mixed": { "label": "混合狀態", "detail": "訊號未收斂成單一敘事，等某一軸先突破。" }
+      },
+      "structuredGeneric": {
+        "trend": "趨勢：當前讀數為 {{trend}}。",
+        "momentum": "動能：{{momentum}}（近 20 個交易日約 {{ret}}%）。",
+        "condition": "市場條件：以 {{structure}} 結構為主。",
+        "implication": "實務含義：在年化波動約 {{volatility}}% 環境下，先管好風險預算，再談方向放大。",
+        "watchNext": "下一步重點：斜率拐點、波動率台階變化、以及關鍵區間是否有效收市突破。"
+      },
+      "biasContextGeneric": {
+        "sideways": "目前偏向中性，方向未被市場確認。",
+        "upStrong": "偏上且動能仍在，但要防擴張後回吐。",
+        "downStrong": "偏下且動能較強，反彈多屬戰術性。",
+        "slowing": "方向未必反轉，但推進速度在下降。",
+        "default": "現有訊號適合作交易背景，不應理解為結果承諾。"
+      }
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import { type FormEvent, useEffect, useId, useState } from "react";
+import { useI18n } from "../i18n";
 import type { Market } from "../types";
 import { GlassCard } from "./GlassCard";
 
@@ -10,6 +11,7 @@ type Props = {
 };
 
 export function AnalyzeSection({ market, initial, loading, onSubmit }: Props) {
+  const { t } = useI18n();
   const [value, setValue] = useState(initial);
   const inputId = useId();
 
@@ -24,7 +26,7 @@ export function AnalyzeSection({ market, initial, loading, onSubmit }: Props) {
 
   const maxLen = market === "stocks" ? 6 : 12;
   const placeholder = market === "stocks" ? "AAPL" : "BTC";
-  const title = market === "stocks" ? "Ticker" : "Symbol";
+  const title = market === "stocks" ? t("analyze.titleTicker") : t("analyze.titleSymbol");
 
   return (
     <section id="analyze" className="scroll-mt-24 px-4 sm:px-6">
@@ -34,8 +36,8 @@ export function AnalyzeSection({ market, initial, loading, onSubmit }: Props) {
             <h2 className="text-lg font-semibold tracking-tight text-foreground">{title}</h2>
             <p className="mt-2 text-sm leading-relaxed text-muted">
               {market === "stocks"
-                ? "US-listed equity. Same interpretation stack on every run."
-                : "Spot-style symbol. Same stack applied to the loaded series."}
+                ? t("analyze.subtitleStocks")
+                : t("analyze.subtitleCrypto")}
             </p>
           </div>
           <form
@@ -47,7 +49,7 @@ export function AnalyzeSection({ market, initial, loading, onSubmit }: Props) {
                 htmlFor={inputId}
                 className="block text-[11px] font-medium uppercase tracking-[0.14em] text-muted-2"
               >
-                {market === "stocks" ? "Ticker" : "Symbol"}
+                {market === "stocks" ? t("analyze.labelTicker") : t("analyze.labelSymbol")}
               </label>
               <input
                 id={inputId}
@@ -66,7 +68,7 @@ export function AnalyzeSection({ market, initial, loading, onSubmit }: Props) {
               disabled={loading}
               className="inline-flex h-[46px] shrink-0 items-center justify-center rounded-xl border border-white/[0.1] bg-white/[0.06] px-8 text-sm font-medium text-foreground transition hover:border-white/[0.14] hover:bg-white/[0.09] disabled:cursor-not-allowed disabled:opacity-45"
             >
-              {loading ? "Running…" : "Run"}
+              {loading ? t("analyze.running") : t("analyze.run")}
             </button>
           </form>
         </GlassCard>

@@ -1,7 +1,10 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { AnalyzeSection } from "./components/AnalyzeSection";
 import { DeeperAnalysisSection } from "./components/DeeperAnalysisSection";
 import { HeroSection } from "./components/HeroSection";
+import { HowItWorksSection } from "./components/HowItWorksSection";
+import { LanguageSwitcher } from "./components/LanguageSwitcher";
+import { LiveExampleSection } from "./components/LiveExampleSection";
 import { MarketSwitch } from "./components/MarketSwitch";
 import { PrimaryInsightCard } from "./components/PrimaryInsightCard";
 import { RiskProfileSection } from "./components/RiskProfileSection";
@@ -9,12 +12,16 @@ import { ShortTermBiasCard } from "./components/ShortTermBiasCard";
 import { SpeculativeAssetWarning } from "./components/SpeculativeAssetWarning";
 import { StockChart } from "./components/StockChart";
 import { TradeCalculator } from "./components/TradeCalculator";
+import { TrustLayerSection } from "./components/TrustLayerSection";
 import { TrustDisclaimer } from "./components/TrustDisclaimer";
 import { useStockSeries } from "./hooks/useStockSeries";
+import { useI18n } from "./i18n";
+import { analyzeSeries } from "./lib/analyze";
 import { needsMemeOrSpeculativePanel } from "./lib/cryptoMarket";
 import type { Market } from "./types";
 
 export default function App() {
+  const { t, locale } = useI18n();
   const [market, setMarket] = useState<Market>("stocks");
   const [explainSimply, setExplainSimply] = useState(false);
   const [deeperOpen, setDeeperOpen] = useState(false);
@@ -23,12 +30,20 @@ export default function App() {
   const ready = state.status === "ready";
   const loading = state.status === "loading";
   const ticker = state.status === "loading" || state.status === "ready" ? state.ticker : "AAPL";
+  const analysis = useMemo(
+    () => (state.status === "ready" ? analyzeSeries(state.series, { market, ticker: state.ticker, locale }) : null),
+    [state, market, locale],
+  );
 
   const scrollToAnalyze = useCallback(() => {
     document.getElementById("analyze")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
   const showSpeculativePanel = market === "crypto" && ready && needsMemeOrSpeculativePanel(state.ticker);
+
+  useEffect(() => {
+    document.title = t("meta.title");
+  }, [t, locale]);
 
   return (
     <div className="relative min-h-screen overflow-x-hidden">
@@ -56,7 +71,7 @@ export default function App() {
           <div>
             <span className="text-sm font-semibold tracking-tight text-foreground">Stock Sense</span>
             <p className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.18em] text-muted-2">
-              Interpretation-first market read
+              {t("brand.tagline")}
             </p>
           </div>
           <div className="flex flex-wrap items-center justify-end gap-3 sm:gap-4">
@@ -67,20 +82,26 @@ export default function App() {
                 checked={explainSimply}
                 onChange={(e) => setExplainSimply(e.target.checked)}
               />
-              Explain simply
+              {t("nav.beginnerMode")}: {explainSimply ? t("common.on") : t("common.off")}
             </label>
+            <LanguageSwitcher />
             <MarketSwitch value={market} onChange={setMarket} />
             <button
               type="button"
               onClick={scrollToAnalyze}
               className="text-sm font-medium text-muted transition hover:text-foreground"
             >
-              Input
+              {t("nav.input")}
             </button>
           </div>
         </nav>
 
         <HeroSection onAnalyzeClick={scrollToAnalyze} />
+        <div className="space-y-12 px-0 pb-2 sm:space-y-14">
+          <HowItWorksSection />
+          <LiveExampleSection explainSimply={explainSimply} />
+          <TrustLayerSection />
+        </div>
 
         <div className="space-y-20 pb-24 sm:space-y-24 sm:pb-28">
           <AnalyzeSection market={market} initial={ticker} loading={loading} onSubmit={load} />
@@ -91,7 +112,7 @@ export default function App() {
                 role="alert"
                 className="mx-auto max-w-2xl rounded-2xl border border-white/[0.1] bg-rose-950/25 px-5 py-4 text-sm text-rose-100/95 backdrop-blur-md"
               >
-                {state.message}
+                {t(`errors.${state.messageKey}`)}
               </div>
             </div>
           ) : null}
@@ -101,19 +122,19 @@ export default function App() {
               <>
                 <TrustDisclaimer />
                 <StockChart market={market} ticker={state.ticker} series={state.series} />
-                <PrimaryInsightCard analysis={state.analysis} market={market} explainSimply={explainSimply} />
+                <PrimaryInsightCard analysis={analysis!} market={market} explainSimply={explainSimply} />
                 <ShortTermBiasCard
                   market={market}
                   ticker={state.ticker}
-                  analysis={state.analysis}
+                  analysis={analysis!}
                   source={state.source}
                   explainSimply={explainSimply}
                 />
                 <DeeperAnalysisSection
                   open={deeperOpen}
                   onToggle={() => setDeeperOpen((v) => !v)}
-                  analysis={state.analysis}
-                  interpretation={state.analysis.interpretation}
+                  analysis={analysis!}
+                  interpretation={analysis!.interpretation}
                 />
               </>
             ) : loading ? (
@@ -127,7 +148,7 @@ export default function App() {
 
           {ready ? (
             <>
-              <RiskProfileSection market={market} analysis={state.analysis} />
+              <RiskProfileSection market={market} analysis={analysis!} />
               {showSpeculativePanel ? <SpeculativeAssetWarning symbol={state.ticker} /> : null}
               <TradeCalculator />
             </>
@@ -136,7 +157,7 @@ export default function App() {
 
         <footer className="border-t border-white/[0.08] px-4 py-12 sm:px-6">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm leading-relaxed text-muted">Educational tool. Not financial advice.</p>
+            <p className="text-sm leading-relaxed text-muted">{t("footer.disclaimer")}</p>
           </div>
         </footer>
       </div>

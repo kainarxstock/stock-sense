@@ -11,6 +11,7 @@ import type {
   StructureRead,
   TrendRead,
 } from "../types";
+import { type Locale, translate } from "../i18n";
 import { buildBeginnerBrief, buildCryptoRiskNotes, buildLayer2Narrative } from "./beginnerBrief";
 import { needsMemeOrSpeculativePanel } from "./cryptoMarket";
 import {
@@ -206,26 +207,28 @@ function snapshotBiasLabel(bias: Bias): SnapshotBiasLabel {
   return "sideways";
 }
 
-function formatTrend(t: TrendRead): string {
-  if (t === "bullish") return "Bullish";
-  if (t === "bearish") return "Bearish";
-  return "Neutral";
+function formatTrend(t: TrendRead, locale: Locale): string {
+  if (t === "bullish") return translate(locale, "analysis.common.trend.bullish");
+  if (t === "bearish") return translate(locale, "analysis.common.trend.bearish");
+  return translate(locale, "analysis.common.trend.neutral");
 }
 
-function formatMomentum(m: MomentumRead): string {
-  if (m === "strong") return "Strong";
-  if (m === "slowing") return "Slowing";
-  return "Weak";
+function formatMomentum(m: MomentumRead, locale: Locale): string {
+  if (m === "strong") return translate(locale, "analysis.common.momentum.strong");
+  if (m === "slowing") return translate(locale, "analysis.common.momentum.slowing");
+  return translate(locale, "analysis.common.momentum.weak");
 }
 
-function formatStructure(s: StructureRead): string {
-  return s === "stable" ? "Stable" : "Volatile";
+function formatStructure(s: StructureRead, locale: Locale): string {
+  return s === "stable"
+    ? translate(locale, "analysis.common.structure.stable")
+    : translate(locale, "analysis.common.structure.volatile");
 }
 
-function formatSnapshotBias(b: SnapshotBiasLabel): string {
-  if (b === "slightly_bullish") return "Slightly bullish";
-  if (b === "bearish") return "Bearish";
-  return "Sideways";
+function formatSnapshotBias(b: SnapshotBiasLabel, locale: Locale): string {
+  if (b === "slightly_bullish") return translate(locale, "analysis.common.snapshotBias.slightly_bullish");
+  if (b === "bearish") return translate(locale, "analysis.common.snapshotBias.bearish");
+  return translate(locale, "analysis.common.snapshotBias.sideways");
 }
 
 function buildInterpretation(params: {
@@ -238,8 +241,10 @@ function buildInterpretation(params: {
   volatilityPct: number;
   bias: Bias;
   market: Market;
+  locale: Locale;
 }): MarketInterpretation {
-  const { last, sma20, sma50, trendSlopePct, recentReturnPct, rsi, volatilityPct, bias, market } = params;
+  const { last, sma20, sma50, trendSlopePct, recentReturnPct, rsi, volatilityPct, bias, market, locale } = params;
+  const t = (key: string, vars?: Record<string, string | number>) => translate(locale, key, vars);
 
   const trend = classifyTrend(last, sma20, sma50, trendSlopePct);
   const momentum = classifyMomentum(recentReturnPct, trendSlopePct, rsi, bias);
@@ -247,33 +252,33 @@ function buildInterpretation(params: {
   const snapBias = snapshotBiasLabel(bias);
 
   const trendMeanings: Record<TrendRead, string> = {
-    bullish: "Averages and slope point to buyers controlling the short window.",
-    bearish: "Price sits under pressure versus its slow trend lines in this sample.",
-    neutral: "No durable edge to trend: mixed or flat structure versus moving averages.",
+    bullish: t("analysis.interpretation.trendMeanings.bullish"),
+    bearish: t("analysis.interpretation.trendMeanings.bearish"),
+    neutral: t("analysis.interpretation.trendMeanings.neutral"),
   };
 
   const momMeanings: Record<MomentumRead, string> = {
-    strong: "Recent returns and slope agree; the move has had conviction on this horizon.",
-    slowing: "Direction may still be positive, but pace is cooling—often a late-cycle tell in a swing.",
-    weak: "Little net progress; impulse is missing even if noise prints both ways.",
+    strong: t("analysis.interpretation.momentumMeanings.strong"),
+    slowing: t("analysis.interpretation.momentumMeanings.slowing"),
+    weak: t("analysis.interpretation.momentumMeanings.weak"),
   };
 
   const structMeanings: Record<StructureRead, string> = {
-    stable: "Day-to-day swings are contained versus a high-vol regime.",
-    volatile: "Realized variance is elevated; levels matter less than ranges.",
+    stable: t("analysis.interpretation.structureMeanings.stable"),
+    volatile: t("analysis.interpretation.structureMeanings.volatile"),
   };
 
   const biasMeanings: Record<SnapshotBiasLabel, string> = {
-    slightly_bullish: "The composite read leans positive without claiming a forecast.",
-    bearish: "The composite read leans negative for this horizon only.",
-    sideways: "Signals disagree or cancel; treat direction as unresolved.",
+    slightly_bullish: t("analysis.interpretation.biasMeanings.slightly_bullish"),
+    bearish: t("analysis.interpretation.biasMeanings.bearish"),
+    sideways: t("analysis.interpretation.biasMeanings.sideways"),
   };
 
   return {
-    trend: { value: formatTrend(trend), meaning: trendMeanings[trend] },
-    momentum: { value: formatMomentum(momentum), meaning: momMeanings[momentum] },
-    structure: { value: formatStructure(structure), meaning: structMeanings[structure] },
-    bias: { value: formatSnapshotBias(snapBias), meaning: biasMeanings[snapBias] },
+    trend: { value: formatTrend(trend, locale), meaning: trendMeanings[trend] },
+    momentum: { value: formatMomentum(momentum, locale), meaning: momMeanings[momentum] },
+    structure: { value: formatStructure(structure, locale), meaning: structMeanings[structure] },
+    bias: { value: formatSnapshotBias(snapBias, locale), meaning: biasMeanings[snapBias] },
   };
 }
 
@@ -287,9 +292,11 @@ function buildReasons(params: {
   volatilityPct: number;
   volLabel: string;
   market: Market;
+  locale: Locale;
 }): ExplanationReason[] {
-  const { last, sma20, sma50, trendSlopePct, recentReturnPct, rsi, volatilityPct, volLabel, market } =
+  const { last, sma20, sma50, trendSlopePct, recentReturnPct, rsi, volatilityPct, volLabel, market, locale } =
     params;
+  const t = (key: string, vars?: Record<string, string | number>) => translate(locale, key, vars);
   const volElevated = market === "crypto" ? volatilityPct >= 32 : volatilityPct >= 27;
 
   let trendBody: string;
@@ -298,48 +305,54 @@ function buildReasons(params: {
     const belowBoth = last <= sma20 && last <= sma50;
     const golden = sma20 >= sma50;
     if (aboveBoth && golden) {
-      trendBody = `Price holds above SMA20/50 with the faster line on top—right now that reads as bid control. Risk is pay-up: extensions revert faster when the stack gets vertical.`;
+      trendBody = t("analysis.reasons.trendAboveBothGolden");
     } else if (belowBoth && !golden) {
-      trendBody = `Price and SMA20 both sit under SMA50—supply in charge for this window. Until a reclaim, rallies are mostly borrowed time against the heavier mean.`;
+      trendBody = t("analysis.reasons.trendBelowBothDeath");
     } else if (last > sma20 && last < sma50) {
-      trendBody = `Stuck under the 50-day but over the 20-day: a repair bid, not a clean trend. The next leg is decided by whether overhead gives way on volume.`;
+      trendBody = t("analysis.reasons.trendBetween20and50");
     } else if (last < sma20 && last > sma50) {
-      trendBody = `Lost the 20-day, still above the 50-day—classic pullback vs early roll. Meaning hinges on whether the slow line holds on the next sell wave.`;
+      trendBody = t("analysis.reasons.trendBetween50and20");
     } else {
-      trendBody = `Averages ${golden ? "support" : "pressure"} price in a tight bundle—no winner yet. Breaks from coiled setups tend to run once one side steps away.`;
+      trendBody = t(golden ? "analysis.reasons.trendTightBundleSupport" : "analysis.reasons.trendTightBundlePressure");
     }
   } else {
-    trendBody = `Too few closes to trust SMA20/50 here—trend read is provisional until the window fills.`;
+    trendBody = t("analysis.reasons.trendTooFew");
   }
 
-  const momWords =
-    trendSlopePct > 0.04 ? "firm positive" : trendSlopePct < -0.04 ? "firm negative" : "flat";
+  const slopeWordKey = trendSlopePct > 0.04 ? "positive" : trendSlopePct < -0.04 ? "negative" : "flat";
 
-  const momentumBody = `~${recentReturnPct.toFixed(1)}% over ~20 sessions with a ${momWords} short slope. Right now that says whether the tape is paying for trend, not how far it “should” go.`;
+  const momentumBody = t("analysis.reasons.momentumBody", {
+    ret: recentReturnPct.toFixed(1),
+    slopeWord: t(`analysis.reasons.slopeWord.${slopeWordKey}`),
+  });
 
   let rsiBody: string;
   if (rsi >= 70) {
-    rsiBody = `RSI ~${rsi.toFixed(0)}: buying has been persistent—upside is crowded on this definition. It raises fade risk; it does not print a calendar for a top.`;
+    rsiBody = t("analysis.reasons.rsiHigh", { rsi: rsi.toFixed(0) });
   } else if (rsi <= 30) {
-    rsiBody = `RSI ~${rsi.toFixed(0)}: selling has been persistent—short-term exhaustion risk rises. Still needs price confirmation; washed can stay washed in a grind.`;
+    rsiBody = t("analysis.reasons.rsiLow", { rsi: rsi.toFixed(0) });
   } else {
-    rsiBody = `RSI ~${rsi.toFixed(0)} sits mid-band—no extreme pressure on this lookback. The edge, if any, is coming from slope and averages, not the oscillator alone.`;
+    rsiBody = t("analysis.reasons.rsiMid", { rsi: rsi.toFixed(0) });
   }
 
   const volBody = volElevated
-    ? `Realized vol ~${volatilityPct.toFixed(1)}% ann. (${volLabel})—ranges and gaps matter more than single prints.`
-    : `Realized vol ~${volatilityPct.toFixed(1)}% ann. (${volLabel})—quieter tape; levels tend to hold until a catalyst steps in.`;
+    ? t("analysis.reasons.volHigh", { vol: volatilityPct.toFixed(1), label: volLabel })
+    : t("analysis.reasons.volLow", { vol: volatilityPct.toFixed(1), label: volLabel });
 
   return [
-    { id: "trend", title: "Trend", body: trendBody },
-    { id: "momentum", title: "Momentum", body: momentumBody },
-    { id: "rsi", title: "RSI", body: rsiBody },
-    { id: "volatility", title: "Volatility", body: volBody },
+    { id: "trend", title: t("analysis.reasons.titles.trend"), body: trendBody },
+    { id: "momentum", title: t("analysis.reasons.titles.momentum"), body: momentumBody },
+    { id: "rsi", title: t("analysis.reasons.titles.rsi"), body: rsiBody },
+    { id: "volatility", title: t("analysis.reasons.titles.volatility"), body: volBody },
   ];
 }
 
-export function analyzeSeries(series: OHLCV[], ctx: { market: Market; ticker: string }): AnalysisResult {
-  const { market, ticker } = ctx;
+export function analyzeSeries(
+  series: OHLCV[],
+  ctx: { market: Market; ticker: string; locale: Locale },
+): AnalysisResult {
+  const { market, ticker, locale } = ctx;
+  const t = (key: string, vars?: Record<string, string | number>) => translate(locale, key, vars);
   const closes = series.map((r) => r.close);
   const last = closes.at(-1) ?? 0;
   const prev20 = closes.slice(-21, -1);
@@ -385,7 +398,7 @@ export function analyzeSeries(series: OHLCV[], ctx: { market: Market; ticker: st
     bias = "sideways";
   }
 
-  const volLabel = volLabelFromPct(volatilityPct, market);
+  const volLabel = t(`analysis.common.volLabel.${volLabelFromPct(volatilityPct, market)}`);
 
   const trend = classifyTrend(last, sma20, sma50, trendSlopePct);
   const momentum = classifyMomentum(recentReturnPct, trendSlopePct, rsi, bias);
@@ -403,10 +416,10 @@ export function analyzeSeries(series: OHLCV[], ctx: { market: Market; ticker: st
 
   const summary =
     bias === "up"
-      ? "Composite skew constructive on this horizon—context for sizing and risk, not a price target."
+      ? t("analysis.summary.up")
       : bias === "down"
-        ? "Composite skew defensive on this horizon—one lens; flow and headlines still sit outside this read."
-        : "Composite skew flat—no clean lean from the inputs bundled here.";
+        ? t("analysis.summary.down")
+        : t("analysis.summary.sideways");
 
   const interpretation = buildInterpretation({
     last,
@@ -418,6 +431,7 @@ export function analyzeSeries(series: OHLCV[], ctx: { market: Market; ticker: st
     volatilityPct,
     bias,
     market,
+    locale,
   });
 
   const scenarioParams = {
@@ -431,9 +445,9 @@ export function analyzeSeries(series: OHLCV[], ctx: { market: Market; ticker: st
     volatilityPct,
   };
   const scenarioKey = classifyScenario(scenarioParams);
-  const marketState = buildMarketState(scenarioParams);
-  const coreInsight = buildStructuredInsight(scenarioKey, scenarioParams);
-  const biasContext = buildBiasContextLine(scenarioKey, scenarioParams);
+  const marketState = buildMarketState(scenarioParams, locale);
+  const coreInsight = buildStructuredInsight(scenarioKey, scenarioParams, locale);
+  const biasContext = buildBiasContextLine(scenarioKey, scenarioParams, locale);
 
   const reasons = buildReasons({
     last,
@@ -445,19 +459,21 @@ export function analyzeSeries(series: OHLCV[], ctx: { market: Market; ticker: st
     volatilityPct,
     volLabel,
     market,
+    locale,
   });
 
   const beginnerBrief = buildBeginnerBrief({
     p: scenarioParams,
     market,
+    locale,
   });
 
-  const layer2 = buildLayer2Narrative(scenarioParams, volLabel);
+  const layer2 = buildLayer2Narrative(scenarioParams, volLabel, locale);
 
   const memeOrSpeculative = market === "crypto" && needsMemeOrSpeculativePanel(ticker);
   const cryptoRiskNotes =
     market === "crypto"
-      ? buildCryptoRiskNotes(volatilityPct, structure, ticker, memeOrSpeculative)
+      ? buildCryptoRiskNotes(volatilityPct, structure, ticker, memeOrSpeculative, locale)
       : [];
 
   return {

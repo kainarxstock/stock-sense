@@ -9,6 +9,7 @@ import {
   YAxis,
 } from "recharts";
 import type { Market, OHLCV } from "../types";
+import { useI18n } from "../i18n";
 import { GlassCard } from "./GlassCard";
 
 type Props = {
@@ -27,6 +28,7 @@ const fillStart = "rgba(125, 211, 192, 0.28)";
 const fillEnd = "rgba(125, 211, 192, 0)";
 
 export function StockChart({ market, ticker, series }: Props) {
+  const { t } = useI18n();
   const gid = useId().replace(/:/g, "");
   const gradId = `priceFill-${gid}`;
 
@@ -41,15 +43,15 @@ export function StockChart({ market, ticker, series }: Props) {
     <GlassCard className="flex min-h-[320px] flex-col p-6 sm:p-8">
       <div className="mb-5 flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h2 className="text-sm font-semibold text-foreground">Price context</h2>
+          <h2 className="text-sm font-semibold text-foreground">{t("chart.title")}</h2>
           <p className="mt-1 text-xs leading-relaxed text-muted">
             {market === "stocks"
-              ? "Daily closes: the window the interpretation engine reads from."
-              : "Daily closes sampled from a 24/7 tape—each bar is one close, not full path."}
+              ? t("chart.subtitleStocks")
+              : t("chart.subtitleCrypto")}
           </p>
           {market === "crypto" ? (
             <p className="mt-2 text-xs font-medium leading-relaxed text-amber-200/75">
-              Crypto realizes wider ranges than equities; read dispersion as well as slope.
+              {t("chart.cryptoNote")}
             </p>
           ) : null}
         </div>
@@ -110,7 +112,7 @@ export function StockChart({ market, ticker, series }: Props) {
                   currency: "USD",
                   maximumFractionDigits: value < 1 ? 6 : 2,
                 }),
-                "Close",
+                t("chart.close"),
               ]}
             />
             <Area

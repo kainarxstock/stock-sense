@@ -1,7 +1,8 @@
 import { useId, useState } from "react";
-import { TERM_TIPS } from "../lib/tipTexts";
+import { useI18n } from "../i18n";
+import { TERM_TIP_KEYS } from "../lib/tipTexts";
 
-type TipKey = keyof typeof TERM_TIPS;
+type TipKey = keyof typeof TERM_TIP_KEYS;
 
 type Props = {
   termKey: TipKey;
@@ -10,9 +11,10 @@ type Props = {
 };
 
 export function TermTooltip({ termKey, label, className = "" }: Props) {
+  const { t } = useI18n();
   const [open, setOpen] = useState(false);
   const id = useId();
-  const text = TERM_TIPS[termKey];
+  const text = t(TERM_TIP_KEYS[termKey]);
   const display =
     label ??
     termKey
@@ -28,7 +30,7 @@ export function TermTooltip({ termKey, label, className = "" }: Props) {
         className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-white/[0.12] bg-white/[0.06] text-[10px] font-semibold leading-none text-muted-2 transition hover:border-accent/30 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35"
         aria-describedby={open ? id : undefined}
         aria-expanded={open}
-        aria-label={`What “${display}” means here`}
+        aria-label={t("tips.whatMeans", { term: display })}
         onClick={() => setOpen((v) => !v)}
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}

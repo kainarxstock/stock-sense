@@ -1,0 +1,324 @@
+{
+  "meta": {
+    "title": "Stock Sense - 市场解读引擎"
+  },
+  "brand": {
+    "name": "Stock Sense",
+    "tagline": "以解读为先的市场洞察"
+  },
+  "nav": {
+    "input": "输入",
+    "market": "市场",
+    "explainSimply": "简明解释",
+    "language": "语言"
+  },
+  "language": {
+    "en": "EN",
+    "zh-CN": "简体",
+    "zh-HK": "繁體",
+    "kz": "KZ"
+  },
+  "hero": {
+    "badge": "Stock Sense - 市场解读引擎",
+    "titleLine1": "别只盯价格。",
+    "titleLine2": "看懂价格背后的结构。",
+    "subtitle": "以冷静、清晰的方式解读近期走势：资金在做什么、该关注什么、信号一致性有多强。先给结论，再看深度。",
+    "cta": "解读市场",
+    "viewOutput": "查看结果"
+  },
+  "marketSwitch": {
+    "stocks": "股票",
+    "crypto": "加密"
+  },
+  "analyze": {
+    "titleTicker": "代码",
+    "titleSymbol": "符号",
+    "subtitleStocks": "美股标的。每次都使用同一套解读框架。",
+    "subtitleCrypto": "现货风格符号。加载后使用同一解读框架。",
+    "labelTicker": "代码",
+    "labelSymbol": "符号",
+    "run": "开始",
+    "running": "分析中..."
+  },
+  "errors": {
+    "symbolRequired": "请输入符号。",
+    "equityFormat": "股票：仅支持字母，1-6位（例如 AAPL）。",
+    "cryptoFormat": "加密：2-12位，支持 A-Z 与 0-9，且必须以字母开头（例如 BTC、PEPE）。",
+    "loadFailed": "加载失败，请检查网络后重试。"
+  },
+  "trust": {
+    "primary": "本页面是对近期价格行为的解读，不是预测。历史形态不保证未来结果。",
+    "secondary": "校验说明：方法论审阅仍在进行中 - 当前结果仅供教育参考。"
+  },
+  "chart": {
+    "title": "价格背景",
+    "subtitleStocks": "日收盘序列：解读引擎的主要输入窗口。",
+    "subtitleCrypto": "基于 24/7 行情采样的日收盘 - 每根柱仅代表收盘，不代表完整路径。",
+    "cryptoNote": "加密资产波动区间通常大于股票，请同时关注离散度与斜率。",
+    "close": "收盘"
+  },
+  "primary": {
+    "atAGlance": "一眼看懂",
+    "marketState": "市场状态",
+    "whatToDo": "怎么做",
+    "why": "原因",
+    "riskLevel": "风险等级",
+    "riskNotesCrypto": "风险提示 - 加密"
+  },
+  "riskLevel": {
+    "low": "低",
+    "medium": "中",
+    "high": "高"
+  },
+  "shortBias": {
+    "compositeLean": "综合偏向",
+    "leansUpward": "偏上行",
+    "leansDownward": "偏下行",
+    "noClearLean": "方向不明",
+    "simpleHorizon": "基于近几周走势的解读 - 不是预测。",
+    "advancedHorizon": "时间尺度：短线（多日窗口）",
+    "live": "实时",
+    "demo": "演示",
+    "notForecast": "这是对近期价格行为的解读，不是未来预测。",
+    "cryptoFragile": "加密市场波动更快更大 - 任何偏向都可能很脆弱。",
+    "confidence": "置信度",
+    "strongAgreement": "内部信号高度一致",
+    "mixedSignals": "信号分化",
+    "conflictingSignals": "信号冲突",
+    "confidenceExplain": "置信度反映信号一致性，不代表结果概率。"
+  },
+  "deeper": {
+    "show": "展开深度分析",
+    "hide": "收起深度分析",
+    "trend": "趋势",
+    "momentum": "动量",
+    "structure": "结构",
+    "volatility": "波动率",
+    "rsiContext": "RSI（上下文）",
+    "volHighSwing": "高振幅",
+    "volMediumSwing": "中等振幅",
+    "volLowSwing": "低振幅",
+    "compositeBiasDetail": "综合偏向（细节）",
+    "whatThisMeansExtended": "这意味着什么（进阶）",
+    "behindRead": "解读依据",
+    "behindReadSubtitle": "简要说明各输入项在当前解读中的作用 - 保持解读视角，不堆数据。"
+  },
+  "riskProfile": {
+    "title": "风险画像",
+    "subtitleStocks": "该标的在压力情境下的典型行为 - 定性说明，并非 VaR 数值。",
+    "subtitleCrypto": "该资产的常见行为特征 - 定性说明，不是极端情景模型。",
+    "riskFromRecent": "风险等级（基于近期振幅）",
+    "context": "背景补充",
+    "contextStocks": "公司新闻、财报、宏观事件可能导致隔夜跳空。本页仅基于图表历史数据。",
+    "contextCrypto": "流动性与情绪可在缺乏基本面触发下导致跳空。先控制交易场所与尾部风险。"
+  },
+  "speculative": {
+    "title": "投机资产警示",
+    "memeP1": "该类资产更依赖关注度与资金流，而非现金流基本面。叙事切换会快于链上或技术信号更新。",
+    "memeP2": "结果高度不确定；当流动性变薄或情绪买盘消退时，回撤可能迅速扩大。",
+    "otherP1": "该符号不在我们的大盘资产池内。其价格更受深度、钱包流向与消息面影响，而非慢变量估值。",
+    "otherP2": "在独立确认流动性、交易场所与托管条件前，请默认存在较大滑点与跳空风险。"
+  },
+  "trade": {
+    "title": "风险 / 收益",
+    "subtitle": "固定仓位股数。美元风险与收益仅由价格输入决定 - 不构成仓位建议。",
+    "entry": "入场价",
+    "stop": "止损价",
+    "target": "目标价",
+    "size": "数量",
+    "shares": "股数",
+    "side": "方向",
+    "long": "做多",
+    "short": "做空",
+    "sharesUnit": "股",
+    "riskDollars": "风险（$）",
+    "rewardDollars": "收益（$）",
+    "rr": "盈亏比",
+    "perShare": "单股：风险 ${{risk}}，若到达目标收益 ${{reward}}。",
+    "shapeLongShort": "做多：目标高于入场、止损低于入场。做空：目标低于入场、止损高于入场。",
+    "shapeBracket": "止损与目标必须围绕你的入场价设置。",
+    "enterNumeric": "请输入有效数值，并确保股数大于 0。"
+  },
+  "footer": {
+    "disclaimer": "教育工具，不构成投资建议。"
+  },
+  "tips": {
+    "trend": "趋势反映一段时间内的主方向，用于判断主导力量，不用于猜下一跳。",
+    "momentum": "动量反映价格推进速度。动量减弱通常意味着趋势力度在下降。",
+    "structure": "结构反映走势是否有序。结构越乱，止损触发与意外波动越多。",
+    "volatility": "波动率反映价格振幅。读数越高，跳空与来回扫动风险越大。",
+    "bias": "综合多项输入得出的方向倾向。用于总结，不是预测。",
+    "confidence": "置信度代表内部信号一致程度，不是“会对”的概率。",
+    "risk": "风险反映近期盘面的剧烈程度。风险高时应减仓并放宽容错。",
+    "marketState": "用白话描述趋势与节奏，建议先看这一行再看细节。",
+    "rsi": "RSI 衡量买卖持续性。请结合价格结构使用，不单独下判断。",
+    "compositeLean": "由趋势、节奏与均线共同形成的轻度倾向，不保证后续方向。",
+    "whatMeans": "这里的「{{term}}」是什么意思"
+  },
+  "analysis": {
+    "summary": {
+      "up": "该周期综合倾向偏积极 - 用于仓位与风险框架，不是目标价。",
+      "down": "该周期综合倾向偏防守 - 仅是一个视角，资金流与消息面仍在模型之外。",
+      "sideways": "综合倾向偏中性 - 当前输入未形成清晰方向。"
+    },
+    "common": {
+      "trend": { "bullish": "偏多", "bearish": "偏空", "neutral": "中性" },
+      "momentum": { "strong": "强", "slowing": "放缓", "weak": "弱" },
+      "structure": { "stable": "稳定", "volatile": "高波动" },
+      "snapshotBias": { "slightly_bullish": "轻度偏多", "bearish": "偏空", "sideways": "震荡" },
+      "volLabel": { "low": "低", "moderate": "中等", "high": "高" }
+    },
+    "interpretation": {
+      "trendMeanings": {
+        "bullish": "均线与斜率显示当前窗口由买方主导。",
+        "bearish": "相对慢线仍受压，空方在该样本内占优。",
+        "neutral": "趋势优势不明显：结构与均线信号混合。"
+      },
+      "momentumMeanings": {
+        "strong": "近期收益与斜率同向，推动力仍具延续性。",
+        "slowing": "方向可能未变，但推进速度在降温。",
+        "weak": "净推进有限，即使有噪声波动也缺乏持续冲力。"
+      },
+      "structureMeanings": {
+        "stable": "相较高波动阶段，日内/日间振幅更可控。",
+        "volatile": "已实现波动偏高，区间管理比点位更重要。"
+      },
+      "biasMeanings": {
+        "slightly_bullish": "综合读数轻度偏正，但不构成预测。",
+        "bearish": "综合读数在该周期偏负面。",
+        "sideways": "信号互相抵消，方向尚未决出。"
+      }
+    },
+    "reasons": {
+      "titles": { "trend": "趋势", "momentum": "动量", "rsi": "RSI", "volatility": "波动率" },
+      "trendTooFew": "样本不足以稳定评估 SMA20/50，当前趋势判断仅作临时参考。",
+      "trendAboveBothGolden": "价格位于 SMA20/50 之上且快线在上，当前由多方掌控；若斜率过陡，回撤风险会抬升。",
+      "trendBelowBothDeath": "价格与 SMA20 均位于 SMA50 下方，当前供给主导；未有效收复前，反弹偏交易性。",
+      "trendBetween20and50": "价格在 SMA20 上方但仍受 SMA50 压制，属于修复阶段而非干净趋势。",
+      "trendBetween50and20": "失守 SMA20 但仍在 SMA50 上方，处于回撤与转弱早期之间。",
+      "trendTightBundleSupport": "均线在紧密区间内提供支撑，方向尚未决出；突破后通常会加速。",
+      "trendTightBundlePressure": "均线在紧密区间内形成压制，方向尚未决出；突破后通常会加速。",
+      "momentumBody": "约 20 个交易日变动 {{ret}}%，短斜率为 {{slopeWord}}。这反映趋势是否仍有支付意愿，而非预测终点。",
+      "slopeWord": { "positive": "明显向上", "negative": "明显向下", "flat": "走平" },
+      "rsiHigh": "RSI 约 {{rsi}}：买盘持续性偏强，上方拥挤风险提升，但不等于立即见顶。",
+      "rsiLow": "RSI 约 {{rsi}}：卖压持续性偏强，短线衰竭风险上升，仍需价格确认。",
+      "rsiMid": "RSI 约 {{rsi}} 处于中性区，优势更多来自趋势与斜率，而非指标本身。",
+      "volHigh": "已实现波动年化约 {{vol}}%（{{label}}）- 区间与跳空风险高于单点位。",
+      "volLow": "已实现波动年化约 {{vol}}%（{{label}}）- 盘面相对平稳，关键位更容易发挥作用。"
+    },
+    "beginner": {
+      "riskExplain": {
+        "highCrypto": "当前振幅较大 - 建议减小仓位并放宽止损容错。",
+        "highStock": "当前波动明显放大 - 意外波动可能比平静阶段来得更快。",
+        "medium": "波动处于正常偏高区间 - 需预期双向来回。",
+        "low": "该窗口下日常波动相对可控。"
+      },
+      "marketState": {
+        "range": "区间震荡 / 无明显优势",
+        "upWeakening": "上行趋势（动能减弱）",
+        "upUnstable": "上行趋势（结构不稳）",
+        "upFirm": "上行趋势（较稳）",
+        "up": "上行趋势",
+        "downUnstable": "下行趋势（结构不稳）",
+        "downEasing": "下行趋势（压力缓和）",
+        "downFirm": "下行趋势（较稳）",
+        "down": "下行趋势",
+        "mixed": "信号混合 / 过渡状态"
+      },
+      "whatToDo": {
+        "waitConfirm": "等待确认",
+        "avoidChasing": "避免追涨 - 动量正在放缓",
+        "dontRushReversal": "不要急于抢反转 - 卖压只是缓和，尚未反转确认。",
+        "sizeDown": "趋势逻辑可能仍在，但在区间收敛前应降低仓位。",
+        "standAside": "先观望，或仅保留小风险仓位等待明确信号。",
+        "upWatchPullback": "趋势未破，但若节奏过热需防回撤。",
+        "downPressure": "下行压力仍主导，反弹先按脆弱处理。"
+      },
+      "why": {
+        "sideways": "近期净变化约 {{ret}}%，但方向信号尚未一致。",
+        "slowing": "该窗口价格约变动 {{ret}}%，但推进速度在降温。",
+        "strong": "该窗口价格约变动 {{ret}}%，延续性仍在。",
+        "neutralTrend": "均线与斜率未形成统一结论（净变动 {{ret}}%）。",
+        "default": "RSI 约为 {{rsi}}，应作为背景参考而非时点信号。"
+      },
+      "simple": {
+        "marketState": {
+          "sideways": "横盘中 - 还没有明确胜方。",
+          "up": "最近整体偏上行。",
+          "down": "最近整体偏下行。",
+          "mixed": "信号混杂，结论不干净。"
+        },
+        "whatToDo": {
+          "waitBreak": "不要猜方向，先等更明确突破。",
+          "dontBuySpike": "别追冲高，先让走势自己证明。",
+          "sizeDown": "在波动收敛前先减仓。",
+          "default": "只有当你的计划已定义失效点时再加风险。"
+        },
+        "risk": {
+          "high": "风险高 - 大幅波动概率较高。",
+          "medium": "风险中等 - 常规震荡仍会出现。",
+          "low": "当前风险相对较低 - 但绝非无风险。"
+        }
+      },
+      "cryptoWhyAddon": "在同等解读下，加密资产通常比大盘股波动更大。",
+      "cryptoSimpleWhyAddon": "加密资产通常比常见股票动得更快。"
+    },
+    "layer2": {
+      "trend": {
+        "bullish": "样本内价格整体位于均值路径上方，买方更占优。",
+        "bearish": "样本内价格整体位于均值路径下方，卖方更占优。",
+        "neutral": "该窗口多空力量较均衡，未形成单边路径。"
+      },
+      "momentum": {
+        "strong": "推进仍有力度，跟随性在数据里仍可见。",
+        "slowing": "推进在放缓，趋势可延续但追价风险上升。",
+        "weak": "净推进有限，强行押方向容易被来回消耗。"
+      },
+      "structure": {
+        "stable": "日常波动相对温和，关键位通常更有效。",
+        "volatile": "振幅偏宽，一条消息也可能快速重定价。"
+      },
+      "volatility": {
+        "low": "年化振幅偏低（{{label}}）- 不是安全，只是更平稳。",
+        "medium": "年化振幅中等（{{label}}）- 需预期正常双向波动。",
+        "high": "年化振幅偏高（{{label}}）- 日内意外波动更大。"
+      },
+      "rsi": {
+        "high": "买盘持续性较强，回撤可能在无预警下出现。",
+        "low": "卖盘持续性较强，反弹可能出现，但仍需确认。",
+        "mid": "RSI 位于中段，优势主要来自趋势与节奏。"
+      }
+    },
+    "cryptoNotes": {
+      "faster": "加密市场通常比股票更快、更不稳定。",
+      "highVol": "高波动环境 - 避免过大仓位。",
+      "reversal": "可能出现急剧反转。",
+      "wideRange": "区间偏宽 - 进出场需要预留更大缓冲。",
+      "memeRisk": "迷因/低流动性风险：情绪变化可在短时间触发跳空。"
+    },
+    "narrative": {
+      "marketState": {
+        "highVol": { "label": "高波动扩张", "detail": "已实现波动偏高，区间主导交易。若仓位不匹配波动，优势会快速衰减。" },
+        "rangeStable": { "label": "区间整理", "detail": "价格在可控紊乱中压缩，供需暂时平衡，等待催化打破平衡。" },
+        "twoWay": { "label": "双向拉扯 / 犹豫", "detail": "宽幅震荡但未形成有效突破，双向风险主导。" },
+        "trendContinuation": { "label": "趋势延续", "detail": "慢结构与短期动量同向，核心问题是延伸还是衰竭。" },
+        "transition": { "label": "过渡阶段", "detail": "不同时间框架出现分歧或节奏切换，方向清晰度下降。" },
+        "mixed": { "label": "混合状态", "detail": "信号尚未汇聚成单一叙事，等待某一轴先行突破。" }
+      },
+      "structuredGeneric": {
+        "trend": "趋势：当前读数为 {{trend}}。",
+        "momentum": "动量：{{momentum}}（近 20 个交易日约 {{ret}}%）。",
+        "condition": "市场条件：以 {{structure}} 结构为主。",
+        "implication": "实务含义：在年化波动约 {{volatility}}% 的环境下，先控制风险预算，再谈方向放大。",
+        "watchNext": "接下来重点观察：斜率拐点、波动率台阶变化、以及关键区间的有效收盘突破。"
+      },
+      "biasContextGeneric": {
+        "sideways": "当前偏向中性，方向尚未被市场确认。",
+        "upStrong": "偏上行且动量仍在，但需防扩张后回撤。",
+        "downStrong": "偏下行且动量较强，反弹更偏战术性。",
+        "slowing": "方向未必反转，但推进速度在下降。",
+        "default": "当前信号可作为交易背景，不应当作结果承诺。"
+      }
+    }
+  }
+}

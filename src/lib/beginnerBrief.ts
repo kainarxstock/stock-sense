@@ -8,6 +8,7 @@ import type {
   StructureRead,
   TrendRead,
 } from "../types";
+import { type Locale, translate } from "../i18n";
 
 type P = {
   trend: TrendRead;
@@ -19,169 +20,178 @@ type P = {
   recentReturnPct: number;
 };
 
-function riskFromVol(vol: number, structure: StructureRead, market: Market): { level: RiskLevel; explain: string } {
+function riskFromVol(
+  vol: number,
+  structure: StructureRead,
+  market: Market,
+  locale: Locale,
+): { level: RiskLevel; explain: string } {
+  const t = (key: string, vars?: Record<string, string | number>) => translate(locale, key, vars);
   const highCut = market === "crypto" ? 55 : 42;
   const medCut = market === "crypto" ? 38 : 28;
   if (vol >= highCut || structure === "volatile") {
     return {
       level: "high",
-      explain:
-        market === "crypto"
-          ? "Price is swinging hard—smaller size and wider stops matter more than usual."
-          : "Price swings are large right now—surprises can arrive faster than on a quiet tape.",
+      explain: market === "crypto" ? t("analysis.beginner.riskExplain.highCrypto") : t("analysis.beginner.riskExplain.highStock"),
     };
   }
   if (vol >= medCut) {
     return {
       level: "medium",
-      explain: "Moves are normal-to-elevated—plan for two-sided days until things calm.",
+      explain: t("analysis.beginner.riskExplain.medium"),
     };
   }
   return {
     level: "low",
-    explain: "Day-to-day moves look relatively contained for this window.",
+    explain: t("analysis.beginner.riskExplain.low"),
   };
 }
 
-function marketStateLine(p: P): string {
+function marketStateLine(p: P, locale: Locale): string {
+  const t = (key: string, vars?: Record<string, string | number>) => translate(locale, key, vars);
   const { trend, momentum, bias, structure } = p;
   const upish = trend === "bullish" || bias === "up";
   const downish = trend === "bearish" || bias === "down";
 
   if (bias === "sideways" && (trend === "neutral" || momentum === "weak")) {
-    return "Range / No clear edge";
+    return t("analysis.beginner.marketState.range");
   }
   if (bias === "sideways") {
-    return "Range / No clear edge";
+    return t("analysis.beginner.marketState.range");
   }
   if (upish && momentum === "slowing") {
-    return "Uptrend (weakening)";
+    return t("analysis.beginner.marketState.upWeakening");
   }
   if (upish && structure === "volatile") {
-    return "Uptrend (unstable)";
+    return t("analysis.beginner.marketState.upUnstable");
   }
   if (upish) {
-    return momentum === "strong" ? "Uptrend (firm)" : "Uptrend";
+    return momentum === "strong" ? t("analysis.beginner.marketState.upFirm") : t("analysis.beginner.marketState.up");
   }
   if (downish && structure === "volatile") {
-    return "Downtrend (unstable)";
+    return t("analysis.beginner.marketState.downUnstable");
   }
   if (downish && momentum === "slowing") {
-    return "Downtrend (easing)";
+    return t("analysis.beginner.marketState.downEasing");
   }
   if (downish) {
-    return momentum === "strong" ? "Downtrend (firm)" : "Downtrend";
+    return momentum === "strong" ? t("analysis.beginner.marketState.downFirm") : t("analysis.beginner.marketState.down");
   }
-  return "Mixed / in-between";
+  return t("analysis.beginner.marketState.mixed");
 }
 
-function whatToDoLine(p: P): string {
+function whatToDoLine(p: P, locale: Locale): string {
+  const t = (key: string, vars?: Record<string, string | number>) => translate(locale, key, vars);
   const { momentum, bias, structure, trend } = p;
   if (bias === "sideways") {
-    return "Wait for confirmation";
+    return t("analysis.beginner.whatToDo.waitConfirm");
   }
   if (momentum === "slowing" && (bias === "up" || trend === "bullish")) {
-    return "Avoid chasing — momentum is slowing";
+    return t("analysis.beginner.whatToDo.avoidChasing");
   }
   if (momentum === "slowing" && (bias === "down" || trend === "bearish")) {
-    return "Don't rush a reversal — selling pressure is easing, not proven over";
+    return t("analysis.beginner.whatToDo.dontRushReversal");
   }
   if (structure === "volatile") {
-    return "Trend idea may be intact — size down until ranges shrink";
+    return t("analysis.beginner.whatToDo.sizeDown");
   }
   if (momentum === "weak") {
-    return "Stand aside or keep risk small until the next clear move";
+    return t("analysis.beginner.whatToDo.standAside");
   }
   if (bias === "up" || trend === "bullish") {
-    return "Trend intact but watch for a pullback if pace stays hot";
+    return t("analysis.beginner.whatToDo.upWatchPullback");
   }
   if (bias === "down" || trend === "bearish") {
-    return "Pressure still dominant — treat bounces as fragile until proven";
+    return t("analysis.beginner.whatToDo.downPressure");
   }
-  return "Wait for confirmation";
+  return t("analysis.beginner.whatToDo.waitConfirm");
 }
 
-function whyLine(p: P): string {
+function whyLine(p: P, locale: Locale): string {
+  const t = (key: string, vars?: Record<string, string | number>) => translate(locale, key, vars);
   const { recentReturnPct, rsi, momentum, trend, bias } = p;
   const ret = recentReturnPct.toFixed(1);
   if (bias === "sideways") {
-    return `Recent net change is about ${ret}% and the pieces don't agree on direction yet.`;
+    return t("analysis.beginner.why.sideways", { ret });
   }
   if (momentum === "slowing") {
-    return `Price moved roughly ${ret}% over the window, but the speed of the move is cooling.`;
+    return t("analysis.beginner.why.slowing", { ret });
   }
   if (momentum === "strong") {
-    return `Price moved roughly ${ret}% with follow-through still showing in this sample.`;
+    return t("analysis.beginner.why.strong", { ret });
   }
   if (trend === "neutral") {
-    return `Moving averages and slope don't line up into one clean story (${ret}% net).`;
+    return t("analysis.beginner.why.neutralTrend", { ret });
   }
-  return `RSI sits near ${rsi.toFixed(0)} in this window—use it as context, not a timer.`;
+  return t("analysis.beginner.why.default", { rsi: rsi.toFixed(0) });
 }
 
-function simpleMarketState(p: P): string {
-  const main = marketStateLine(p);
-  if (main.includes("Range")) return "Sideways — no clear winner yet.";
-  if (main.startsWith("Uptrend")) return "Mostly up lately.";
-  if (main.startsWith("Downtrend")) return "Mostly down lately.";
-  return "Mixed — the picture isn't clean.";
+function simpleMarketState(p: P, locale: Locale): string {
+  const t = (key: string, vars?: Record<string, string | number>) => translate(locale, key, vars);
+  if (p.bias === "sideways") return t("analysis.beginner.simple.marketState.sideways");
+  if (p.bias === "up" || p.trend === "bullish") return t("analysis.beginner.simple.marketState.up");
+  if (p.bias === "down" || p.trend === "bearish") return t("analysis.beginner.simple.marketState.down");
+  return t("analysis.beginner.simple.marketState.mixed");
 }
 
-function simpleWhatToDo(p: P): string {
-  if (p.bias === "sideways") return "Don't guess — wait for a clearer break.";
-  if (p.momentum === "slowing" && (p.bias === "up" || p.trend === "bullish")) return "Don't buy the spike; let it prove itself first.";
-  if (p.structure === "volatile") return "Use smaller size until things calm down.";
-  return "Only add risk if your plan already says how you'll be wrong.";
+function simpleWhatToDo(p: P, locale: Locale): string {
+  const t = (key: string, vars?: Record<string, string | number>) => translate(locale, key, vars);
+  if (p.bias === "sideways") return t("analysis.beginner.simple.whatToDo.waitBreak");
+  if (p.momentum === "slowing" && (p.bias === "up" || p.trend === "bullish")) return t("analysis.beginner.simple.whatToDo.dontBuySpike");
+  if (p.structure === "volatile") return t("analysis.beginner.simple.whatToDo.sizeDown");
+  return t("analysis.beginner.simple.whatToDo.default");
 }
 
-function simpleWhy(p: P): string {
-  return whyLine(p).split(".")[0] + ".";
+function simpleWhy(p: P, locale: Locale): string {
+  return whyLine(p, locale).split(".")[0] + ".";
 }
 
-function simpleRisk(r: { level: RiskLevel; explain: string }): string {
-  if (r.level === "high") return "Risk is high — big swings are likely.";
-  if (r.level === "medium") return "Risk is medium — normal chop is expected.";
-  return "Risk looks lower here — still not risk-free.";
+function simpleRisk(r: { level: RiskLevel; explain: string }, locale: Locale): string {
+  const t = (key: string, vars?: Record<string, string | number>) => translate(locale, key, vars);
+  if (r.level === "high") return t("analysis.beginner.simple.risk.high");
+  if (r.level === "medium") return t("analysis.beginner.simple.risk.medium");
+  return t("analysis.beginner.simple.risk.low");
 }
 
-export function buildLayer2Narrative(p: P, volLabel: string): Layer2Narrative {
+export function buildLayer2Narrative(p: P, volLabel: string, locale: Locale): Layer2Narrative {
+  const t = (key: string, vars?: Record<string, string | number>) => translate(locale, key, vars);
   const trendDetail =
     p.trend === "bullish"
-      ? "Price is generally above its recent average path in this sample—buyers had the edge."
+      ? t("analysis.layer2.trend.bullish")
       : p.trend === "bearish"
-        ? "Price is generally under its recent average path—sellers had the edge."
-        : "Up and down forces are balanced in this window—no clean one-way path.";
+        ? t("analysis.layer2.trend.bearish")
+        : t("analysis.layer2.trend.neutral");
 
   const momDetail =
     p.momentum === "strong"
-      ? "Moves are still moving with energy—follow-through shows up in the numbers."
+      ? t("analysis.layer2.momentum.strong")
       : p.momentum === "slowing"
-        ? "The move is losing steam—good trends can continue, but pay-up risk rises."
-        : "Little net push either way—easy to get chopped if you force a direction.";
+        ? t("analysis.layer2.momentum.slowing")
+        : t("analysis.layer2.momentum.weak");
 
   const structDetail =
     p.structure === "stable"
-      ? "Day-to-day swings are milder—levels tend to matter more than wild gaps."
-      : "Swings are wider—one headline can reprice faster than on a quiet tape.";
+      ? t("analysis.layer2.structure.stable")
+      : t("analysis.layer2.structure.volatile");
 
   const volDetail =
     p.volatilityPct < 22
-      ? `Annualized swing rate looks quiet (${volLabel})—still not “safe,” just calmer.`
+      ? t("analysis.layer2.volatility.low", { label: volLabel })
       : p.volatilityPct < 35
-        ? `Annualized swing rate looks moderate (${volLabel})—plan for normal two-way action.`
-        : `Annualized swing rate looks elevated (${volLabel})—expect bigger surprises day to day.`;
+        ? t("analysis.layer2.volatility.medium", { label: volLabel })
+        : t("analysis.layer2.volatility.high", { label: volLabel });
 
   let rsiDetail: string;
-  if (p.rsi >= 70) rsiDetail = "Buying has been persistent—snapbacks can arrive without warning.";
-  else if (p.rsi <= 30) rsiDetail = "Selling has been persistent—relief bounces can appear, but need proof.";
-  else rsiDetail = "Oscillator sits in the middle—edge, if any, is coming from trend and pace, not RSI alone.";
+  if (p.rsi >= 70) rsiDetail = t("analysis.layer2.rsi.high");
+  else if (p.rsi <= 30) rsiDetail = t("analysis.layer2.rsi.low");
+  else rsiDetail = t("analysis.layer2.rsi.mid");
 
   return {
-    trend: { title: "Trend", detail: trendDetail },
-    momentum: { title: "Momentum", detail: momDetail },
-    structure: { title: "Structure", detail: structDetail },
-    volatility: { title: "Volatility", detail: volDetail },
-    rsi: { title: "RSI (context)", detail: rsiDetail },
+    trend: { title: t("deeper.trend"), detail: trendDetail },
+    momentum: { title: t("deeper.momentum"), detail: momDetail },
+    structure: { title: t("deeper.structure"), detail: structDetail },
+    volatility: { title: t("deeper.volatility"), detail: volDetail },
+    rsi: { title: t("deeper.rsiContext"), detail: rsiDetail },
   };
 }
 
@@ -190,42 +200,45 @@ export function buildCryptoRiskNotes(
   structure: StructureRead,
   _ticker: string,
   memeOrSpeculative: boolean,
+  locale: Locale,
 ): string[] {
+  const t = (key: string, vars?: Record<string, string | number>) => translate(locale, key, vars);
   const notes: string[] = [
-    "Crypto behaves faster and more unpredictably than equities.",
-    "High volatility — avoid large position sizes",
-    "Possible sharp reversals",
+    t("analysis.cryptoNotes.faster"),
+    t("analysis.cryptoNotes.highVol"),
+    t("analysis.cryptoNotes.reversal"),
   ];
   if (structure === "volatile" || volatilityPct >= 50) {
-    notes.push("Wide ranges — entries and exits need extra slack.");
+    notes.push(t("analysis.cryptoNotes.wideRange"));
   }
   if (memeOrSpeculative && volatilityPct >= 45) {
-    notes.push("Meme / thin-name risk: prices can gap on sentiment with little warning.");
+    notes.push(t("analysis.cryptoNotes.memeRisk"));
   }
   return notes;
 }
 
-export function buildBeginnerBrief(params: { p: P; market: Market }): BeginnerBrief {
-  const { p, market } = params;
-  const risk = riskFromVol(p.volatilityPct, p.structure, market);
+export function buildBeginnerBrief(params: { p: P; market: Market; locale: Locale }): BeginnerBrief {
+  const { p, market, locale } = params;
+  const risk = riskFromVol(p.volatilityPct, p.structure, market, locale);
+  const t = (key: string, vars?: Record<string, string | number>) => translate(locale, key, vars);
 
   const brief: BeginnerBrief = {
-    marketState: marketStateLine(p),
-    whatToDo: whatToDoLine(p),
-    why: whyLine(p),
+    marketState: marketStateLine(p, locale),
+    whatToDo: whatToDoLine(p, locale),
+    why: whyLine(p, locale),
     riskLevel: risk.level,
     riskExplain: risk.explain,
     simple: {
-      marketState: simpleMarketState(p),
-      whatToDo: simpleWhatToDo(p),
-      why: simpleWhy(p),
-      riskExplain: simpleRisk(risk),
+      marketState: simpleMarketState(p, locale),
+      whatToDo: simpleWhatToDo(p, locale),
+      why: simpleWhy(p, locale),
+      riskExplain: simpleRisk(risk, locale),
     },
   };
 
   if (market === "crypto") {
-    brief.why += " Crypto prints wider swings than large-cap stocks for the same read.";
-    brief.simple.why += " Crypto moves faster than typical stocks.";
+    brief.why += ` ${t("analysis.beginner.cryptoWhyAddon")}`;
+    brief.simple.why += ` ${t("analysis.beginner.cryptoSimpleWhyAddon")}`;
   }
 
   return brief;
