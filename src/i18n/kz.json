@@ -10,21 +10,67 @@
     "input": "Енгізу",
     "market": "Нарық",
     "explainSimply": "Қарапайым түсіндір",
+    "beginnerMode": "Бастаушы режимі",
     "language": "Тіл"
+  },
+  "common": {
+    "on": "ҚОС",
+    "off": "СӨНДІР"
   },
   "language": {
     "en": "EN",
     "zh-CN": "简体",
     "zh-HK": "繁體",
-    "kz": "KZ"
+    "kz": "KZ",
+    "ru": "RU"
   },
   "hero": {
     "badge": "Stock Sense - Нарықты интерпретациялау жүйесі",
-    "titleLine1": "Бағаны жай бақыламаңыз.",
-    "titleLine2": "Оның мәнін түсініңіз.",
+    "headline": "Нарықтың дәл қазір не істеп жатқанын түсініңіз.",
     "subtitle": "Соңғы баға әрекетін сабырлы әрі түсінікті түрде оқиды: лента не көрсетіп тұр, неге назар аудару керек, сигналдар қаншалық үйлесімді. Алдымен айқындық, қажет болса терең талдау.",
+    "clarity": "Бұл болашақты болжау емес. Бұл қазіргі сәттің интерпретациясы.",
     "cta": "Нарықты түсіндіру",
     "viewOutput": "Нәтижені көру"
+  },
+  "howItWorks": {
+    "kicker": "Қалай жұмыс істейді",
+    "title": "Үш қадам. График маманы болу шарт емес.",
+    "subtitle": "Тикер енгізе алсаңыз, осыны қолдана аласыз.",
+    "step": "Қадам {{n}}",
+    "items": {
+      "1": {
+        "title": "Тикер енгізіңіз",
+        "detail": "AAPL, TSLA, BTC немесе түсінгіңіз келген кез келген белгіні енгізіңіз."
+      },
+      "2": {
+        "title": "Талдау батырмасын басыңыз",
+        "detail": "Біз соңғы баға әрекетін оқып, нарық интерпретациясын құрамыз."
+      },
+      "3": {
+        "title": "Қарапайым тілдегі нәтижені оқыңыз",
+        "detail": "Нарық күйін, неге назар аудару керегін және қай жерде тәуекел жоғары екенін көріңіз."
+      }
+    }
+  },
+  "liveExample": {
+    "kicker": "Тікелей мысал",
+    "title": "Нәтижеңіз осылай көрінеді.",
+    "subtitle": "Болжам лентасы емес, қарапайым тілдегі нақты интерпретация картасы.",
+    "values": {
+      "trend": "Өсуге бейім",
+      "momentum": "Баяулап жатыр",
+      "structure": "Тұрақты"
+    },
+    "explanationLabel": "Бұл нені білдіреді",
+    "explanation": "Сатып алушылар әлі басым, бірақ қарқын суып келеді. Қысқа мерзімді кері шегіну тәуекелі өсуде.",
+    "explanationSimple": "Баға жалпы жоғары, бірақ бұрынғыдай күшті емес. Қысқа шегіну болуы мүмкін.",
+    "notPrediction": "Тек интерпретация. Қаржылық кеңес емес."
+  },
+  "trustLayer": {
+    "kicker": "Сенім",
+    "title": "Бұл қаржылық кеңес емес. Бұл интерпретация қозғалтқышы.",
+    "body": "Болашақ бағаны болжамаймыз. Бастаушылар сабырлы шешім қабылдауы үшін тренд, импульс және құрылым арқылы нарық мінезін түсіндіреміз.",
+    "disclaimer": "Мұны контекст ретінде қолданып, өз жоспарыңыз бен тәуекел ережелеріңізді ұстаныңыз."
   },
   "marketSwitch": {
     "stocks": "Акциялар",
@@ -38,7 +84,9 @@
     "labelTicker": "Тикер",
     "labelSymbol": "Белгі",
     "run": "Іске қосу",
-    "running": "Өңделуде..."
+    "running": "Өңделуде...",
+    "placeholderTicker": "AAPL",
+    "placeholderSymbol": "BTC"
   },
   "errors": {
     "symbolRequired": "Белгіні енгізіңіз.",
@@ -142,6 +190,69 @@
   "footer": {
     "disclaimer": "Оқу құралы. Қаржылық кеңес емес."
   },
+  "loading": {
+    "analyzing": "Нарық құрылымы талданып жатыр...",
+    "subtitle": "Соңғы баға мінезіне негізделген демо-интерпретация жасалып жатыр."
+  },
+  "snapshot": {
+    "kicker": "Жедел нарық оқылымы",
+    "title": "Құрылымдалған интерпретация көрінісі",
+    "subtitle": "Алғашқы қолданушыға түсінікті сигнал сапасы — бір экранда.",
+    "metrics": {
+      "trend": "Тренд",
+      "momentum": "Импульс",
+      "volatility": "Құбылмалылық",
+      "risk": "Тәуекел деңгейі",
+      "confidence": "Сенімділік ұпайы"
+    },
+    "values": {
+      "trend": {
+        "upward": "Жоғары",
+        "downward": "Төмен",
+        "sideways": "Бүйір"
+      },
+      "momentum": {
+        "strong": "Күшті",
+        "weak": "Әлсіз",
+        "neutral": "Бейтарап"
+      },
+      "volatility": {
+        "high": "Жоғары",
+        "moderate": "Орташа",
+        "low": "Төмен"
+      }
+    },
+    "plainEnglish": "Қарапайым тілдегі интерпретация",
+    "whyMatters": "Неге маңызды",
+    "interpretation": {
+      "simple": {
+        "upHighVol": "Баға негізінен жоғары, бірақ екі бағытта да қатты тербелуі мүмкін.",
+        "up": "Қазір баға негізінен жоғары қозғалып тұр.",
+        "downHighVol": "Баға негізінен төмен, қозғалыс өткір болуы мүмкін.",
+        "down": "Қазір баға негізінен төмен қозғалып тұр.",
+        "sideways": "Баға бүйір қозғалыста, сондықтан бағыт әлі анық емес."
+      },
+      "advanced": {
+        "upStrong": "Актив жоғары трендте және импульс күшті, яғни сатып алушылар бақылауда.",
+        "up": "Актив жоғары трендте, бірақ импульс үдеуі тоқтаған.",
+        "downStrong": "Актив төмен трендте, сату қысымы тұрақты.",
+        "down": "Актив төмен трендте, бірақ төмен импульс бұрынғыдай агрессивті емес.",
+        "sideways": "Актив бүйір режимде: осы терезеде тұрақты бағыттық артықшылық жоқ."
+      }
+    },
+    "why": {
+      "simple": {
+        "highVol": "Үлкен тәуекел аларда өлшемді азайтып, айқынырақ қозғалысты күтіңіз.",
+        "sideways": "Анығырақ бұзылуды күту кездейсоқ chop-тан сақтайды.",
+        "default": "Тренд жалғасуы мүмкін, бірақ жылдам свечаларды қумаңыз."
+      },
+      "advanced": {
+        "highVol": "Жалғасу ықтимал, бірақ құбылмалылық артқанда тайминг сапасы маңыздырақ.",
+        "sideways": "Бағыттық құрылым әлсіз кезде алдын ала болжаудан гөрі растау құнды.",
+        "default": "Ағымдағы бейім жалғасу сценарийін қолдайды, бірақ кіру нүктелері pullback пен тәуекелді ескеруі тиіс."
+      }
+    }
+  },
   "tips": {
     "trend": "Тренд уақыт бойынша бағытты көрсетеді. Кім басым екенін көруге көмектеседі, келесі тикті болжау үшін емес.",
     "momentum": "Импульс бағаның қаншалық тез қозғалғанын көрсетеді. Баяуласа, тренд әлсіреуі мүмкін.",
@@ -162,11 +273,30 @@
       "sideways": "Жиынтық бейім бейтарап - кірістерден айқын бағыт шықпады."
     },
     "common": {
-      "trend": { "bullish": "Өсу", "bearish": "Төмендеу", "neutral": "Бейтарап" },
-      "momentum": { "strong": "Күшті", "slowing": "Баяулау", "weak": "Әлсіз" },
-      "structure": { "stable": "Тұрақты", "volatile": "Құбылмалы" },
-      "snapshotBias": { "slightly_bullish": "Сәл өсуге бейім", "bearish": "Төмендеуге бейім", "sideways": "Бүйір" },
-      "volLabel": { "low": "төмен", "moderate": "орташа", "high": "жоғары" }
+      "trend": {
+        "bullish": "Өсу",
+        "bearish": "Төмендеу",
+        "neutral": "Бейтарап"
+      },
+      "momentum": {
+        "strong": "Күшті",
+        "slowing": "Баяулау",
+        "weak": "Әлсіз"
+      },
+      "structure": {
+        "stable": "Тұрақты",
+        "volatile": "Құбылмалы"
+      },
+      "snapshotBias": {
+        "slightly_bullish": "Сәл өсуге бейім",
+        "bearish": "Төмендеуге бейім",
+        "sideways": "Бүйір"
+      },
+      "volLabel": {
+        "low": "төмен",
+        "moderate": "орташа",
+        "high": "жоғары"
+      }
     },
     "interpretation": {
       "trendMeanings": {
@@ -190,7 +320,12 @@
       }
     },
     "reasons": {
-      "titles": { "trend": "Тренд", "momentum": "Импульс", "rsi": "RSI", "volatility": "Құбылмалылық" },
+      "titles": {
+        "trend": "Тренд",
+        "momentum": "Импульс",
+        "rsi": "RSI",
+        "volatility": "Құбылмалылық"
+      },
       "trendTooFew": "SMA20/50 сенімді бағалау үшін жабылулар аз - тренд оқылымы уақытша.",
       "trendAboveBothGolden": "Баға SMA20/50 үстінде және жылдам сызық жоғарыда - қазір сұраныс басым. Тым тік өсу қайтарым тәуекелін арттырады.",
       "trendBelowBothDeath": "Баға мен SMA20 екеуі де SMA50 төменінде - осы терезеде ұсыныс басым.",
@@ -199,7 +334,11 @@
       "trendTightBundleSupport": "Орташалар тығыз және қолдау береді; жеңімпаз анық емес.",
       "trendTightBundlePressure": "Орташалар тығыз және қысым жасайды; жеңімпаз анық емес.",
       "momentumBody": "Шамамен 20 сессияда {{ret}}%, қысқа еңіс {{slopeWord}}. Бұл трендтің төленіп жатқанын көрсетеді, бірақ межені болжай алмайды.",
-      "slopeWord": { "positive": "айқын оң", "negative": "айқын теріс", "flat": "жазық" },
+      "slopeWord": {
+        "positive": "айқын оң",
+        "negative": "айқын теріс",
+        "flat": "жазық"
+      },
       "rsiHigh": "RSI ~{{rsi}}: сатып алу қысымы тұрақты. Қайтарым тәуекелі өседі, бірақ бұл шың уақыты емес.",
       "rsiLow": "RSI ~{{rsi}}: сату қысымы тұрақты. Шаршау тәуекелі бар, бәрібір баға растауы керек.",
       "rsiMid": "RSI ~{{rsi}} орта аймақта; артықшылық болса, ол көбіне тренд пен еңістен келеді.",
@@ -298,12 +437,30 @@
     },
     "narrative": {
       "marketState": {
-        "highVol": { "label": "Жоғары құбылмалылық кеңеюі", "detail": "Іске асқан құбылмалылық жоғары; диапазон басты рөлде." },
-        "rangeStable": { "label": "Диапазон / консолидация", "detail": "Баға қысылып тұр: сұраныс пен ұсыныс уақытша тең." },
-        "twoWay": { "label": "Екіжақты / шешілмеген", "detail": "Кең диапазон, бірақ бекітілген breakout жоқ; екіжақты тәуекел басым." },
-        "trendContinuation": { "label": "Тренд жалғасы", "detail": "Баяу құрылым мен қысқа импульс бір бағытта." },
-        "transition": { "label": "Өтпелі фаза", "detail": "Таймфреймдер келіспейді немесе қарқын ауысуда; айқындық төмендейді." },
-        "mixed": { "label": "Аралас режим", "detail": "Сигналдар бір оқиғаға жиналмады; бұзылуды күту керек." }
+        "highVol": {
+          "label": "Жоғары құбылмалылық кеңеюі",
+          "detail": "Іске асқан құбылмалылық жоғары; диапазон басты рөлде."
+        },
+        "rangeStable": {
+          "label": "Диапазон / консолидация",
+          "detail": "Баға қысылып тұр: сұраныс пен ұсыныс уақытша тең."
+        },
+        "twoWay": {
+          "label": "Екіжақты / шешілмеген",
+          "detail": "Кең диапазон, бірақ бекітілген breakout жоқ; екіжақты тәуекел басым."
+        },
+        "trendContinuation": {
+          "label": "Тренд жалғасы",
+          "detail": "Баяу құрылым мен қысқа импульс бір бағытта."
+        },
+        "transition": {
+          "label": "Өтпелі фаза",
+          "detail": "Таймфреймдер келіспейді немесе қарқын ауысуда; айқындық төмендейді."
+        },
+        "mixed": {
+          "label": "Аралас режим",
+          "detail": "Сигналдар бір оқиғаға жиналмады; бұзылуды күту керек."
+        }
       },
       "structuredGeneric": {
         "trend": "Тренд: ағымдағы оқылым - {{trend}}.",
@@ -318,6 +475,150 @@
         "downStrong": "Төмен бейім және импульс күшті; қарсы секірістер көбіне тактикалық.",
         "slowing": "Бағыт түгел бұзылған жоқ, бірақ қозғалыс қарқыны бәсеңдеп тұр.",
         "default": "Бұл сигналдар контекст береді, нәтиже кепілі емес."
+      },
+      "watchDefault": "What to watch next: slope inflection, realized-vol step-up, or a decisive close through the latest swing high/low.",
+      "structured": {
+        "bearish_trend_up_bias": {
+          "trend": "Trend: averages still lean lower; structure has not flipped.",
+          "momentum": "Momentum: short-window lift - relief, covering, or flow, not a new backbone yet.",
+          "condition": "Market condition: bear-market rally / counter-trend noise until reclaim proves.",
+          "implication": "Practical implication: treat strength as tactical; invalidation comes from failed holds above declining means.",
+          "watchNext": "What to watch next: whether the lift can close and hold above SMA20 or the prior breakdown pivot."
+        },
+        "bullish_trend_sideways_bias": {
+          "trend": "Trend: slow lines remain constructive while fast inputs flatten.",
+          "momentum": "Momentum: digestion phase - pace cooled without breaking larger skew.",
+          "condition": "Market condition: pause/flag inside a broader higher drift.",
+          "implication": "Practical implication: directional conviction is medium; stale longs face time decay without a fresh catalyst.",
+          "watchNext": "What to watch next: renewed push with participation, or a break of the latest higher low."
+        },
+        "up_slow_bear_trend": {
+          "trend": "Trend: negative backbone; bounces lose increment.",
+          "momentum": "Momentum: lift fading into overhead - slope flattening, not accelerating.",
+          "condition": "Market condition: rallys sold into supply until a higher low forms on volume.",
+          "implication": "Practical implication: longs need a reclaim thesis; shorts still control time until structure improves.",
+          "watchNext": "What to watch next: failed reclaim at SMA20 / latest lower high, plus volatility expansion on down sessions."
+        },
+        "up_slow": {
+          "trend": "Trend: composite still constructive, but edge is thinning.",
+          "momentum": "Momentum: slowing - return on directional risk is fading day by day.",
+          "condition": "Market condition: mean-reversion and drift risk rise before trend is fully broken.",
+          "implication": "Practical implication: size for chop; fresh directional adds carry only moderate-to-low conviction.",
+          "watchNext": "What to watch next: whether the next dip holds the last swing low with narrowing volatility."
+        },
+        "up_strong_vol": {
+          "trend": "Trend: bid is real - price advanced with positive short slope.",
+          "momentum": "Momentum: strong (~{{ret}}% over ~20 sessions) but noisy.",
+          "condition": "Market condition: high realized volatility (~{{vol}}% annualized) - ranges dominate static levels.",
+          "implication": "Practical implication: risk budget should be volatility-first; direction alone is incomplete without gap control.",
+          "watchNext": "What to watch next: volatility compression vs expansion, and whether closes cluster near highs or revert mid-range."
+        },
+        "up_strong": {
+          "trend": "Trend: aligned upward - slow structure and impulse agree in this window.",
+          "momentum": "Momentum: strong - ~{{ret}}% net with slope still positive.",
+          "condition": "Market condition: continuation profile until extension invites mean reversion.",
+          "implication": "Practical implication: define wrong by time and level - tighten risk if price stretches too far from SMA20.",
+          "watchNext": "What to watch next: first close below a rising SMA20, or volatility spike without new highs."
+        },
+        "up_weak": {
+          "trend": "Trend: composite reads up, but tape does not fully cooperate.",
+          "momentum": "Momentum: weak - follow-through is missing despite positive bias.",
+          "condition": "Market condition: episodic flow or passive bid, not broad re-risking.",
+          "implication": "Practical implication: avoid chasing pop moves until slope re-accelerates with broader participation.",
+          "watchNext": "What to watch next: volume balance on up vs down sessions, and slope re-acceleration vs failure."
+        },
+        "down_strong_vol": {
+          "trend": "Trend: distribution has both pace and width.",
+          "momentum": "Momentum: strong downside - slope ~{{slope}}%/day with elevated volatility.",
+          "condition": "Market condition: expansion (~{{vol}}% annualized) - counter-trend bounces are rented, not owned.",
+          "implication": "Practical implication: wait for supply to clear or range to compress before sizing reversal risk.",
+          "watchNext": "What to watch next: range lower band behavior, capitulation volume, or orderly drift lower."
+        },
+        "down_strong": {
+          "trend": "Trend: sellers control closes; slope stays negative with sponsorship.",
+          "momentum": "Momentum: strong - downside closes cluster; bounces remain tactical.",
+          "condition": "Market condition: continuation lower until time or price stabilizes.",
+          "implication": "Practical implication: oversold can stay oversold; timing turns needs flow evidence this stack does not include.",
+          "watchNext": "What to watch next: volume dry-up on declines, or failed new lows after high print."
+        },
+        "down_weak": {
+          "trend": "Trend: lower drift without urgency.",
+          "momentum": "Momentum: weak - grind, not stampede; impulse is thin on both sides.",
+          "condition": "Market condition: apathy risk - tape can extend on absent bid as much as on fear.",
+          "implication": "Practical implication: fades need a catalyst; oscillator alone is insufficient.",
+          "watchNext": "What to watch next: macro/idiosyncratic headlines, or a volatility lift that breaks the grind."
+        },
+        "sideways_volatile": {
+          "trend": "Trend: {{trendWord}}",
+          "momentum": "{{momWord}}",
+          "condition": "Market condition: range-like but wide - two-way inventory, no held break.",
+          "implication": "Practical implication: directional conviction is low; false breaks are more common than clean narratives.",
+          "watchNext": "What to watch next: close outside the latest 10-20 day box with follow-through next session."
+        },
+        "sideways_stable_midrsi": {
+          "trend": "Trend: neutral - no skew from slow lines in this sample.",
+          "momentum": "Momentum: balanced - RSI mid ({{rsi}}), returns non-trending.",
+          "condition": "Market condition: equilibrium - matched supply/demand in tighter volatility.",
+          "implication": "Practical implication: paying for direction is expensive; breakout attempts require clean follow-through.",
+          "watchNext": "{{watchDefault}}"
+        },
+        "sideways_stable": {
+          "trend": "Trend: flat composite with no clear initiative owner.",
+          "momentum": "{{momWord}}",
+          "condition": "Market condition: low disorder, indecisive - range or drift inside a band.",
+          "implication": "Practical implication: keep risk flat or edge-only until a catalyst forces one side.",
+          "watchNext": "What to watch next: volatility lift, gap, or flow shift that breaks local equilibrium."
+        },
+        "sideways_rsi_hi": {
+          "trend": "Trend: sideways composite despite stretched oscillator.",
+          "momentum": "Momentum: RSI elevated ({{rsi}}) - upside already paid for in this window.",
+          "condition": "Market condition: chop near upper band - sentiment slips can gap quickly.",
+          "implication": "Practical implication: long gamma gets crowded; keep engagement tight if any.",
+          "watchNext": "What to watch next: failed highs with rising volatility, or absorption at highs under thin supply."
+        },
+        "sideways_rsi_lo": {
+          "trend": "Trend: sideways; oscillator washed but structure has not flipped.",
+          "momentum": "Momentum: RSI low ({{rsi}}) - short-term selling may be exhausted.",
+          "condition": "Market condition: bounce-prone into overhead until trend proves.",
+          "implication": "Practical implication: bounces are tactical into supply, not structural flips, without reclaim.",
+          "watchNext": "What to watch next: reclaim of SMA20 / prior breakdown, plus volume on first up sessions."
+        },
+        "default": {
+          "trendNeutral": "Trend: mixed - no durable control.",
+          "trendTilt": "Trend: {{trend}} tilt, not unanimous across windows.",
+          "momentum": "{{momWord}}",
+          "condition": "Market condition: {{structure}} tape with conflicting fast/slow reads.",
+          "implication": "Practical implication: keep conviction low; wait for slope, range, or volatility to break cleanly first.",
+          "watchNext": "{{watchDefault}}"
+        }
+      },
+      "trendWord": {
+        "constructive": "Constructive on averages.",
+        "heavy": "Heavy vs slow lines.",
+        "mixed": "Mixed - no durable directional control."
+      },
+      "momWord": {
+        "strong": "Impulse still pays for directional risk.",
+        "slowing": "Follow-through is cooling after the latest leg.",
+        "weak": "Impulse is thin - moves lack sponsorship."
+      },
+      "biasContext": {
+        "bearish_trend_up_bias": "Relief lift into a still-negative average stack - strength stays tactical until reclaim proves.",
+        "bullish_trend_sideways_bias": "Slow trend remains intact while fast inputs stall - digestion, not a confirmed handoff lower.",
+        "up_slow_bear_trend": "Bounces fade against a weak backbone - sellers still control time without a higher low.",
+        "up_slow": "Composite still leans up, but pace is cooling - mean-reversion risk rises before trend breaks.",
+        "up_strong_vol": "Upside impulse competes with wide day ranges - edge is as much volatility as direction.",
+        "up_strong": "Trend and impulse align constructively - risk is extension, not absence of bid.",
+        "up_weak": "Positive bias without follow-through - flow looks episodic, not sustained.",
+        "down_strong_vol": "Selling has velocity and width - counter-trend needs time or cleared supply.",
+        "down_strong": "Downside has sponsorship in closes - bounces stay tactical until structure flips.",
+        "down_weak": "Soft lower drift - low urgency, but no mandate to fade without catalyst.",
+        "sideways_volatile": "Two-way tape: momentum and trend do not provide a clean skew inside wide ranges.",
+        "sideways_stable_midrsi": "Equilibrium: oscillator mid-band, volatility contained - market is not forcing a side.",
+        "sideways_stable": "Flat bias with quieter ranges - wait for break rather than forcing a narrative.",
+        "sideways_rsi_hi": "Flat bias with stretched RSI - upside can be crowded and vulnerable to air pockets.",
+        "sideways_rsi_lo": "Flat bias with washed RSI - short covering is possible, but overhead supply still matters.",
+        "default": "Time frames disagree enough that the next leg belongs to whichever axis breaks first."
       }
     }
   }

@@ -1,10 +1,11 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import en from "./en.json";
+import ru from "./ru.json";
 import zhCN from "./zh-CN.json";
 import zhHK from "./zh-HK.json";
 import kz from "./kz.json";
 
-export type Locale = "en" | "zh-CN" | "zh-HK" | "kz";
+export type Locale = "en" | "ru" | "kz" | "zh-CN" | "zh-HK";
 
 type DictValue = string | number | boolean | null | DictObject | DictValue[];
 type DictObject = { [key: string]: DictValue };
@@ -14,9 +15,10 @@ const DEFAULT_LOCALE: Locale = "en";
 
 const dictionaries: Record<Locale, DictObject> = {
   en: en as DictObject,
+  ru: ru as DictObject,
+  kz: kz as DictObject,
   "zh-CN": zhCN as DictObject,
   "zh-HK": zhHK as DictObject,
-  kz: kz as DictObject,
 };
 
 function interpolate(raw: string, vars?: Record<string, string | number>): string {
@@ -41,7 +43,7 @@ export function translate(locale: Locale, key: string, vars?: Record<string, str
 }
 
 function isLocale(input: string | null): input is Locale {
-  return input === "en" || input === "zh-CN" || input === "zh-HK" || input === "kz";
+  return input === "en" || input === "ru" || input === "kz" || input === "zh-CN" || input === "zh-HK";
 }
 
 type I18nContextValue = {

@@ -14,15 +14,15 @@ type Props = {
 };
 
 export function InterpretationSnapshotCard({ analysis, explainSimply }: Props) {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const snapshot = useMemo(() => buildSnapshotSummary(analysis), [analysis]);
   const plainEnglish = useMemo(
-    () => buildPlainEnglishInterpretation(snapshot, explainSimply),
-    [snapshot, explainSimply],
+    () => buildPlainEnglishInterpretation(snapshot, explainSimply, locale),
+    [snapshot, explainSimply, locale],
   );
   const whyMatters = useMemo(
-    () => buildWhyThisMatters(snapshot, explainSimply),
-    [snapshot, explainSimply],
+    () => buildWhyThisMatters(snapshot, explainSimply, locale),
+    [snapshot, explainSimply, locale],
   );
 
   const typedPlainEnglish = useTypewriter(plainEnglish, 16);

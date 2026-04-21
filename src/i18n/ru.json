@@ -1,0 +1,625 @@
+{
+  "meta": {
+    "title": "Stock Sense - Движок рыночной интерпретации"
+  },
+  "brand": {
+    "name": "Stock Sense",
+    "tagline": "Интерпретация рынка в первую очередь"
+  },
+  "nav": {
+    "input": "Ввод",
+    "market": "Рынок",
+    "explainSimply": "Объяснить просто",
+    "beginnerMode": "Режим новичка",
+    "language": "Язык"
+  },
+  "common": {
+    "on": "ВКЛ",
+    "off": "ВЫКЛ"
+  },
+  "language": {
+    "en": "EN",
+    "zh-CN": "简体",
+    "zh-HK": "繁體",
+    "kz": "KZ",
+    "ru": "RU"
+  },
+  "hero": {
+    "badge": "Движок интерпретации рынка",
+    "headline": "Понимайте, что рынок делает прямо сейчас.",
+    "subtitle": "Stock Sense читает тренд, импульс и структуру, а затем объясняет текущее состояние рынка простым языком.",
+    "clarity": "Это не предсказание будущего. Это интерпретация настоящего.",
+    "cta": "Проанализировать тикер (например, AAPL)",
+    "viewOutput": "Смотреть результат"
+  },
+  "howItWorks": {
+    "kicker": "Как это работает",
+    "title": "Три шага. Без экспертизы в графиках.",
+    "subtitle": "Если вы можете ввести тикер, вы уже умеете пользоваться этим.",
+    "step": "Шаг {{n}}",
+    "items": {
+      "1": {
+        "title": "Введите тикер",
+        "detail": "Введите AAPL, TSLA, BTC или любой символ, который хотите понять."
+      },
+      "2": {
+        "title": "Нажмите «Анализировать»",
+        "detail": "Мы читаем последнее поведение цены и строим рыночную интерпретацию."
+      },
+      "3": {
+        "title": "Прочитайте вывод простым языком",
+        "detail": "Увидьте состояние рынка, что важно отслеживать и где выше риск."
+      }
+    }
+  },
+  "liveExample": {
+    "kicker": "Живой пример",
+    "title": "Вот как выглядит ваш результат.",
+    "subtitle": "Реальная карточка интерпретации простым языком, а не лента прогнозов.",
+    "values": {
+      "trend": "Бычий",
+      "momentum": "Замедляется",
+      "structure": "Стабильная"
+    },
+    "explanationLabel": "Что это значит",
+    "explanation": "Покупатели все еще контролируют рынок, но темп остывает. Риск краткосрочного отката растет.",
+    "explanationSimple": "Цена в целом растет, но уже не так резко. Возможен короткий откат.",
+    "notPrediction": "Только интерпретация. Не финансовый совет."
+  },
+  "trustLayer": {
+    "kicker": "Доверие",
+    "title": "Это не финансовый совет. Это движок интерпретации.",
+    "body": "Мы не предсказываем будущие цены. Мы объясняем поведение рынка через тренд, импульс и структуру, чтобы новичкам было проще принимать спокойные решения.",
+    "disclaimer": "Используйте это как контекст и применяйте собственный план и правила риска."
+  },
+  "marketSwitch": {
+    "stocks": "Акции",
+    "crypto": "Крипто"
+  },
+  "analyze": {
+    "titleTicker": "Введите тикер",
+    "titleSymbol": "Введите символ",
+    "subtitleStocks": "Начните с любой акции США и получите интерпретацию рынка простым языком.",
+    "subtitleCrypto": "Начните с любого крипто-символа и получите интерпретацию рынка простым языком.",
+    "labelTicker": "Тикер (пример: AAPL)",
+    "labelSymbol": "Символ (пример: BTC)",
+    "run": "Анализировать",
+    "running": "Анализ...",
+    "placeholderTicker": "AAPL",
+    "placeholderSymbol": "BTC"
+  },
+  "errors": {
+    "symbolRequired": "Требуется символ.",
+    "equityFormat": "Акции: только буквы, 1-6 символов (например, AAPL).",
+    "cryptoFormat": "Крипто: 2-12 символов, A-Z и 0-9, первый символ - буква (например, BTC, PEPE).",
+    "loadFailed": "Загрузка не удалась. Проверьте соединение и попробуйте снова."
+  },
+  "trust": {
+    "primary": "Это интерпретация недавнего ценового поведения, а не прогноз. Прошлые паттерны не гарантируют будущий результат.",
+    "secondary": "Проверка: методология проходит ревью — воспринимайте результаты только как образовательный контекст."
+  },
+  "chart": {
+    "title": "Ценовой контекст",
+    "subtitleStocks": "Дневные закрытия: окно, которое читает движок интерпретации.",
+    "subtitleCrypto": "Дневные закрытия из рынка 24/7 - каждая свеча отражает только закрытие, а не полный путь цены.",
+    "cryptoNote": "Крипто обычно ходит шире, чем акции; оценивайте и разброс, и наклон.",
+    "close": "Закрытие"
+  },
+  "primary": {
+    "atAGlance": "Коротко",
+    "marketState": "Состояние рынка",
+    "whatToDo": "Что делать",
+    "why": "Почему",
+    "riskLevel": "Уровень риска",
+    "riskNotesCrypto": "Заметки по риску — крипто"
+  },
+  "riskLevel": {
+    "low": "Низкий",
+    "medium": "Средний",
+    "high": "Высокий"
+  },
+  "shortBias": {
+    "compositeLean": "Сводный уклон",
+    "leansUpward": "Уклон вверх",
+    "leansDownward": "Уклон вниз",
+    "noClearLean": "Явного уклона нет",
+    "simpleHorizon": "Последние недели цены — интерпретация, не прогноз.",
+    "advancedHorizon": "Горизонт: короткий срок (многодневное окно)",
+    "live": "Live",
+    "demo": "Demo",
+    "notForecast": "Это интерпретация недавнего ценового поведения, а не прогноз.",
+    "cryptoFragile": "Крипто двигается быстрее и шире, чем акции - любой уклон может быстро сломаться.",
+    "confidence": "Уверенность",
+    "strongAgreement": "Сильное внутреннее согласование",
+    "mixedSignals": "Смешанные сигналы",
+    "conflictingSignals": "Конфликтующие сигналы",
+    "confidenceExplain": "Уверенность отражает согласованность сигналов, а не вероятность исхода."
+  },
+  "deeper": {
+    "show": "Показать глубокий анализ",
+    "hide": "Скрыть глубокий анализ",
+    "trend": "Тренд",
+    "momentum": "Импульс",
+    "structure": "Структура",
+    "volatility": "Волатильность",
+    "rsiContext": "RSI (контекст)",
+    "volHighSwing": "Высокая амплитуда",
+    "volMediumSwing": "Средняя амплитуда",
+    "volLowSwing": "Низкая амплитуда",
+    "compositeBiasDetail": "Сводный уклон (детали)",
+    "whatThisMeansExtended": "Что это значит (расширенно)",
+    "behindRead": "Что стоит за чтением",
+    "behindReadSubtitle": "Короткие пояснения по каждому входу — все еще интерпретация, а не выгрузка данных."
+  },
+  "riskProfile": {
+    "title": "Профиль риска",
+    "subtitleStocks": "Как этот инструмент обычно ведет себя под стрессом — качественно, не VaR-метрика.",
+    "subtitleCrypto": "Как этот актив обычно ведет себя — качественно, не модель худшего сценария.",
+    "riskFromRecent": "Уровень риска (по недавним колебаниям)",
+    "context": "Контекст",
+    "contextStocks": "Новости компаний, отчетность и макро-факторы могут давать ночные гэпы. Эта страница видит только историю графика.",
+    "contextCrypto": "Ликвидность и сентимент могут резко сдвигать цену даже без фундаментального повода. Сначала контролируйте площадку и tail-risk."
+  },
+  "speculative": {
+    "title": "Предупреждение о спекулятивном активе",
+    "memeP1": "Этот сегмент торгуется вниманием и потоком, а не фундаменталом денежного потока. Смена нарратива может переоценить рынок быстрее, чем обновятся ончейн- и техсигналы.",
+    "memeP2": "Исходы крайне неопределенны; при падении ликвидности или исчезновении социального спроса просадки могут приходить очень быстро.",
+    "otherP1": "Этот символ вне нашего large-cap набора. Цена здесь чувствительнее к глубине, wallet flow и новостному риску, чем к медленным фундаментальным коэффициентам.",
+    "otherP2": "Закладывайте широкий проскальзывание и гэп-риск, пока самостоятельно не проверите ликвидность, площадку и хранение."
+  },
+  "trade": {
+    "title": "Риск / доходность",
+    "subtitle": "Фиксированное число акций. Денежный риск и доходность следуют только из ваших цен - без советов по размеру позиции.",
+    "entry": "Вход",
+    "stop": "Стоп",
+    "target": "Цель",
+    "size": "Размер",
+    "shares": "Акции",
+    "side": "Сторона",
+    "long": "Long",
+    "short": "Short",
+    "sharesUnit": "шт",
+    "riskDollars": "Риск ($)",
+    "rewardDollars": "Доход ($)",
+    "rr": "R : R",
+    "perShare": "На акцию: риск ${{risk}}, доход при цели ${{reward}}.",
+    "shapeLongShort": "Long: цель выше входа, стоп ниже. Short: цель ниже входа, стоп выше.",
+    "shapeBracket": "Стоп и цель должны располагаться по обе стороны от входа для выбранной стороны.",
+    "enterNumeric": "Введите числовые цены и положительное количество акций."
+  },
+  "footer": {
+    "disclaimer": "Образовательный инструмент. Не финансовый совет."
+  },
+  "loading": {
+    "analyzing": "Анализируем структуру рынка...",
+    "subtitle": "Генерируем демо-интерпретацию на основе недавнего ценового поведения."
+  },
+  "snapshot": {
+    "kicker": "Мгновенное чтение рынка",
+    "title": "Структурированный снимок интерпретации",
+    "subtitle": "Понятное качество сигнала в одном окне — для пользователей без опыта.",
+    "metrics": {
+      "trend": "Тренд",
+      "momentum": "Импульс",
+      "volatility": "Волатильность",
+      "risk": "Уровень риска",
+      "confidence": "Оценка уверенности"
+    },
+    "values": {
+      "trend": {
+        "upward": "Восходящий",
+        "downward": "Нисходящий",
+        "sideways": "Боковой"
+      },
+      "momentum": {
+        "strong": "Сильный",
+        "weak": "Слабый",
+        "neutral": "Нейтральный"
+      },
+      "volatility": {
+        "high": "Высокая",
+        "moderate": "Умеренная",
+        "low": "Низкая"
+      }
+    },
+    "plainEnglish": "Интерпретация простым языком",
+    "whyMatters": "Почему это важно",
+    "interpretation": {
+      "simple": {
+        "upHighVol": "Цена в целом растет, но может резко колебаться в обе стороны.",
+        "up": "Сейчас цена в целом движется вверх.",
+        "downHighVol": "Цена в целом снижается, и движения могут быть резкими.",
+        "down": "Сейчас цена в целом движется вниз.",
+        "sideways": "Цена идет вбок, поэтому направление пока неясно."
+      },
+      "advanced": {
+        "upStrong": "Актив в восходящем тренде с сильным импульсом: контроль у покупателей.",
+        "up": "Актив в восходящем тренде, но импульс уже не ускоряется.",
+        "downStrong": "Актив в нисходящем тренде с устойчивым давлением продавцов.",
+        "down": "Актив снижается, но нисходящий импульс уже не так силен, как раньше.",
+        "sideways": "Актив в боковом режиме: устойчивого направленного преимущества в текущем окне нет."
+      }
+    },
+    "why": {
+      "simple": {
+        "highVol": "Уменьшайте размер и ждите более чистых движений, прежде чем брать крупный риск.",
+        "sideways": "Ожидание более четкого пробоя помогает избежать случайной «пилы».",
+        "default": "Тренд может продолжиться, но не стоит гнаться за быстрыми свечами."
+      },
+      "advanced": {
+        "highVol": "Продолжение возможно, но при расширенной волатильности качество тайминга важнее.",
+        "sideways": "При слабой направленной структуре подтверждение обычно ценнее, чем опережение.",
+        "default": "Текущий уклон поддерживает сценарии продолжения, но входы должны учитывать откат и риск-менеджмент."
+      }
+    }
+  },
+  "tips": {
+    "trend": "Направление движения за период. Помогает понять, кто контролирует рынок, но не предсказывает следующий тик.",
+    "momentum": "Показывает скорость движения цены. Замедление часто означает ослабление тренда.",
+    "structure": "Насколько движение упорядочено. Рваная структура обычно означает больше ложных выносов и сюрпризов.",
+    "volatility": "Насколько широко цена колеблется. Высокие значения означают больший гэп- и whipsaw-риск.",
+    "bias": "Краткий уклон, собранный из нескольких сигналов. Это сводка, а не прогноз.",
+    "confidence": "Насколько внутренние сигналы согласованы. Это не вероятность «быть правым».",
+    "risk": "Насколько «нервной» была лента в последнее время. Высокий риск — меньший размер и больше запаса по ошибке.",
+    "marketState": "Краткий срез рынка простым языком: тренд и темп в одной строке.",
+    "rsi": "Показывает устойчивость покупок/продаж. Используйте вместе с ценой, а не отдельно.",
+    "compositeLean": "Мягкий уклон из тренда, темпа и средних. Это не обещание следующего шага.",
+    "whatMeans": "Что здесь означает «{{term}}»"
+  },
+  "analysis": {
+    "summary": {
+      "up": "Сводный уклон на этом горизонте конструктивный — это контекст для размера и риска, а не целевая цена.",
+      "down": "Сводный уклон на этом горизонте защитный — это лишь один ракурс; поток и новости остаются за пределами этого чтения.",
+      "sideways": "Сводный уклон нейтральный — объединенные входы не дают чистого направления."
+    },
+    "common": {
+      "trend": {
+        "bullish": "Бычий",
+        "bearish": "Медвежий",
+        "neutral": "Нейтральный"
+      },
+      "momentum": {
+        "strong": "Сильный",
+        "slowing": "Замедляющийся",
+        "weak": "Слабый"
+      },
+      "structure": {
+        "stable": "Стабильная",
+        "volatile": "Волатильная"
+      },
+      "snapshotBias": {
+        "slightly_bullish": "Слегка бычий",
+        "bearish": "Медвежий",
+        "sideways": "Боковой"
+      },
+      "volLabel": {
+        "low": "низкая",
+        "moderate": "умеренная",
+        "high": "высокая"
+      }
+    },
+    "interpretation": {
+      "trendMeanings": {
+        "bullish": "Средние и наклон показывают контроль покупателей в текущем окне.",
+        "bearish": "Цена остается под давлением относительно более медленных трендовых линий в этом срезе.",
+        "neutral": "Устойчивого преимущества по тренду нет: структура смешанная или плоская относительно средних."
+      },
+      "momentumMeanings": {
+        "strong": "Недавняя доходность и наклон согласованы; движение сохраняет инерцию на этом горизонте.",
+        "slowing": "Направление может сохраняться, но темп остывает — часто это поздняя фаза свинга.",
+        "weak": "Чистого прогресса мало; импульс слабый, даже если шум печатает движение в обе стороны."
+      },
+      "structureMeanings": {
+        "stable": "Дневные колебания сдержаны по сравнению с высоковолатильным режимом.",
+        "volatile": "Реализованная дисперсия повышена; диапазон важнее одиночных уровней."
+      },
+      "biasMeanings": {
+        "slightly_bullish": "Сводное чтение слегка склоняется к росту, без заявлений о прогнозе.",
+        "bearish": "Сводное чтение склоняется к снижению только на этом горизонте.",
+        "sideways": "Сигналы конфликтуют или взаимно гасят друг друга; направление не подтверждено."
+      }
+    },
+    "reasons": {
+      "titles": {
+        "trend": "Тренд",
+        "momentum": "Импульс",
+        "rsi": "RSI",
+        "volatility": "Волатильность"
+      },
+      "trendTooFew": "Слишком мало закрытий, чтобы уверенно опираться на SMA20/50 — чтение тренда пока предварительное.",
+      "trendAboveBothGolden": "Цена выше SMA20/50, а быстрая линия сверху — сейчас окно под контролем покупателей. Если «стек» станет слишком крутым, растет риск растяжения.",
+      "trendBelowBothDeath": "Цена и SMA20 ниже SMA50 — в этом окне доминирует предложение. До возврата выше средних отскоки чаще тактические.",
+      "trendBetween20and50": "Цена выше SMA20, но ниже SMA50 — это восстановление, а не чистый тренд. Следующий этап зависит от пробоя верхнего давления с участием.",
+      "trendBetween50and20": "Цена потеряла SMA20, но остается выше SMA50 — классический pullback против раннего разворота. Смотрите, удержит ли медленная линия следующую волну продаж.",
+      "trendTightBundleSupport": "Средние поддерживают цену плотным пучком — победитель еще не определен. Сжатые сетапы могут резко пойти, когда одна сторона проявится.",
+      "trendTightBundlePressure": "Средние давят на цену плотным пучком — победитель еще не определен. Сжатые сетапы могут резко пойти после фиксации стороны.",
+      "momentumBody": "~{{ret}}% за ~20 сессий при {{slopeWord}} коротком наклоне. Это показывает, платит ли лента за тренд, но не говорит, куда должна дойти цена.",
+      "slopeWord": {
+        "positive": "уверенно положительном",
+        "negative": "уверенно отрицательном",
+        "flat": "плоском"
+      },
+      "rsiHigh": "RSI ~{{rsi}}: покупки остаются устойчивыми. Риск отката растет, но это не таймер вершины.",
+      "rsiLow": "RSI ~{{rsi}}: продажи остаются устойчивыми. Растет риск истощения, но подтверждение ценой все равно нужно.",
+      "rsiMid": "RSI ~{{rsi}} в середине диапазона — преимущество, если есть, чаще идет от наклона и средних, а не от RSI отдельно.",
+      "volHigh": "Реализованная волатильность ~{{vol}}% годовых ({{label}}) — диапазоны и гэпы важнее одиночных принтов.",
+      "volLow": "Реализованная волатильность ~{{vol}}% годовых ({{label}}) — лента спокойнее; уровни чаще держатся до катализатора."
+    },
+    "beginner": {
+      "riskExplain": {
+        "highCrypto": "Цена сильно колеблется — меньший размер и более широкий стоп важнее обычного.",
+        "highStock": "Колебания сейчас крупные — сюрпризы приходят быстрее, чем в спокойной ленте.",
+        "medium": "Движения в норме/слегка повышены — планируйте двусторонние сессии, пока рынок не успокоится.",
+        "low": "Дневные движения в этом окне выглядят относительно сдержанными."
+      },
+      "marketState": {
+        "range": "Диапазон / явного преимущества нет",
+        "upWeakening": "Восходящий тренд (слабеет)",
+        "upUnstable": "Восходящий тренд (нестабильный)",
+        "upFirm": "Восходящий тренд (устойчивый)",
+        "up": "Восходящий тренд",
+        "downUnstable": "Нисходящий тренд (нестабильный)",
+        "downEasing": "Нисходящий тренд (давление слабеет)",
+        "downFirm": "Нисходящий тренд (устойчивый)",
+        "down": "Нисходящий тренд",
+        "mixed": "Смешанный / переходный"
+      },
+      "whatToDo": {
+        "waitConfirm": "Ждать подтверждения",
+        "avoidChasing": "Не гонитесь за движением — импульс замедляется",
+        "dontRushReversal": "Не торопитесь ловить разворот — давление продаж лишь ослабевает, но не исчезло.",
+        "sizeDown": "Идея тренда может жить, но размер лучше снизить, пока диапазон не сузится.",
+        "standAside": "Лучше переждать или держать риск небольшим до следующего чистого движения.",
+        "upWatchPullback": "Тренд цел, но следите за риском отката, если темп останется перегретым.",
+        "downPressure": "Давление вниз доминирует — отскоки пока хрупкие, пока не доказано обратное."
+      },
+      "why": {
+        "sideways": "Чистое изменение за период около {{ret}}%, но сигналы по направлению пока не сходятся.",
+        "slowing": "Цена прошла около {{ret}}% в этом окне, но скорость движения снижается.",
+        "strong": "Цена прошла около {{ret}}%, и инерция в выборке пока сохраняется.",
+        "neutralTrend": "Средние и наклон не складываются в одну чистую историю (чистое {{ret}}%).",
+        "default": "RSI около {{rsi}} в этом окне — используйте как контекст, а не как таймер."
+      },
+      "simple": {
+        "marketState": {
+          "sideways": "Боковик — явного победителя пока нет.",
+          "up": "В последнее время движение в основном вверх.",
+          "down": "В последнее время движение в основном вниз.",
+          "mixed": "Картина смешанная — чистого сигнала нет."
+        },
+        "whatToDo": {
+          "waitBreak": "Не угадывайте — дождитесь более чистого пробоя.",
+          "dontBuySpike": "Не покупайте всплеск с ходу; дайте движению доказать себя.",
+          "sizeDown": "Используйте меньший размер, пока рынок не успокоится.",
+          "default": "Добавляйте риск только если в плане заранее определено, где вы неправы."
+        },
+        "risk": {
+          "high": "Риск высокий — вероятны крупные колебания.",
+          "medium": "Риск средний — ожидается обычная «пила».",
+          "low": "Риск ниже, чем обычно — но это все равно не безрисково."
+        }
+      },
+      "cryptoWhyAddon": "Крипто при той же интерпретации обычно дает более широкий ход, чем крупные акции.",
+      "cryptoSimpleWhyAddon": "Крипто обычно движется быстрее, чем типичные акции."
+    },
+    "layer2": {
+      "trend": {
+        "bullish": "Цена в этой выборке в целом держится выше своей средней траектории — преимущество у покупателей.",
+        "bearish": "Цена в этой выборке в целом ниже средней траектории — преимущество у продавцов.",
+        "neutral": "Силы роста и снижения в этом окне сбалансированы — чистого однонаправленного пути нет."
+      },
+      "momentum": {
+        "strong": "Движение сохраняет энергию — follow-through все еще читается в данных.",
+        "slowing": "Движение теряет тягу — тренд может продолжаться, но риск «переплаты» за вход растет.",
+        "weak": "Чистого толчка мало в обе стороны — форсирование направления приводит к «пиле»."
+      },
+      "structure": {
+        "stable": "Дневные колебания мягче — уровни чаще работают лучше, чем резкие гэпы.",
+        "volatile": "Колебания шире — одна новость может переоценить рынок быстрее, чем в спокойной ленте."
+      },
+      "volatility": {
+        "low": "Годовая скорость колебаний выглядит спокойной ({{label}}) — это не безопасно, просто тише.",
+        "medium": "Годовая скорость колебаний умеренная ({{label}}) — планируйте нормальное двустороннее движение.",
+        "high": "Годовая скорость колебаний повышенная ({{label}}) — ожидайте более крупных дневных сюрпризов."
+      },
+      "rsi": {
+        "high": "Покупки остаются устойчивыми — резкие откаты могут прийти без предупреждения.",
+        "low": "Продажи остаются устойчивыми — отскок возможен, но все равно нужен сигнал-подтверждение.",
+        "mid": "RSI в середине диапазона — преимущество, если есть, идет от тренда и темпа, а не от RSI отдельно."
+      }
+    },
+    "cryptoNotes": {
+      "faster": "Крипто обычно движется быстрее и менее предсказуемо, чем акции.",
+      "highVol": "Среда повышенной волатильности — избегайте чрезмерного размера позиции.",
+      "reversal": "Возможны резкие развороты.",
+      "wideRange": "Диапазоны широкие — входы и выходы требуют дополнительного запаса.",
+      "memeRisk": "Риск мем- и тонкой ликвидности: сентимент может сместить цену без предупреждения."
+    },
+    "narrative": {
+      "marketState": {
+        "highVol": {
+          "label": "Расширение высокой волатильности",
+          "detail": "Реализованная дисперсия повышена; дневные диапазоны важнее статичных уровней. Преимущество быстро исчезает, если размер не соответствует ленте."
+        },
+        "rangeStable": {
+          "label": "Диапазон / консолидация",
+          "detail": "Цена сжимается при контролируемом шуме — спрос и предложение сбалансированы, пока катализатор не заставит переоценку."
+        },
+        "twoWay": {
+          "label": "Двусторонний / нерешительный режим",
+          "detail": "«Пила» без волатильностного blow-off: широкий диапазон, но пробои не удерживаются. Двусторонний риск доминирует, пока одна сторона не закрепится на закрытиях."
+        },
+        "trendContinuation": {
+          "label": "Продолжение тренда",
+          "detail": "Медленная структура и короткий импульс согласованы в одном направлении. Ключевой вопрос — продолжение или истощение."
+        },
+        "transition": {
+          "label": "Переходная фаза",
+          "detail": "Таймфреймы расходятся или темп смещается — направленная ясность снижается. Закладывайте двусторонний риск, пока одна ось не победит."
+        },
+        "mixed": {
+          "label": "Смешанный режим",
+          "detail": "Сигналы не складываются в одну чистую историю. Считайте ленту неразрешенной, пока наклон, диапазон или волатильность явно не выберут сторону."
+        }
+      },
+      "structuredGeneric": {
+        "trend": "Тренд: текущее чтение — {{trend}}.",
+        "momentum": "Импульс: {{momentum}} (~{{ret}}% за последние ~20 сессий).",
+        "condition": "Состояние рынка: структура сейчас читается как {{structure}}.",
+        "implication": "Практический вывод: при реализованной волатильности около {{volatility}}% годовых приоритетом должны быть размер и контроль риска.",
+        "watchNext": "Что смотреть дальше: перегиб наклона, смена волатильностного режима и решающие закрытия через ключевые swing-уровни."
+      },
+      "biasContextGeneric": {
+        "sideways": "Текущий уклон нейтральный, направление остается неподтвержденным.",
+        "upStrong": "Уклон вверх поддержан импульсом, но риск растяжения остается.",
+        "downStrong": "Уклон вниз усиливается давлением; отскоки остаются тактическими.",
+        "slowing": "Направление может сохраняться, но темп остывает, и уверенность стоит снижать.",
+        "default": "Используйте это чтение как контекст решения, а не как гарантию исхода."
+      },
+      "watchDefault": "What to watch next: slope inflection, realized-vol step-up, or a decisive close through the latest swing high/low.",
+      "structured": {
+        "bearish_trend_up_bias": {
+          "trend": "Trend: averages still lean lower; structure has not flipped.",
+          "momentum": "Momentum: short-window lift - relief, covering, or flow, not a new backbone yet.",
+          "condition": "Market condition: bear-market rally / counter-trend noise until reclaim proves.",
+          "implication": "Practical implication: treat strength as tactical; invalidation comes from failed holds above declining means.",
+          "watchNext": "What to watch next: whether the lift can close and hold above SMA20 or the prior breakdown pivot."
+        },
+        "bullish_trend_sideways_bias": {
+          "trend": "Trend: slow lines remain constructive while fast inputs flatten.",
+          "momentum": "Momentum: digestion phase - pace cooled without breaking larger skew.",
+          "condition": "Market condition: pause/flag inside a broader higher drift.",
+          "implication": "Practical implication: directional conviction is medium; stale longs face time decay without a fresh catalyst.",
+          "watchNext": "What to watch next: renewed push with participation, or a break of the latest higher low."
+        },
+        "up_slow_bear_trend": {
+          "trend": "Trend: negative backbone; bounces lose increment.",
+          "momentum": "Momentum: lift fading into overhead - slope flattening, not accelerating.",
+          "condition": "Market condition: rallys sold into supply until a higher low forms on volume.",
+          "implication": "Practical implication: longs need a reclaim thesis; shorts still control time until structure improves.",
+          "watchNext": "What to watch next: failed reclaim at SMA20 / latest lower high, plus volatility expansion on down sessions."
+        },
+        "up_slow": {
+          "trend": "Trend: composite still constructive, but edge is thinning.",
+          "momentum": "Momentum: slowing - return on directional risk is fading day by day.",
+          "condition": "Market condition: mean-reversion and drift risk rise before trend is fully broken.",
+          "implication": "Practical implication: size for chop; fresh directional adds carry only moderate-to-low conviction.",
+          "watchNext": "What to watch next: whether the next dip holds the last swing low with narrowing volatility."
+        },
+        "up_strong_vol": {
+          "trend": "Trend: bid is real - price advanced with positive short slope.",
+          "momentum": "Momentum: strong (~{{ret}}% over ~20 sessions) but noisy.",
+          "condition": "Market condition: high realized volatility (~{{vol}}% annualized) - ranges dominate static levels.",
+          "implication": "Practical implication: risk budget should be volatility-first; direction alone is incomplete without gap control.",
+          "watchNext": "What to watch next: volatility compression vs expansion, and whether closes cluster near highs or revert mid-range."
+        },
+        "up_strong": {
+          "trend": "Trend: aligned upward - slow structure and impulse agree in this window.",
+          "momentum": "Momentum: strong - ~{{ret}}% net with slope still positive.",
+          "condition": "Market condition: continuation profile until extension invites mean reversion.",
+          "implication": "Practical implication: define wrong by time and level - tighten risk if price stretches too far from SMA20.",
+          "watchNext": "What to watch next: first close below a rising SMA20, or volatility spike without new highs."
+        },
+        "up_weak": {
+          "trend": "Trend: composite reads up, but tape does not fully cooperate.",
+          "momentum": "Momentum: weak - follow-through is missing despite positive bias.",
+          "condition": "Market condition: episodic flow or passive bid, not broad re-risking.",
+          "implication": "Practical implication: avoid chasing pop moves until slope re-accelerates with broader participation.",
+          "watchNext": "What to watch next: volume balance on up vs down sessions, and slope re-acceleration vs failure."
+        },
+        "down_strong_vol": {
+          "trend": "Trend: distribution has both pace and width.",
+          "momentum": "Momentum: strong downside - slope ~{{slope}}%/day with elevated volatility.",
+          "condition": "Market condition: expansion (~{{vol}}% annualized) - counter-trend bounces are rented, not owned.",
+          "implication": "Practical implication: wait for supply to clear or range to compress before sizing reversal risk.",
+          "watchNext": "What to watch next: range lower band behavior, capitulation volume, or orderly drift lower."
+        },
+        "down_strong": {
+          "trend": "Trend: sellers control closes; slope stays negative with sponsorship.",
+          "momentum": "Momentum: strong - downside closes cluster; bounces remain tactical.",
+          "condition": "Market condition: continuation lower until time or price stabilizes.",
+          "implication": "Practical implication: oversold can stay oversold; timing turns needs flow evidence this stack does not include.",
+          "watchNext": "What to watch next: volume dry-up on declines, or failed new lows after high print."
+        },
+        "down_weak": {
+          "trend": "Trend: lower drift without urgency.",
+          "momentum": "Momentum: weak - grind, not stampede; impulse is thin on both sides.",
+          "condition": "Market condition: apathy risk - tape can extend on absent bid as much as on fear.",
+          "implication": "Practical implication: fades need a catalyst; oscillator alone is insufficient.",
+          "watchNext": "What to watch next: macro/idiosyncratic headlines, or a volatility lift that breaks the grind."
+        },
+        "sideways_volatile": {
+          "trend": "Trend: {{trendWord}}",
+          "momentum": "{{momWord}}",
+          "condition": "Market condition: range-like but wide - two-way inventory, no held break.",
+          "implication": "Practical implication: directional conviction is low; false breaks are more common than clean narratives.",
+          "watchNext": "What to watch next: close outside the latest 10-20 day box with follow-through next session."
+        },
+        "sideways_stable_midrsi": {
+          "trend": "Trend: neutral - no skew from slow lines in this sample.",
+          "momentum": "Momentum: balanced - RSI mid ({{rsi}}), returns non-trending.",
+          "condition": "Market condition: equilibrium - matched supply/demand in tighter volatility.",
+          "implication": "Practical implication: paying for direction is expensive; breakout attempts require clean follow-through.",
+          "watchNext": "{{watchDefault}}"
+        },
+        "sideways_stable": {
+          "trend": "Trend: flat composite with no clear initiative owner.",
+          "momentum": "{{momWord}}",
+          "condition": "Market condition: low disorder, indecisive - range or drift inside a band.",
+          "implication": "Practical implication: keep risk flat or edge-only until a catalyst forces one side.",
+          "watchNext": "What to watch next: volatility lift, gap, or flow shift that breaks local equilibrium."
+        },
+        "sideways_rsi_hi": {
+          "trend": "Trend: sideways composite despite stretched oscillator.",
+          "momentum": "Momentum: RSI elevated ({{rsi}}) - upside already paid for in this window.",
+          "condition": "Market condition: chop near upper band - sentiment slips can gap quickly.",
+          "implication": "Practical implication: long gamma gets crowded; keep engagement tight if any.",
+          "watchNext": "What to watch next: failed highs with rising volatility, or absorption at highs under thin supply."
+        },
+        "sideways_rsi_lo": {
+          "trend": "Trend: sideways; oscillator washed but structure has not flipped.",
+          "momentum": "Momentum: RSI low ({{rsi}}) - short-term selling may be exhausted.",
+          "condition": "Market condition: bounce-prone into overhead until trend proves.",
+          "implication": "Practical implication: bounces are tactical into supply, not structural flips, without reclaim.",
+          "watchNext": "What to watch next: reclaim of SMA20 / prior breakdown, plus volume on first up sessions."
+        },
+        "default": {
+          "trendNeutral": "Trend: mixed - no durable control.",
+          "trendTilt": "Trend: {{trend}} tilt, not unanimous across windows.",
+          "momentum": "{{momWord}}",
+          "condition": "Market condition: {{structure}} tape with conflicting fast/slow reads.",
+          "implication": "Practical implication: keep conviction low; wait for slope, range, or volatility to break cleanly first.",
+          "watchNext": "{{watchDefault}}"
+        }
+      },
+      "trendWord": {
+        "constructive": "Constructive on averages.",
+        "heavy": "Heavy vs slow lines.",
+        "mixed": "Mixed - no durable directional control."
+      },
+      "momWord": {
+        "strong": "Impulse still pays for directional risk.",
+        "slowing": "Follow-through is cooling after the latest leg.",
+        "weak": "Impulse is thin - moves lack sponsorship."
+      },
+      "biasContext": {
+        "bearish_trend_up_bias": "Relief lift into a still-negative average stack - strength stays tactical until reclaim proves.",
+        "bullish_trend_sideways_bias": "Slow trend remains intact while fast inputs stall - digestion, not a confirmed handoff lower.",
+        "up_slow_bear_trend": "Bounces fade against a weak backbone - sellers still control time without a higher low.",
+        "up_slow": "Composite still leans up, but pace is cooling - mean-reversion risk rises before trend breaks.",
+        "up_strong_vol": "Upside impulse competes with wide day ranges - edge is as much volatility as direction.",
+        "up_strong": "Trend and impulse align constructively - risk is extension, not absence of bid.",
+        "up_weak": "Positive bias without follow-through - flow looks episodic, not sustained.",
+        "down_strong_vol": "Selling has velocity and width - counter-trend needs time or cleared supply.",
+        "down_strong": "Downside has sponsorship in closes - bounces stay tactical until structure flips.",
+        "down_weak": "Soft lower drift - low urgency, but no mandate to fade without catalyst.",
+        "sideways_volatile": "Two-way tape: momentum and trend do not provide a clean skew inside wide ranges.",
+        "sideways_stable_midrsi": "Equilibrium: oscillator mid-band, volatility contained - market is not forcing a side.",
+        "sideways_stable": "Flat bias with quieter ranges - wait for break rather than forcing a narrative.",
+        "sideways_rsi_hi": "Flat bias with stretched RSI - upside can be crowded and vulnerable to air pockets.",
+        "sideways_rsi_lo": "Flat bias with washed RSI - short covering is possible, but overhead supply still matters.",
+        "default": "Time frames disagree enough that the next leg belongs to whichever axis breaks first."
+      }
+    }
+  }
+}

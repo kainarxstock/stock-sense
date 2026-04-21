@@ -1,4 +1,5 @@
 import type { AnalysisResult } from "../types";
+import { type Locale, translate } from "../i18n";
 
 export type SnapshotTrend = "upward" | "downward" | "sideways";
 export type SnapshotMomentum = "strong" | "weak" | "neutral";
@@ -43,50 +44,53 @@ export function buildSnapshotSummary(analysis: AnalysisResult): SnapshotSummary 
 export function buildPlainEnglishInterpretation(
   snapshot: SnapshotSummary,
   explainSimply: boolean,
+  locale: Locale,
 ): string {
+  const t = (key: string, vars?: Record<string, string | number>) => translate(locale, key, vars);
   if (explainSimply) {
     if (snapshot.trend === "upward") {
       return snapshot.volatility === "high"
-        ? "Price is mostly moving up, but it can swing hard in both directions."
-        : "Price is mostly moving up right now.";
+        ? t("snapshot.interpretation.simple.upHighVol")
+        : t("snapshot.interpretation.simple.up");
     }
     if (snapshot.trend === "downward") {
       return snapshot.volatility === "high"
-        ? "Price is mostly moving down, and moves can be sharp."
-        : "Price is mostly moving down right now.";
+        ? t("snapshot.interpretation.simple.downHighVol")
+        : t("snapshot.interpretation.simple.down");
     }
-    return "Price is moving sideways, so direction is not clear yet.";
+    return t("snapshot.interpretation.simple.sideways");
   }
 
   if (snapshot.trend === "upward") {
     return snapshot.momentum === "strong"
-      ? "This asset is in an upward trend with strong momentum, showing active buyer control."
-      : "This asset is trending upward, but momentum is no longer accelerating.";
+      ? t("snapshot.interpretation.advanced.upStrong")
+      : t("snapshot.interpretation.advanced.up");
   }
   if (snapshot.trend === "downward") {
     return snapshot.momentum === "strong"
-      ? "This asset is in a downward trend with persistent selling pressure."
-      : "This asset is trending downward, though downside momentum is less forceful than before.";
+      ? t("snapshot.interpretation.advanced.downStrong")
+      : t("snapshot.interpretation.advanced.down");
   }
-  return "This asset is in a sideways regime, with no durable directional edge in the current window.";
+  return t("snapshot.interpretation.advanced.sideways");
 }
 
-export function buildWhyThisMatters(snapshot: SnapshotSummary, explainSimply: boolean): string {
+export function buildWhyThisMatters(snapshot: SnapshotSummary, explainSimply: boolean, locale: Locale): string {
+  const t = (key: string, vars?: Record<string, string | number>) => translate(locale, key, vars);
   if (explainSimply) {
     if (snapshot.volatility === "high") {
-      return "Use smaller size and wait for cleaner moves before taking big risk.";
+      return t("snapshot.why.simple.highVol");
     }
     if (snapshot.trend === "sideways") {
-      return "Waiting for a clearer break can help avoid random chop.";
+      return t("snapshot.why.simple.sideways");
     }
-    return "The trend may continue, but avoid chasing fast candles.";
+    return t("snapshot.why.simple.default");
   }
 
   if (snapshot.volatility === "high") {
-    return "Continuation is possible, but timing quality matters more when volatility expands.";
+    return t("snapshot.why.advanced.highVol");
   }
   if (snapshot.trend === "sideways") {
-    return "With weak directional structure, confirmation is usually more valuable than anticipation.";
+    return t("snapshot.why.advanced.sideways");
   }
-  return "The current bias supports continuation scenarios, but entries should still respect pullback and risk placement.";
+  return t("snapshot.why.advanced.default");
 }

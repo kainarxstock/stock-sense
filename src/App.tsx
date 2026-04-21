@@ -70,7 +70,7 @@ export default function App() {
       <div className="relative mx-auto max-w-6xl">
         <nav className="flex flex-wrap items-center justify-between gap-3 border-b border-white/[0.08] px-4 pb-5 pt-6 sm:px-6">
           <div>
-            <span className="text-sm font-semibold tracking-tight text-foreground">Stock Sense</span>
+            <span className="text-sm font-semibold tracking-tight text-foreground">{t("brand.name")}</span>
             <p className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.18em] text-muted-2">
               {t("brand.tagline")}
             </p>

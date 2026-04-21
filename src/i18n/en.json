@@ -21,7 +21,8 @@
     "en": "EN",
     "zh-CN": "简体",
     "zh-HK": "繁體",
-    "kz": "KZ"
+    "kz": "KZ",
+    "ru": "RU"
   },
   "hero": {
     "badge": "Market interpretation engine",
@@ -83,7 +84,9 @@
     "labelTicker": "Ticker (example: AAPL)",
     "labelSymbol": "Symbol (example: BTC)",
     "run": "Analyze",
-    "running": "Running..."
+    "running": "Running...",
+    "placeholderTicker": "AAPL",
+    "placeholderSymbol": "BTC"
   },
   "errors": {
     "symbolRequired": "Symbol required.",
@@ -220,7 +223,35 @@
       }
     },
     "plainEnglish": "Plain English Interpretation",
-    "whyMatters": "Why This Matters"
+    "whyMatters": "Why This Matters",
+    "interpretation": {
+      "simple": {
+        "upHighVol": "Price is mostly moving up, but it can swing hard in both directions.",
+        "up": "Price is mostly moving up right now.",
+        "downHighVol": "Price is mostly moving down, and moves can be sharp.",
+        "down": "Price is mostly moving down right now.",
+        "sideways": "Price is moving sideways, so direction is not clear yet."
+      },
+      "advanced": {
+        "upStrong": "This asset is in an upward trend with strong momentum, showing active buyer control.",
+        "up": "This asset is trending upward, but momentum is no longer accelerating.",
+        "downStrong": "This asset is in a downward trend with persistent selling pressure.",
+        "down": "This asset is trending downward, though downside momentum is less forceful than before.",
+        "sideways": "This asset is in a sideways regime, with no durable directional edge in the current window."
+      }
+    },
+    "why": {
+      "simple": {
+        "highVol": "Use smaller size and wait for cleaner moves before taking big risk.",
+        "sideways": "Waiting for a clearer break can help avoid random chop.",
+        "default": "The trend may continue, but avoid chasing fast candles."
+      },
+      "advanced": {
+        "highVol": "Continuation is possible, but timing quality matters more when volatility expands.",
+        "sideways": "With weak directional structure, confirmation is usually more valuable than anticipation.",
+        "default": "The current bias supports continuation scenarios, but entries should still respect pullback and risk placement."
+      }
+    }
   },
   "tips": {
     "trend": "Direction over time. Use it to see who has control lately - not to time the next tick.",

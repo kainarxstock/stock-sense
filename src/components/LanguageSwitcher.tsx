@@ -1,6 +1,6 @@
 import { useI18n, type Locale } from "../i18n";
 
-const LOCALES: Locale[] = ["en", "zh-CN", "zh-HK", "kz"];
+const LOCALES: Locale[] = ["en", "ru", "kz", "zh-CN", "zh-HK"];
 
 export function LanguageSwitcher() {
   const { locale, setLocale, t } = useI18n();

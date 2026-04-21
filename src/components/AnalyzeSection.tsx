@@ -25,7 +25,7 @@ export function AnalyzeSection({ market, initial, loading, onSubmit }: Props) {
   }
 
   const maxLen = market === "stocks" ? 6 : 12;
-  const placeholder = market === "stocks" ? "AAPL" : "BTC";
+  const placeholder = market === "stocks" ? t("analyze.placeholderTicker") : t("analyze.placeholderSymbol");
   const title = market === "stocks" ? t("analyze.titleTicker") : t("analyze.titleSymbol");
 
   return (

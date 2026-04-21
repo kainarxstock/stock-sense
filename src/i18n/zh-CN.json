@@ -10,21 +10,67 @@
     "input": "输入",
     "market": "市场",
     "explainSimply": "简明解释",
+    "beginnerMode": "新手模式",
     "language": "语言"
+  },
+  "common": {
+    "on": "开",
+    "off": "关"
   },
   "language": {
     "en": "EN",
     "zh-CN": "简体",
     "zh-HK": "繁體",
-    "kz": "KZ"
+    "kz": "KZ",
+    "ru": "RU"
   },
   "hero": {
     "badge": "Stock Sense - 市场解读引擎",
-    "titleLine1": "别只盯价格。",
-    "titleLine2": "看懂价格背后的结构。",
+    "headline": "看懂市场此刻在做什么。",
     "subtitle": "以冷静、清晰的方式解读近期走势：资金在做什么、该关注什么、信号一致性有多强。先给结论，再看深度。",
+    "clarity": "我们不预测未来，只解读当下。",
     "cta": "解读市场",
     "viewOutput": "查看结果"
+  },
+  "howItWorks": {
+    "kicker": "使用方式",
+    "title": "三步完成，无需图表专家。",
+    "subtitle": "只要会输入代码，就能用。",
+    "step": "步骤 {{n}}",
+    "items": {
+      "1": {
+        "title": "输入代码",
+        "detail": "输入 AAPL、TSLA、BTC 或任意你想理解的符号。"
+      },
+      "2": {
+        "title": "点击分析",
+        "detail": "我们读取最新价格行为并生成市场解读。"
+      },
+      "3": {
+        "title": "查看白话输出",
+        "detail": "快速看到市场状态、关注点与风险区域。"
+      }
+    }
+  },
+  "liveExample": {
+    "kicker": "实时示例",
+    "title": "你的输出大致就是这样。",
+    "subtitle": "这是一张真实的白话解读卡，而不是预测信号流。",
+    "values": {
+      "trend": "偏多",
+      "momentum": "放缓",
+      "structure": "稳定"
+    },
+    "explanationLabel": "这意味着什么",
+    "explanation": "买方仍占主导，但节奏在降温，短线回撤风险上升。",
+    "explanationSimple": "价格整体仍在上行，但力度变弱，短线可能回踩。",
+    "notPrediction": "仅供解读，不构成投资建议。"
+  },
+  "trustLayer": {
+    "kicker": "可信声明",
+    "title": "这不是投资建议，而是市场解读引擎。",
+    "body": "我们不预测未来价格。我们用趋势、动量和结构解释市场行为，帮助新手更冷静地做决策。",
+    "disclaimer": "请把它当作背景信息，再结合你自己的计划与风控规则。"
   },
   "marketSwitch": {
     "stocks": "股票",
@@ -38,7 +84,9 @@
     "labelTicker": "代码",
     "labelSymbol": "符号",
     "run": "开始",
-    "running": "分析中..."
+    "running": "分析中...",
+    "placeholderTicker": "AAPL",
+    "placeholderSymbol": "BTC"
   },
   "errors": {
     "symbolRequired": "请输入符号。",
@@ -142,6 +190,69 @@
   "footer": {
     "disclaimer": "教育工具，不构成投资建议。"
   },
+  "loading": {
+    "analyzing": "正在分析市场结构...",
+    "subtitle": "基于近期价格行为生成示例解读。"
+  },
+  "snapshot": {
+    "kicker": "即时市场读数",
+    "title": "结构化解读快照",
+    "subtitle": "一屏看清信号质量，专为首次使用者设计。",
+    "metrics": {
+      "trend": "趋势",
+      "momentum": "动量",
+      "volatility": "波动率",
+      "risk": "风险等级",
+      "confidence": "置信评分"
+    },
+    "values": {
+      "trend": {
+        "upward": "向上",
+        "downward": "向下",
+        "sideways": "横盘"
+      },
+      "momentum": {
+        "strong": "强",
+        "weak": "弱",
+        "neutral": "中性"
+      },
+      "volatility": {
+        "high": "高",
+        "moderate": "中等",
+        "low": "低"
+      }
+    },
+    "plainEnglish": "白话解读",
+    "whyMatters": "为什么重要",
+    "interpretation": {
+      "simple": {
+        "upHighVol": "价格整体向上，但上下波动都可能很大。",
+        "up": "当前价格整体仍偏上行。",
+        "downHighVol": "价格整体向下，波动也可能很剧烈。",
+        "down": "当前价格整体偏下行。",
+        "sideways": "价格处于横盘，方向暂不清晰。"
+      },
+      "advanced": {
+        "upStrong": "该资产处于上行趋势且动量强，买方控制明显。",
+        "up": "该资产仍在上行，但动量已不再加速。",
+        "downStrong": "该资产处于下行趋势，卖压持续。",
+        "down": "该资产仍在下行，但下行动量较此前减弱。",
+        "sideways": "该资产处于横盘状态，当前窗口暂无持续方向优势。"
+      }
+    },
+    "why": {
+      "simple": {
+        "highVol": "先减小仓位，等更干净的走势再承担较大风险。",
+        "sideways": "等待更清晰的突破有助于减少随机震荡消耗。",
+        "default": "趋势可能延续，但不要追逐过快拉升。"
+      },
+      "advanced": {
+        "highVol": "延续仍有可能，但波动扩张时入场时机质量更关键。",
+        "sideways": "方向结构偏弱时，确认信号通常比提前预判更有价值。",
+        "default": "当前偏向支持延续场景，但入场仍需尊重回撤与风险位。"
+      }
+    }
+  },
   "tips": {
     "trend": "趋势反映一段时间内的主方向，用于判断主导力量，不用于猜下一跳。",
     "momentum": "动量反映价格推进速度。动量减弱通常意味着趋势力度在下降。",
@@ -162,11 +273,30 @@
       "sideways": "综合倾向偏中性 - 当前输入未形成清晰方向。"
     },
     "common": {
-      "trend": { "bullish": "偏多", "bearish": "偏空", "neutral": "中性" },
-      "momentum": { "strong": "强", "slowing": "放缓", "weak": "弱" },
-      "structure": { "stable": "稳定", "volatile": "高波动" },
-      "snapshotBias": { "slightly_bullish": "轻度偏多", "bearish": "偏空", "sideways": "震荡" },
-      "volLabel": { "low": "低", "moderate": "中等", "high": "高" }
+      "trend": {
+        "bullish": "偏多",
+        "bearish": "偏空",
+        "neutral": "中性"
+      },
+      "momentum": {
+        "strong": "强",
+        "slowing": "放缓",
+        "weak": "弱"
+      },
+      "structure": {
+        "stable": "稳定",
+        "volatile": "高波动"
+      },
+      "snapshotBias": {
+        "slightly_bullish": "轻度偏多",
+        "bearish": "偏空",
+        "sideways": "震荡"
+      },
+      "volLabel": {
+        "low": "低",
+        "moderate": "中等",
+        "high": "高"
+      }
     },
     "interpretation": {
       "trendMeanings": {
@@ -190,7 +320,12 @@
       }
     },
     "reasons": {
-      "titles": { "trend": "趋势", "momentum": "动量", "rsi": "RSI", "volatility": "波动率" },
+      "titles": {
+        "trend": "趋势",
+        "momentum": "动量",
+        "rsi": "RSI",
+        "volatility": "波动率"
+      },
       "trendTooFew": "样本不足以稳定评估 SMA20/50，当前趋势判断仅作临时参考。",
       "trendAboveBothGolden": "价格位于 SMA20/50 之上且快线在上，当前由多方掌控；若斜率过陡，回撤风险会抬升。",
       "trendBelowBothDeath": "价格与 SMA20 均位于 SMA50 下方，当前供给主导；未有效收复前，反弹偏交易性。",
@@ -199,7 +334,11 @@
       "trendTightBundleSupport": "均线在紧密区间内提供支撑，方向尚未决出；突破后通常会加速。",
       "trendTightBundlePressure": "均线在紧密区间内形成压制，方向尚未决出；突破后通常会加速。",
       "momentumBody": "约 20 个交易日变动 {{ret}}%，短斜率为 {{slopeWord}}。这反映趋势是否仍有支付意愿，而非预测终点。",
-      "slopeWord": { "positive": "明显向上", "negative": "明显向下", "flat": "走平" },
+      "slopeWord": {
+        "positive": "明显向上",
+        "negative": "明显向下",
+        "flat": "走平"
+      },
       "rsiHigh": "RSI 约 {{rsi}}：买盘持续性偏强，上方拥挤风险提升，但不等于立即见顶。",
       "rsiLow": "RSI 约 {{rsi}}：卖压持续性偏强，短线衰竭风险上升，仍需价格确认。",
       "rsiMid": "RSI 约 {{rsi}} 处于中性区，优势更多来自趋势与斜率，而非指标本身。",
@@ -298,12 +437,30 @@
     },
     "narrative": {
       "marketState": {
-        "highVol": { "label": "高波动扩张", "detail": "已实现波动偏高，区间主导交易。若仓位不匹配波动，优势会快速衰减。" },
-        "rangeStable": { "label": "区间整理", "detail": "价格在可控紊乱中压缩，供需暂时平衡，等待催化打破平衡。" },
-        "twoWay": { "label": "双向拉扯 / 犹豫", "detail": "宽幅震荡但未形成有效突破，双向风险主导。" },
-        "trendContinuation": { "label": "趋势延续", "detail": "慢结构与短期动量同向，核心问题是延伸还是衰竭。" },
-        "transition": { "label": "过渡阶段", "detail": "不同时间框架出现分歧或节奏切换，方向清晰度下降。" },
-        "mixed": { "label": "混合状态", "detail": "信号尚未汇聚成单一叙事，等待某一轴先行突破。" }
+        "highVol": {
+          "label": "高波动扩张",
+          "detail": "已实现波动偏高，区间主导交易。若仓位不匹配波动，优势会快速衰减。"
+        },
+        "rangeStable": {
+          "label": "区间整理",
+          "detail": "价格在可控紊乱中压缩，供需暂时平衡，等待催化打破平衡。"
+        },
+        "twoWay": {
+          "label": "双向拉扯 / 犹豫",
+          "detail": "宽幅震荡但未形成有效突破，双向风险主导。"
+        },
+        "trendContinuation": {
+          "label": "趋势延续",
+          "detail": "慢结构与短期动量同向，核心问题是延伸还是衰竭。"
+        },
+        "transition": {
+          "label": "过渡阶段",
+          "detail": "不同时间框架出现分歧或节奏切换，方向清晰度下降。"
+        },
+        "mixed": {
+          "label": "混合状态",
+          "detail": "信号尚未汇聚成单一叙事，等待某一轴先行突破。"
+        }
       },
       "structuredGeneric": {
         "trend": "趋势：当前读数为 {{trend}}。",
@@ -318,6 +475,150 @@
         "downStrong": "偏下行且动量较强，反弹更偏战术性。",
         "slowing": "方向未必反转，但推进速度在下降。",
         "default": "当前信号可作为交易背景，不应当作结果承诺。"
+      },
+      "watchDefault": "What to watch next: slope inflection, realized-vol step-up, or a decisive close through the latest swing high/low.",
+      "structured": {
+        "bearish_trend_up_bias": {
+          "trend": "Trend: averages still lean lower; structure has not flipped.",
+          "momentum": "Momentum: short-window lift - relief, covering, or flow, not a new backbone yet.",
+          "condition": "Market condition: bear-market rally / counter-trend noise until reclaim proves.",
+          "implication": "Practical implication: treat strength as tactical; invalidation comes from failed holds above declining means.",
+          "watchNext": "What to watch next: whether the lift can close and hold above SMA20 or the prior breakdown pivot."
+        },
+        "bullish_trend_sideways_bias": {
+          "trend": "Trend: slow lines remain constructive while fast inputs flatten.",
+          "momentum": "Momentum: digestion phase - pace cooled without breaking larger skew.",
+          "condition": "Market condition: pause/flag inside a broader higher drift.",
+          "implication": "Practical implication: directional conviction is medium; stale longs face time decay without a fresh catalyst.",
+          "watchNext": "What to watch next: renewed push with participation, or a break of the latest higher low."
+        },
+        "up_slow_bear_trend": {
+          "trend": "Trend: negative backbone; bounces lose increment.",
+          "momentum": "Momentum: lift fading into overhead - slope flattening, not accelerating.",
+          "condition": "Market condition: rallys sold into supply until a higher low forms on volume.",
+          "implication": "Practical implication: longs need a reclaim thesis; shorts still control time until structure improves.",
+          "watchNext": "What to watch next: failed reclaim at SMA20 / latest lower high, plus volatility expansion on down sessions."
+        },
+        "up_slow": {
+          "trend": "Trend: composite still constructive, but edge is thinning.",
+          "momentum": "Momentum: slowing - return on directional risk is fading day by day.",
+          "condition": "Market condition: mean-reversion and drift risk rise before trend is fully broken.",
+          "implication": "Practical implication: size for chop; fresh directional adds carry only moderate-to-low conviction.",
+          "watchNext": "What to watch next: whether the next dip holds the last swing low with narrowing volatility."
+        },
+        "up_strong_vol": {
+          "trend": "Trend: bid is real - price advanced with positive short slope.",
+          "momentum": "Momentum: strong (~{{ret}}% over ~20 sessions) but noisy.",
+          "condition": "Market condition: high realized volatility (~{{vol}}% annualized) - ranges dominate static levels.",
+          "implication": "Practical implication: risk budget should be volatility-first; direction alone is incomplete without gap control.",
+          "watchNext": "What to watch next: volatility compression vs expansion, and whether closes cluster near highs or revert mid-range."
+        },
+        "up_strong": {
+          "trend": "Trend: aligned upward - slow structure and impulse agree in this window.",
+          "momentum": "Momentum: strong - ~{{ret}}% net with slope still positive.",
+          "condition": "Market condition: continuation profile until extension invites mean reversion.",
+          "implication": "Practical implication: define wrong by time and level - tighten risk if price stretches too far from SMA20.",
+          "watchNext": "What to watch next: first close below a rising SMA20, or volatility spike without new highs."
+        },
+        "up_weak": {
+          "trend": "Trend: composite reads up, but tape does not fully cooperate.",
+          "momentum": "Momentum: weak - follow-through is missing despite positive bias.",
+          "condition": "Market condition: episodic flow or passive bid, not broad re-risking.",
+          "implication": "Practical implication: avoid chasing pop moves until slope re-accelerates with broader participation.",
+          "watchNext": "What to watch next: volume balance on up vs down sessions, and slope re-acceleration vs failure."
+        },
+        "down_strong_vol": {
+          "trend": "Trend: distribution has both pace and width.",
+          "momentum": "Momentum: strong downside - slope ~{{slope}}%/day with elevated volatility.",
+          "condition": "Market condition: expansion (~{{vol}}% annualized) - counter-trend bounces are rented, not owned.",
+          "implication": "Practical implication: wait for supply to clear or range to compress before sizing reversal risk.",
+          "watchNext": "What to watch next: range lower band behavior, capitulation volume, or orderly drift lower."
+        },
+        "down_strong": {
+          "trend": "Trend: sellers control closes; slope stays negative with sponsorship.",
+          "momentum": "Momentum: strong - downside closes cluster; bounces remain tactical.",
+          "condition": "Market condition: continuation lower until time or price stabilizes.",
+          "implication": "Practical implication: oversold can stay oversold; timing turns needs flow evidence this stack does not include.",
+          "watchNext": "What to watch next: volume dry-up on declines, or failed new lows after high print."
+        },
+        "down_weak": {
+          "trend": "Trend: lower drift without urgency.",
+          "momentum": "Momentum: weak - grind, not stampede; impulse is thin on both sides.",
+          "condition": "Market condition: apathy risk - tape can extend on absent bid as much as on fear.",
+          "implication": "Practical implication: fades need a catalyst; oscillator alone is insufficient.",
+          "watchNext": "What to watch next: macro/idiosyncratic headlines, or a volatility lift that breaks the grind."
+        },
+        "sideways_volatile": {
+          "trend": "Trend: {{trendWord}}",
+          "momentum": "{{momWord}}",
+          "condition": "Market condition: range-like but wide - two-way inventory, no held break.",
+          "implication": "Practical implication: directional conviction is low; false breaks are more common than clean narratives.",
+          "watchNext": "What to watch next: close outside the latest 10-20 day box with follow-through next session."
+        },
+        "sideways_stable_midrsi": {
+          "trend": "Trend: neutral - no skew from slow lines in this sample.",
+          "momentum": "Momentum: balanced - RSI mid ({{rsi}}), returns non-trending.",
+          "condition": "Market condition: equilibrium - matched supply/demand in tighter volatility.",
+          "implication": "Practical implication: paying for direction is expensive; breakout attempts require clean follow-through.",
+          "watchNext": "{{watchDefault}}"
+        },
+        "sideways_stable": {
+          "trend": "Trend: flat composite with no clear initiative owner.",
+          "momentum": "{{momWord}}",
+          "condition": "Market condition: low disorder, indecisive - range or drift inside a band.",
+          "implication": "Practical implication: keep risk flat or edge-only until a catalyst forces one side.",
+          "watchNext": "What to watch next: volatility lift, gap, or flow shift that breaks local equilibrium."
+        },
+        "sideways_rsi_hi": {
+          "trend": "Trend: sideways composite despite stretched oscillator.",
+          "momentum": "Momentum: RSI elevated ({{rsi}}) - upside already paid for in this window.",
+          "condition": "Market condition: chop near upper band - sentiment slips can gap quickly.",
+          "implication": "Practical implication: long gamma gets crowded; keep engagement tight if any.",
+          "watchNext": "What to watch next: failed highs with rising volatility, or absorption at highs under thin supply."
+        },
+        "sideways_rsi_lo": {
+          "trend": "Trend: sideways; oscillator washed but structure has not flipped.",
+          "momentum": "Momentum: RSI low ({{rsi}}) - short-term selling may be exhausted.",
+          "condition": "Market condition: bounce-prone into overhead until trend proves.",
+          "implication": "Practical implication: bounces are tactical into supply, not structural flips, without reclaim.",
+          "watchNext": "What to watch next: reclaim of SMA20 / prior breakdown, plus volume on first up sessions."
+        },
+        "default": {
+          "trendNeutral": "Trend: mixed - no durable control.",
+          "trendTilt": "Trend: {{trend}} tilt, not unanimous across windows.",
+          "momentum": "{{momWord}}",
+          "condition": "Market condition: {{structure}} tape with conflicting fast/slow reads.",
+          "implication": "Practical implication: keep conviction low; wait for slope, range, or volatility to break cleanly first.",
+          "watchNext": "{{watchDefault}}"
+        }
+      },
+      "trendWord": {
+        "constructive": "Constructive on averages.",
+        "heavy": "Heavy vs slow lines.",
+        "mixed": "Mixed - no durable directional control."
+      },
+      "momWord": {
+        "strong": "Impulse still pays for directional risk.",
+        "slowing": "Follow-through is cooling after the latest leg.",
+        "weak": "Impulse is thin - moves lack sponsorship."
+      },
+      "biasContext": {
+        "bearish_trend_up_bias": "Relief lift into a still-negative average stack - strength stays tactical until reclaim proves.",
+        "bullish_trend_sideways_bias": "Slow trend remains intact while fast inputs stall - digestion, not a confirmed handoff lower.",
+        "up_slow_bear_trend": "Bounces fade against a weak backbone - sellers still control time without a higher low.",
+        "up_slow": "Composite still leans up, but pace is cooling - mean-reversion risk rises before trend breaks.",
+        "up_strong_vol": "Upside impulse competes with wide day ranges - edge is as much volatility as direction.",
+        "up_strong": "Trend and impulse align constructively - risk is extension, not absence of bid.",
+        "up_weak": "Positive bias without follow-through - flow looks episodic, not sustained.",
+        "down_strong_vol": "Selling has velocity and width - counter-trend needs time or cleared supply.",
+        "down_strong": "Downside has sponsorship in closes - bounces stay tactical until structure flips.",
+        "down_weak": "Soft lower drift - low urgency, but no mandate to fade without catalyst.",
+        "sideways_volatile": "Two-way tape: momentum and trend do not provide a clean skew inside wide ranges.",
+        "sideways_stable_midrsi": "Equilibrium: oscillator mid-band, volatility contained - market is not forcing a side.",
+        "sideways_stable": "Flat bias with quieter ranges - wait for break rather than forcing a narrative.",
+        "sideways_rsi_hi": "Flat bias with stretched RSI - upside can be crowded and vulnerable to air pockets.",
+        "sideways_rsi_lo": "Flat bias with washed RSI - short covering is possible, but overhead supply still matters.",
+        "default": "Time frames disagree enough that the next leg belongs to whichever axis breaks first."
       }
     }
   }
