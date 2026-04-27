@@ -478,6 +478,7 @@ export function analyzeSeries(
 
   return {
     bias,
+    reads: { trend, momentum, structure },
     confidence,
     agreement,
     summary,

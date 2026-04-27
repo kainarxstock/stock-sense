@@ -79,6 +79,12 @@ export type Layer2Narrative = {
 
 export type AnalysisResult = {
   bias: Bias;
+  /** Raw classifier outputs for decision UI (locale-independent). */
+  reads: {
+    trend: TrendRead;
+    momentum: MomentumRead;
+    structure: StructureRead;
+  };
   confidence: number;
   /** How aligned the internal reads are — maps to confidence bands. */
   agreement: SignalAgreement;

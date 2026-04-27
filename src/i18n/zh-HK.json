@@ -11,7 +11,9 @@
     "market": "市場",
     "explainSimply": "簡明解釋",
     "beginnerMode": "新手模式",
-    "language": "語言"
+    "language": "語言",
+    "modeBeginner": "入門",
+    "modeAdvanced": "進階"
   },
   "common": {
     "on": "開",
@@ -620,6 +622,99 @@
         "sideways_rsi_lo": "Flat bias with washed RSI - short covering is possible, but overhead supply still matters.",
         "default": "Time frames disagree enough that the next leg belongs to whichever axis breaks first."
       }
+    }
+  },
+  "decision": {
+    "heroKicker": "Decision support",
+    "marketStatusLabel": "Market status",
+    "confidenceLabel": "Confidence",
+    "suggestedAction": "Suggested action",
+    "notAdvice": "Educational interpretation only. Not financial advice. Apply your own plan and risk rules.",
+    "marketStatus": {
+      "trending": "Trending",
+      "neutral": "Neutral",
+      "volatile": "Volatile",
+      "risky": "Risky"
+    },
+    "action": {
+      "WAIT": "WAIT",
+      "ENTER_SMALL": "ENTER SMALL",
+      "HOLD": "HOLD",
+      "EXIT": "EXIT"
+    },
+    "why": {
+      "title": "Why this read?",
+      "subtitle": "Three inputs we weight before suggesting an action.",
+      "trend": "Trend",
+      "momentum": "Momentum",
+      "volatility": "Volatility",
+      "combinationLead": "This combination suggests"
+    },
+    "trend": {
+      "up": "Up",
+      "down": "Down",
+      "sideways": "Sideways"
+    },
+    "momentum": {
+      "weak": "Weak",
+      "strong": "Strong"
+    },
+    "vol": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
+    "combination": {
+      "risky": "Conditions are stressed—prioritize capital preservation and avoid adding risk until the tape stabilizes.",
+      "exitDefensive": "Pressure and risk are elevated—defensive positioning is appropriate until structure improves.",
+      "volatileSideways": "Wide ranges without a clean trend—false moves are common; wait for a decisive close outside the range.",
+      "volatileTrend": "A directional lean exists, but volatility is high—size down and plan for two-way noise.",
+      "neutralWait": "No durable edge yet—patience usually beats forcing a direction in this regime.",
+      "wait": "Signals disagree or risk is unclear—standing aside preserves optionality.",
+      "enterSmall": "There is opportunity, but uncertainty is meaningful—only small, well-defined risk is appropriate.",
+      "hold": "Conditions are relatively orderly and the lean is constructive—maintain discipline without adding aggressive risk.",
+      "trendingCalm": "Trend and volatility are aligned in a calmer band—continuation is plausible, but still manage extension risk.",
+      "default": "Use this read as context, then align entries, size, and invalidation with your own plan."
+    },
+    "explain": {
+      "wait": {
+        "1": "The setup is not clean enough to justify a confident directional step.",
+        "2": "When signals conflict or the tape is choppy, waiting for confirmation usually reduces costly mistakes.",
+        "3": "Confidence is {{confidence}}%—treat this as context, not certainty."
+      },
+      "waitVolatile": {
+        "1": "Volatility is elevated, so outcomes can swing quickly even if a bias exists.",
+        "2": "Smaller size and clearer levels matter more until the tape compresses or proves a break."
+      },
+      "enterSmall": {
+        "1": "There is a constructive lean for {{asset}}, but risk is not negligible.",
+        "2": "If you participate, keep risk small and define where the idea is wrong before you add."
+      },
+      "hold": {
+        "1": "{{asset}} shows a relatively orderly constructive lean in this window.",
+        "2": "If you are already aligned with your plan, the priority is discipline—not chasing marginal extension."
+      },
+      "exit": {
+        "1": "Downside pressure or risk is dominant in this read—defensive action fits the current tape.",
+        "2": "This is not a timing guarantee; it is a risk-first interpretation of recent behavior."
+      },
+      "up": {
+        "1": "Price behavior recently skews upward, but pace and volatility still matter for entries.",
+        "2": "Confidence is {{confidence}}%—higher agreement is not the same as a guaranteed outcome."
+      },
+      "down": {
+        "1": "Price behavior recently skews downward; respect the trend until evidence of stabilization.",
+        "2": "Confidence is {{confidence}}%—use it as a quality gauge for how aligned the inputs are."
+      },
+      "neutral": {
+        "1": "The tape is mixed—direction is not the main story yet.",
+        "2": "Confidence is {{confidence}}%—when agreement is lower, smaller risk and clearer triggers help."
+      }
+    },
+    "advanced": {
+      "kicker": "Advanced",
+      "title": "Charts & detailed analytics",
+      "subtitle": "Open when you want the full stack—same engine, more granularity."
     }
   }
 }

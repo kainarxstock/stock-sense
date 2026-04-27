@@ -1,20 +1,14 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { AnalyzeSection } from "./components/AnalyzeSection";
-import { DeeperAnalysisSection } from "./components/DeeperAnalysisSection";
+import { AdvancedAnalyticsPanel } from "./components/decision/AdvancedAnalyticsPanel";
+import { DecisionHero } from "./components/decision/DecisionHero";
+import { WhySection } from "./components/decision/WhySection";
 import { HeroSection } from "./components/HeroSection";
 import { HowItWorksSection } from "./components/HowItWorksSection";
-import { InterpretationSnapshotCard } from "./components/InterpretationSnapshotCard";
 import { LanguageSwitcher } from "./components/LanguageSwitcher";
-import { LiveExampleSection } from "./components/LiveExampleSection";
 import { MarketSwitch } from "./components/MarketSwitch";
-import { PrimaryInsightCard } from "./components/PrimaryInsightCard";
-import { RiskProfileSection } from "./components/RiskProfileSection";
-import { ShortTermBiasCard } from "./components/ShortTermBiasCard";
-import { SpeculativeAssetWarning } from "./components/SpeculativeAssetWarning";
-import { StockChart } from "./components/StockChart";
-import { TradeCalculator } from "./components/TradeCalculator";
-import { TrustLayerSection } from "./components/TrustLayerSection";
 import { TrustDisclaimer } from "./components/TrustDisclaimer";
+import { TrustLayerSection } from "./components/TrustLayerSection";
 import { useStockSeries } from "./hooks/useStockSeries";
 import { useI18n } from "./i18n";
 import { analyzeSeries } from "./lib/analyze";
@@ -24,7 +18,8 @@ import type { Market } from "./types";
 export default function App() {
   const { t, locale } = useI18n();
   const [market, setMarket] = useState<Market>("stocks");
-  const [explainSimply, setExplainSimply] = useState(false);
+  /** Beginner: decision + why only. Advanced: full analytics (progressive disclosure). */
+  const [beginnerMode, setBeginnerMode] = useState(true);
   const [deeperOpen, setDeeperOpen] = useState(false);
   const { state, load } = useStockSeries(market);
 
@@ -41,6 +36,7 @@ export default function App() {
   }, []);
 
   const showSpeculativePanel = market === "crypto" && ready && needsMemeOrSpeculativePanel(state.ticker);
+  const showMarketing = !ready;
 
   useEffect(() => {
     document.title = t("meta.title");
@@ -76,15 +72,30 @@ export default function App() {
             </p>
           </div>
           <div className="flex flex-wrap items-center justify-end gap-3 sm:gap-4">
-            <label className="flex cursor-pointer items-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-muted transition hover:border-white/[0.14] hover:text-foreground">
-              <input
-                type="checkbox"
-                className="accent-accent h-3.5 w-3.5 rounded border-white/20"
-                checked={explainSimply}
-                onChange={(e) => setExplainSimply(e.target.checked)}
-              />
-              {t("nav.beginnerMode")}: {explainSimply ? t("common.on") : t("common.off")}
-            </label>
+            <div
+              className="inline-flex rounded-full border border-white/[0.12] bg-surface-2/80 p-0.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
+              role="group"
+              aria-label={t("nav.beginnerMode")}
+            >
+              <button
+                type="button"
+                onClick={() => setBeginnerMode(true)}
+                className={`rounded-full px-3 py-1.5 text-xs font-medium transition sm:px-4 ${
+                  beginnerMode ? "bg-white/[0.12] text-foreground shadow-sm" : "text-muted hover:text-foreground"
+                }`}
+              >
+                {t("nav.modeBeginner")}
+              </button>
+              <button
+                type="button"
+                onClick={() => setBeginnerMode(false)}
+                className={`rounded-full px-3 py-1.5 text-xs font-medium transition sm:px-4 ${
+                  !beginnerMode ? "bg-white/[0.12] text-foreground shadow-sm" : "text-muted hover:text-foreground"
+                }`}
+              >
+                {t("nav.modeAdvanced")}
+              </button>
+            </div>
             <LanguageSwitcher />
             <MarketSwitch value={market} onChange={setMarket} />
             <button
@@ -97,14 +108,19 @@ export default function App() {
           </div>
         </nav>
 
-        <HeroSection onAnalyzeClick={scrollToAnalyze} />
-        <div className="space-y-12 px-0 pb-2 sm:space-y-14">
-          <HowItWorksSection />
-          <LiveExampleSection explainSimply={explainSimply} />
-          <TrustLayerSection />
-        </div>
+        {showMarketing ? (
+          <>
+            <HeroSection onAnalyzeClick={scrollToAnalyze} />
+            <div className="space-y-12 px-0 pb-2 sm:space-y-14">
+              <HowItWorksSection />
+              <TrustLayerSection />
+            </div>
+          </>
+        ) : (
+          <HeroSection onAnalyzeClick={scrollToAnalyze} compact />
+        )}
 
-        <div className="space-y-20 pb-24 sm:space-y-24 sm:pb-28">
+        <div className="space-y-16 pb-24 sm:space-y-20 sm:pb-28">
           <AnalyzeSection market={market} initial={ticker} loading={loading} onSubmit={load} />
 
           {state.status === "error" ? (
@@ -118,26 +134,25 @@ export default function App() {
             </div>
           ) : null}
 
-          <div id="results" className="scroll-mt-24 space-y-12 px-4 sm:px-6 sm:space-y-14">
-            {ready ? (
+          <div id="results" className="scroll-mt-24 space-y-10 px-4 sm:px-6 sm:space-y-12">
+            {ready && analysis ? (
               <>
-                <InterpretationSnapshotCard analysis={analysis!} explainSimply={explainSimply} />
+                <DecisionHero analysis={analysis} market={market} ticker={state.ticker} />
+                <WhySection analysis={analysis} market={market} ticker={state.ticker} />
                 <TrustDisclaimer />
-                <StockChart market={market} ticker={state.ticker} series={state.series} />
-                <PrimaryInsightCard analysis={analysis!} market={market} explainSimply={explainSimply} />
-                <ShortTermBiasCard
-                  market={market}
-                  ticker={state.ticker}
-                  analysis={analysis!}
-                  source={state.source}
-                  explainSimply={explainSimply}
-                />
-                <DeeperAnalysisSection
-                  open={deeperOpen}
-                  onToggle={() => setDeeperOpen((v) => !v)}
-                  analysis={analysis!}
-                  interpretation={analysis!.interpretation}
-                />
+                {!beginnerMode ? (
+                  <AdvancedAnalyticsPanel
+                    market={market}
+                    ticker={state.ticker}
+                    series={state.series}
+                    source={state.source}
+                    analysis={analysis}
+                    explainSimply={beginnerMode}
+                    deeperOpen={deeperOpen}
+                    onDeeperToggle={() => setDeeperOpen((v) => !v)}
+                    showSpeculativePanel={showSpeculativePanel}
+                  />
+                ) : null}
               </>
             ) : loading ? (
               <div className="space-y-6">
@@ -148,19 +163,10 @@ export default function App() {
                     <div className="h-full w-1/3 animate-[pulse_1.2s_ease-in-out_infinite] rounded-full bg-accent/60" />
                   </div>
                 </div>
-                <div className="h-[260px] animate-pulse rounded-2xl border border-white/[0.09] bg-white/[0.05]" />
-                <div className="h-[180px] animate-pulse rounded-2xl border border-white/[0.09] bg-white/[0.05]" />
+                <div className="h-[200px] animate-pulse rounded-2xl border border-white/[0.09] bg-white/[0.05]" />
               </div>
             ) : null}
           </div>
-
-          {ready ? (
-            <>
-              <RiskProfileSection market={market} analysis={analysis!} />
-              {showSpeculativePanel ? <SpeculativeAssetWarning symbol={state.ticker} /> : null}
-              <TradeCalculator />
-            </>
-          ) : null}
         </div>
 
         <footer className="border-t border-white/[0.08] px-4 py-12 sm:px-6">
