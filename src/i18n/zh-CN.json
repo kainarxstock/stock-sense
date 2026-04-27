@@ -723,5 +723,81 @@
       "title": "Charts & detailed analytics",
       "subtitle": "Open when you want the full stack—same engine, more granularity."
     }
+  },
+  "positionCalc": {
+    "tabTitle": "模拟器",
+    "title": "仓位计算器",
+    "subtitle": "基于资金风险估算仓位，不构成交易建议。",
+    "capital": "资金 ($)",
+    "riskPct": "单笔风险 (%)",
+    "entry": "入场价",
+    "stop": "止损",
+    "target": "止盈",
+    "positionUnits": "仓位数量",
+    "maxLoss": "最大亏损 ($)",
+    "potentialProfit": "潜在收益 ($)",
+    "rr": "盈亏比",
+    "explainUnits": "仓位数量 = 风险金额 / 单位风险（入场到止损的距离）。",
+    "explainLoss": "最大亏损为止损触发时的预估亏损（不含手续费/滑点）。",
+    "explainProfit": "潜在收益按达到止盈位进行估算。",
+    "hintCapital": "用于交易规划的总资金规模。",
+    "hintRiskPct": "止损触发时你可承受的资金亏损比例。",
+    "hintEntry": "你的计划入场价格。",
+    "hintStop": "用于限制风险的失效位。",
+    "hintTarget": "用于场景规划的目标止盈位。",
+    "invalid": "请输入正数资金、0.1 到 100 的风险百分比和有效价格，并确保止损在入场价正确一侧。",
+    "disclaimer": "仅用于教育。非投资建议。"
+  },
+  "insights": {
+    "kicker": "规则解释引擎",
+    "title": "当前市场结构意味着什么",
+    "empty": "请先运行一次分析，以查看确定性洞察与场景指引。",
+    "explain": {
+      "upStrongLow": {
+        "1": "市场在清晰动能下向上运行，同时波动率仍处于可控状态。",
+        "2": "这种组合支持延续性，且噪音风险相对更低。"
+      },
+      "downWeak": {
+        "1": "价格结构偏弱下行，动能尚未显示有效修复。",
+        "2": "方向性把握较低，若信号不改善，下行压力可能持续。"
+      },
+      "sideways": {
+        "1": "市场当前处于区间震荡，缺乏明确方向优势。",
+        "2": "当趋势走平时，通常需要更强确认来降低噪音入场。"
+      },
+      "mixed": {
+        "1": "趋势、动能与波动率仅部分一致，尚未形成干净共振。",
+        "2": "该读数提示应保持谨慎，并在更一致前控制仓位风险。"
+      },
+      "highVol": "高波动会提升不确定性与风险，因此决策质量比速度更重要。"
+    },
+    "scenarios": {
+      "kicker": "可能场景",
+      "title": "接下来可能发生什么",
+      "up": {
+        "breakout": "突破场景：若价格站稳近期阻力上方，延续动能可能维持。",
+        "pullback": "回撤场景：若支撑失守，趋势恢复前可能出现短线回落。"
+      },
+      "down": {
+        "breakdown": "下破场景：若支撑再次失守，下行延续可能继续。",
+        "relief": "修复反弹场景：若动能企稳，价格可能先反弹再选择方向。"
+      },
+      "sideways": {
+        "range": "震荡场景：若动能持续偏弱，市场可能继续横盘整理。",
+        "breakout": "突破场景：若动能在阻力位上方放大，可能形成方向性走势。"
+      },
+      "default": {
+        "wait": "横盘场景：若信号未改善，继续等待更清晰结构通常风险更低。"
+      }
+    },
+    "confidence": {
+      "kicker": "置信度拆解",
+      "title": "透明评分逻辑",
+      "final": "最终分数",
+      "trendClarity": "趋势清晰度",
+      "momentumStrength": "动能强度",
+      "volatilityNoise": "波动噪音",
+      "signalConflict": "信号冲突"
+    }
   }
 }

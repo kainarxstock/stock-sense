@@ -723,5 +723,81 @@
       "title": "Charts & detailed analytics",
       "subtitle": "Open when you want the full stack—same engine, more granularity."
     }
+  },
+  "positionCalc": {
+    "tabTitle": "模擬器",
+    "title": "倉位計算器",
+    "subtitle": "根據資金風險估算倉位，並非交易建議。",
+    "capital": "資金 ($)",
+    "riskPct": "單筆風險 (%)",
+    "entry": "入場價",
+    "stop": "止損",
+    "target": "止盈",
+    "positionUnits": "倉位數量",
+    "maxLoss": "最大虧損 ($)",
+    "potentialProfit": "潛在收益 ($)",
+    "rr": "風險 / 回報",
+    "explainUnits": "倉位數量 = 風險金額 / 單位風險（入場到止損的距離）。",
+    "explainLoss": "最大虧損為止損觸發時的估算虧損（不含手續費/滑點）。",
+    "explainProfit": "潛在收益按達到止盈位進行估算。",
+    "hintCapital": "用於交易規劃的總資金規模。",
+    "hintRiskPct": "止損觸發時你可承受的資金虧損比例。",
+    "hintEntry": "你的計劃入場價格。",
+    "hintStop": "用於限制風險的失效位。",
+    "hintTarget": "用於情景規劃的目標止盈位。",
+    "invalid": "請輸入正數資金、0.1 到 100 的風險百分比與有效價格，並確保止損在入場價正確一側。",
+    "disclaimer": "僅作教學用途。非投資建議。"
+  },
+  "insights": {
+    "kicker": "規則解釋引擎",
+    "title": "當前市場結構代表什麼",
+    "empty": "請先執行一次分析，以查看確定性洞察與情景指引。",
+    "explain": {
+      "upStrongLow": {
+        "1": "市場在明確動能下向上運行，同時波動率仍屬可控。",
+        "2": "此組合支持延續性，且雜訊風險相對較低。"
+      },
+      "downWeak": {
+        "1": "價格結構偏弱下行，動能尚未顯示有效修復。",
+        "2": "方向把握度偏低，若訊號未改善，下行壓力可能持續。"
+      },
+      "sideways": {
+        "1": "市場目前處於區間整理，缺乏清晰方向優勢。",
+        "2": "當趨勢走平時，通常需要更強確認以降低雜訊入場。"
+      },
+      "mixed": {
+        "1": "趨勢、動能與波動率僅部分一致，尚未形成乾淨共振。",
+        "2": "此讀數提示應保持謹慎，並在更一致前控制倉位風險。"
+      },
+      "highVol": "高波動會提升不確定性與風險，因此決策品質比速度更重要。"
+    },
+    "scenarios": {
+      "kicker": "可能情景",
+      "title": "接下來可能發生什麼",
+      "up": {
+        "breakout": "突破情景：若價格站穩近期阻力上方，延續動能可能維持。",
+        "pullback": "回調情景：若支撐失守，趨勢恢復前可能出現短線回落。"
+      },
+      "down": {
+        "breakdown": "下破情景：若支撐再次失守，下行延續可能持續。",
+        "relief": "修復反彈情景：若動能企穩，價格可能先反彈再選方向。"
+      },
+      "sideways": {
+        "range": "區間情景：若動能持續偏弱，市場可能繼續橫盤整理。",
+        "breakout": "突破情景：若動能在阻力位上方放大，可能形成方向性走勢。"
+      },
+      "default": {
+        "wait": "橫盤情景：若訊號未改善，等待更清晰結構通常風險更低。"
+      }
+    },
+    "confidence": {
+      "kicker": "信心拆解",
+      "title": "透明評分邏輯",
+      "final": "最終分數",
+      "trendClarity": "趨勢清晰度",
+      "momentumStrength": "動能強度",
+      "volatilityNoise": "波動雜訊",
+      "signalConflict": "訊號衝突"
+    }
   }
 }

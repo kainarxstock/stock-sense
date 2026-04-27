@@ -772,6 +772,7 @@
     }
   },
   "positionCalc": {
+    "tabTitle": "Simulator",
     "title": "Position size calculator",
     "subtitle": "Estimate size from capital at risk—not a recommendation to trade.",
     "capital": "Capital ($)",
@@ -787,7 +788,64 @@
     "explainUnits": "Units = dollars at risk ÷ per-unit risk (distance from entry to stop).",
     "explainLoss": "Max loss is what you would lose if the stop is hit (before fees/slippage).",
     "explainProfit": "Potential profit assumes the take-profit level is reached.",
+    "hintCapital": "Total account value used as your planning base.",
+    "hintRiskPct": "Percent of capital you are willing to lose if stop is hit.",
+    "hintEntry": "Your planned entry level.",
+    "hintStop": "Your invalidation level where risk is cut.",
+    "hintTarget": "Your expected take-profit level for scenario planning.",
     "invalid": "Enter positive capital, risk % between 0.1 and 100, valid prices, and ensure stop is on the correct side of entry.",
     "disclaimer": "Educational tool only. Not financial advice."
+  },
+  "insights": {
+    "kicker": "Smart explanation engine",
+    "title": "What this market setup means",
+    "empty": "Run an analysis first to unlock deterministic insights and scenario guidance.",
+    "explain": {
+      "upStrongLow": {
+        "1": "The market is moving up with clear momentum, and volatility remains controlled.",
+        "2": "This combination supports continuation conditions with relatively lower noise."
+      },
+      "downWeak": {
+        "1": "Price structure is declining and momentum is not showing recovery strength.",
+        "2": "Directional conviction is limited, so downside pressure can persist unless signals improve."
+      },
+      "sideways": {
+        "1": "The market is range-bound with no clear directional edge right now.",
+        "2": "When trend is flat, entries usually need stronger confirmation to avoid random noise."
+      },
+      "mixed": {
+        "1": "Signals are partially aligned but not fully clean across trend, momentum, and volatility.",
+        "2": "The read supports caution and disciplined risk sizing while waiting for better alignment."
+      },
+      "highVol": "High volatility increases uncertainty and risk, so decision quality matters more than speed."
+    },
+    "scenarios": {
+      "kicker": "Possible scenarios",
+      "title": "What could happen next",
+      "up": {
+        "breakout": "Breakout scenario: If price holds above recent resistance, continuation pressure can stay intact.",
+        "pullback": "Pullback scenario: If support fails, a short corrective move can develop before trend resumes."
+      },
+      "down": {
+        "breakdown": "Breakdown scenario: If support breaks again, downside continuation can remain active.",
+        "relief": "Relief bounce scenario: If momentum stabilizes, price may retrace before deciding direction."
+      },
+      "sideways": {
+        "range": "Range scenario: If momentum stays muted, price may continue consolidating between key levels.",
+        "breakout": "Breakout scenario: If momentum expands above resistance, a directional move can form."
+      },
+      "default": {
+        "wait": "Sideways scenario: If no signal improves, waiting for clearer structure remains the lower-risk path."
+      }
+    },
+    "confidence": {
+      "kicker": "Confidence breakdown",
+      "title": "Transparent scoring logic",
+      "final": "Final score",
+      "trendClarity": "Trend clarity",
+      "momentumStrength": "Momentum strength",
+      "volatilityNoise": "Volatility noise",
+      "signalConflict": "Signal conflict"
+    }
   }
 }

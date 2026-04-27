@@ -52,7 +52,7 @@ export function PositionCalculator() {
     <section className="px-4 sm:px-6">
       <div className="mx-auto max-w-6xl">
         <div className="max-w-2xl">
-          <h1 className="text-2xl font-semibold tracking-tight text-foreground">Simulator</h1>
+          <h1 className="text-2xl font-semibold tracking-tight text-foreground">{t("positionCalc.tabTitle")}</h1>
           <p className="mt-2 text-sm leading-relaxed text-muted">{t("positionCalc.subtitle")}</p>
         </div>
 
@@ -61,35 +61,35 @@ export function PositionCalculator() {
             <div className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
               <Field
                 label={t("positionCalc.capital")}
-                hint="Total account value used as your planning base."
+                hint={t("positionCalc.hintCapital")}
                 value={capital}
                 onChange={setCapital}
                 prefix="$"
               />
               <Field
                 label={t("positionCalc.riskPct")}
-                hint="Percent of capital you are willing to lose if stop is hit."
+                hint={t("positionCalc.hintRiskPct")}
                 value={riskPct}
                 onChange={setRiskPct}
                 suffix="%"
               />
               <Field
                 label={t("positionCalc.entry")}
-                hint="Your planned entry level."
+                hint={t("positionCalc.hintEntry")}
                 value={entry}
                 onChange={setEntry}
                 prefix="$"
               />
               <Field
                 label={t("positionCalc.stop")}
-                hint="Your invalidation level where risk is cut."
+                hint={t("positionCalc.hintStop")}
                 value={stop}
                 onChange={setStop}
                 prefix="$"
               />
               <Field
                 label={t("positionCalc.target")}
-                hint="Your expected take-profit level for scenario planning."
+                hint={t("positionCalc.hintTarget")}
                 value={target}
                 onChange={setTarget}
                 prefix="$"

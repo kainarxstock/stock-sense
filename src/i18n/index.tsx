@@ -1,9 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
-import en from "./en.json";
-import ru from "./ru.json";
-import zhCN from "./zh-CN.json";
-import zhHK from "./zh-HK.json";
-import kz from "./kz.json";
+import translations from "./translations.js";
 
 export type Locale = "en" | "ru" | "kz" | "zh-CN" | "zh-HK";
 
@@ -13,13 +9,7 @@ type DictObject = { [key: string]: DictValue };
 const STORAGE_KEY = "stocksense.locale";
 const DEFAULT_LOCALE: Locale = "en";
 
-const dictionaries: Record<Locale, DictObject> = {
-  en: en as DictObject,
-  ru: ru as DictObject,
-  kz: kz as DictObject,
-  "zh-CN": zhCN as DictObject,
-  "zh-HK": zhHK as DictObject,
-};
+const dictionaries = translations as unknown as Record<Locale, DictObject>;
 
 function interpolate(raw: string, vars?: Record<string, string | number>): string {
   if (!vars) return raw;

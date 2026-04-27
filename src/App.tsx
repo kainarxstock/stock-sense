@@ -98,7 +98,7 @@ export default function App() {
               <InsightsPanel analysis={analysis} market={market} ticker={state.ticker} />
             ) : (
               <div className="mx-auto max-w-3xl rounded-2xl border border-white/[0.09] bg-white/[0.04] p-6 text-sm text-muted">
-                Run an analysis first to unlock deterministic insights and scenario guidance.
+                {t("insights.empty")}
               </div>
             )}
           </div>
