@@ -2,7 +2,7 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 import { useI18n } from "../i18n";
 import type { Market } from "../types";
 
-export type AppRoute = "market" | "calculator" | "ai";
+export type AppRoute = "market" | "calculator" | "insights";
 
 type Props = {
   route: AppRoute;
@@ -78,11 +78,11 @@ export function AppTopNav({
         <button
           type="button"
           role="tab"
-          aria-selected={route === "ai"}
-          className={tabClass(route === "ai")}
-          onClick={() => onRouteChange("ai")}
+          aria-selected={route === "insights"}
+          className={tabClass(route === "insights")}
+          onClick={() => onRouteChange("insights")}
         >
-          {t("nav.tabs.ai")}
+          {t("nav.tabs.insights")}
         </button>
         <button type="button" className={tabClass(false)} onClick={onInputClick}>
           {t("nav.tabs.input")}

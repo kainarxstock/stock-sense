@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { AnalyzeSection } from "./components/AnalyzeSection";
-import { AiAssistant } from "./components/AiAssistant";
 import { AppTopNav, type AppRoute } from "./components/AppTopNav";
 import { AdvancedAnalyticsPanel } from "./components/decision/AdvancedAnalyticsPanel";
 import { DecisionHero } from "./components/decision/DecisionHero";
+import { InsightsPanel } from "./components/decision/InsightsPanel";
 import { DecisionLayer } from "./components/decision/DecisionLayer";
 import { WhySection } from "./components/decision/WhySection";
 import { HeroSection } from "./components/HeroSection";
@@ -15,7 +15,6 @@ import { TrustLayerSection } from "./components/TrustLayerSection";
 import { useStockSeries } from "./hooks/useStockSeries";
 import { useI18n } from "./i18n";
 import { analyzeSeries } from "./lib/analyze";
-import { buildDecisionContext, buildDecisionSnapshotForAi } from "./lib/decisionSupport";
 import { needsMemeOrSpeculativePanel } from "./lib/cryptoMarket";
 import type { Market } from "./types";
 
@@ -34,12 +33,6 @@ export default function App() {
     () => (state.status === "ready" ? analyzeSeries(state.series, { market, ticker: state.ticker, locale }) : null),
     [state, market, locale],
   );
-
-  const aiInterpretationSnapshot = useMemo(() => {
-    if (state.status !== "ready" || !analysis) return null;
-    const ctx = buildDecisionContext(analysis, market, state.ticker);
-    return buildDecisionSnapshotForAi(ctx, beginnerMode);
-  }, [state, analysis, market, beginnerMode]);
 
   const displayPrice = useMemo(() => {
     if (state.status !== "ready") return 0;
@@ -99,9 +92,15 @@ export default function App() {
           <div className="pb-24 pt-6 sm:pb-28">
             <PositionCalculator />
           </div>
-        ) : route === "ai" ? (
-          <div className="pb-24 pt-6 sm:pb-28">
-            <AiAssistant beginnerMode={beginnerMode} interpretationSnapshot={aiInterpretationSnapshot} />
+        ) : route === "insights" ? (
+          <div className="space-y-8 px-4 pb-24 pt-6 sm:px-6 sm:pb-28">
+            {ready && analysis ? (
+              <InsightsPanel analysis={analysis} market={market} ticker={state.ticker} />
+            ) : (
+              <div className="mx-auto max-w-3xl rounded-2xl border border-white/[0.09] bg-white/[0.04] p-6 text-sm text-muted">
+                Run an analysis first to unlock deterministic insights and scenario guidance.
+              </div>
+            )}
           </div>
         ) : (
           <>
@@ -144,6 +143,7 @@ export default function App() {
                     />
                     <DecisionLayer analysis={analysis} market={market} ticker={state.ticker} />
                     <WhySection analysis={analysis} market={market} ticker={state.ticker} />
+                    {!beginnerMode ? <InsightsPanel analysis={analysis} market={market} ticker={state.ticker} /> : null}
                     <StockChart
                       market={market}
                       ticker={state.ticker}

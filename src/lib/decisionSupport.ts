@@ -195,25 +195,6 @@ function invalidationKey(action: DecisionAction): string {
   return `decision.invalidation.${action}`;
 }
 
-/** Plain snapshot for the educational AI (English keys; model-only). */
-export function buildDecisionSnapshotForAi(
-  ctx: DecisionContext,
-  beginnerMode: boolean,
-): Record<string, string | number | boolean> {
-  return {
-    beginnerMode,
-    asset: ctx.assetLabel,
-    marketStatus: ctx.marketStatus,
-    suggestedAction: ctx.action,
-    confidencePercent: ctx.confidencePct,
-    confidenceQualityBand: ctx.confidenceBand,
-    trend: ctx.trendSimple,
-    momentum: ctx.momentumSimple,
-    volatilityTier: ctx.volTier,
-    riskLevel: ctx.riskDisplay,
-  };
-}
-
 export function buildDecisionContext(analysis: AnalysisResult, market: Market, ticker: string): DecisionContext {
   const vol = analysis.metrics.volatilityPct;
   const volTier = volTierFromPct(vol, market);

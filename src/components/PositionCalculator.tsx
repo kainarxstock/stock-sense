@@ -52,18 +52,49 @@ export function PositionCalculator() {
     <section className="px-4 sm:px-6">
       <div className="mx-auto max-w-6xl">
         <div className="max-w-2xl">
-          <h1 className="text-2xl font-semibold tracking-tight text-foreground">{t("positionCalc.title")}</h1>
+          <h1 className="text-2xl font-semibold tracking-tight text-foreground">Simulator</h1>
           <p className="mt-2 text-sm leading-relaxed text-muted">{t("positionCalc.subtitle")}</p>
         </div>
 
         <GlassCard className="mx-auto mt-8 max-w-6xl p-6 sm:p-8">
           <div className="grid gap-6 lg:grid-cols-12 lg:gap-8">
             <div className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
-              <Field label={t("positionCalc.capital")} value={capital} onChange={setCapital} prefix="$" />
-              <Field label={t("positionCalc.riskPct")} value={riskPct} onChange={setRiskPct} suffix="%" />
-              <Field label={t("positionCalc.entry")} value={entry} onChange={setEntry} prefix="$" />
-              <Field label={t("positionCalc.stop")} value={stop} onChange={setStop} prefix="$" />
-              <Field label={t("positionCalc.target")} value={target} onChange={setTarget} prefix="$" className="sm:col-span-2" />
+              <Field
+                label={t("positionCalc.capital")}
+                hint="Total account value used as your planning base."
+                value={capital}
+                onChange={setCapital}
+                prefix="$"
+              />
+              <Field
+                label={t("positionCalc.riskPct")}
+                hint="Percent of capital you are willing to lose if stop is hit."
+                value={riskPct}
+                onChange={setRiskPct}
+                suffix="%"
+              />
+              <Field
+                label={t("positionCalc.entry")}
+                hint="Your planned entry level."
+                value={entry}
+                onChange={setEntry}
+                prefix="$"
+              />
+              <Field
+                label={t("positionCalc.stop")}
+                hint="Your invalidation level where risk is cut."
+                value={stop}
+                onChange={setStop}
+                prefix="$"
+              />
+              <Field
+                label={t("positionCalc.target")}
+                hint="Your expected take-profit level for scenario planning."
+                value={target}
+                onChange={setTarget}
+                prefix="$"
+                className="sm:col-span-2"
+              />
             </div>
 
             <div className="lg:col-span-5">
@@ -100,11 +131,13 @@ function Field({
   label,
   value,
   onChange,
+  hint,
   prefix,
   suffix,
   className = "",
 }: {
   label: string;
+  hint?: string;
   value: string;
   onChange: (v: string) => void;
   prefix?: string;
@@ -114,6 +147,7 @@ function Field({
   return (
     <label className={`block ${className}`.trim()}>
       <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-muted-2">{label}</span>
+      {hint ? <p className="mt-1 text-xs leading-relaxed text-muted">{hint}</p> : null}
       <div className="relative mt-2">
         {prefix ? (
           <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 font-mono text-sm text-muted-2">

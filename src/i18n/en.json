@@ -18,7 +18,7 @@
       "stocks": "Stocks",
       "crypto": "Crypto",
       "calculator": "Calculator",
-      "ai": "AI Assistant",
+      "insights": "Insights",
       "input": "Input"
     }
   },
@@ -789,21 +789,5 @@
     "explainProfit": "Potential profit assumes the take-profit level is reached.",
     "invalid": "Enter positive capital, risk % between 0.1 and 100, valid prices, and ensure stop is on the correct side of entry.",
     "disclaimer": "Educational tool only. Not financial advice."
-  },
-  "aiAssistant": {
-    "title": "Stock Sense AI",
-    "subtitle": "Educational market assistant",
-    "intro": "Ask how to read trend, momentum, volatility, or risk. This assistant does not predict prices or tell you what to buy.",
-    "placeholder": "Ask an educational question…",
-    "send": "Send",
-    "suggested": "Suggested questions",
-    "q1": "How should I read confidence on this app?",
-    "q2": "What does higher volatility imply for position size?",
-    "q3": "How is momentum different from trend?",
-    "disclaimer": "Educational only. Not financial advice. No trade signals.",
-    "blocked": "I can’t recommend specific assets. But I can help you understand how to evaluate them using trend, momentum, and volatility. Ask how to read those signals or what they mean for risk—not which name to pick.",
-    "error": "AI is temporarily unavailable",
-    "welcome": "Ask a question below, or tap a suggested prompt.",
-    "thinking": "Thinking..."
   }
 }
