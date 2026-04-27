@@ -13,7 +13,14 @@
     "beginnerMode": "新手模式",
     "language": "語言",
     "modeBeginner": "入門",
-    "modeAdvanced": "進階"
+    "modeAdvanced": "進階",
+    "tabs": {
+      "stocks": "股票",
+      "crypto": "加密",
+      "calculator": "計算機",
+      "ai": "AI 助理",
+      "input": "輸入"
+    }
   },
   "common": {
     "on": "開",

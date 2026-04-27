@@ -13,7 +13,14 @@
     "beginnerMode": "Бастаушы режимі",
     "language": "Тіл",
     "modeBeginner": "Бастауыш",
-    "modeAdvanced": "Кеңейтілген"
+    "modeAdvanced": "Кеңейтілген",
+    "tabs": {
+      "stocks": "Акциялар",
+      "crypto": "Крипто",
+      "calculator": "Калькулятор",
+      "ai": "ЖИ көмекшісі",
+      "input": "Енгізу"
+    }
   },
   "common": {
     "on": "ҚОС",

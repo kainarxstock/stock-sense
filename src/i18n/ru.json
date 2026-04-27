@@ -13,7 +13,14 @@
     "beginnerMode": "Режим новичка",
     "language": "Язык",
     "modeBeginner": "Новичок",
-    "modeAdvanced": "Продвинутый"
+    "modeAdvanced": "Продвинутый",
+    "tabs": {
+      "stocks": "Акции",
+      "crypto": "Крипто",
+      "calculator": "Калькулятор",
+      "ai": "ИИ-ассистент",
+      "input": "Ввод"
+    }
   },
   "common": {
     "on": "ВКЛ",

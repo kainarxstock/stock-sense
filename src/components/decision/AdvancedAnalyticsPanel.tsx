@@ -5,16 +5,13 @@ import { PrimaryInsightCard } from "../PrimaryInsightCard";
 import { RiskProfileSection } from "../RiskProfileSection";
 import { ShortTermBiasCard } from "../ShortTermBiasCard";
 import { SpeculativeAssetWarning } from "../SpeculativeAssetWarning";
-import { StockChart } from "../StockChart";
-import { TradeCalculator } from "../TradeCalculator";
 import { TrustDisclaimer } from "../TrustDisclaimer";
-import type { AnalysisResult, DataSource, Market, OHLCV } from "../../types";
+import type { AnalysisResult, DataSource, Market } from "../../types";
 import { useI18n } from "../../i18n";
 
 type Props = {
   market: Market;
   ticker: string;
-  series: OHLCV[];
   source: DataSource;
   analysis: AnalysisResult;
   explainSimply: boolean;
@@ -26,7 +23,6 @@ type Props = {
 export function AdvancedAnalyticsPanel({
   market,
   ticker,
-  series,
   source,
   analysis,
   explainSimply,
@@ -64,7 +60,6 @@ export function AdvancedAnalyticsPanel({
         <div className="space-y-12 border-t border-white/[0.06] px-4 py-8 sm:space-y-14 sm:px-6 sm:py-10">
           <InterpretationSnapshotCard analysis={analysis} explainSimply={explainSimply} />
           <TrustDisclaimer />
-          <StockChart market={market} ticker={ticker} series={series} />
           <PrimaryInsightCard analysis={analysis} market={market} explainSimply={explainSimply} />
           <ShortTermBiasCard market={market} ticker={ticker} analysis={analysis} source={source} explainSimply={explainSimply} />
           <DeeperAnalysisSection
@@ -75,7 +70,6 @@ export function AdvancedAnalyticsPanel({
           />
           <RiskProfileSection market={market} analysis={analysis} />
           {showSpeculativePanel ? <SpeculativeAssetWarning symbol={ticker} /> : null}
-          <TradeCalculator />
         </div>
       ) : null}
     </section>

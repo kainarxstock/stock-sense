@@ -13,7 +13,14 @@
     "beginnerMode": "Beginner Mode",
     "modeBeginner": "Beginner",
     "modeAdvanced": "Advanced",
-    "language": "Language"
+    "language": "Language",
+    "tabs": {
+      "stocks": "Stocks",
+      "crypto": "Crypto",
+      "calculator": "Calculator",
+      "ai": "AI Assistant",
+      "input": "Input"
+    }
   },
   "common": {
     "on": "ON",
@@ -105,7 +112,17 @@
     "subtitleStocks": "Daily closes: the window the interpretation engine reads from.",
     "subtitleCrypto": "Daily closes sampled from a 24/7 tape - each bar is one close, not the full path.",
     "cryptoNote": "Crypto realizes wider ranges than equities; read dispersion as well as slope.",
-    "close": "Close"
+    "close": "Close",
+    "captionBeginner": "The line shows whether price is moving in a clear direction or drifting sideways.",
+    "captionAdvanced": "Price with moving averages (20 / 50 sessions) for context—still an interpretation, not a signal service.",
+    "legendPrice": "Close",
+    "legendSma20": "MA 20",
+    "legendSma50": "MA 50"
+  },
+  "data": {
+    "lastUpdated": "Last updated: {{seconds}}s ago",
+    "livePrice": "Live",
+    "closeFallback": "Last daily close"
   },
   "primary": {
     "atAGlance": "At a glance",
@@ -631,7 +648,8 @@
     "suggestedAction": "Suggested action",
     "notAdvice": "Educational interpretation only. Not financial advice. Apply your own plan and risk rules.",
     "marketStatus": {
-      "trending": "Trending",
+      "trending": "Trending (up)",
+      "downtrend": "Downtrend",
       "neutral": "Neutral",
       "volatile": "Volatile",
       "risky": "Risky"
@@ -674,6 +692,7 @@
       "enterSmall": "There is opportunity, but uncertainty is meaningful—only small, well-defined risk is appropriate.",
       "hold": "Conditions are relatively orderly and the lean is constructive—maintain discipline without adding aggressive risk.",
       "trendingCalm": "Trend and volatility are aligned in a calmer band—continuation is plausible, but still manage extension risk.",
+      "downtrend": "Selling pressure dominates this window—favor defense, smaller size, and clear invalidation until structure improves.",
       "default": "Use this read as context, then align entries, size, and invalidation with your own plan."
     },
     "explain": {
@@ -715,6 +734,76 @@
       "kicker": "Advanced",
       "title": "Charts & detailed analytics",
       "subtitle": "Open when you want the full stack—same engine, more granularity."
+    },
+    "confidenceBandLabel": "Confidence quality",
+    "confidenceBand": {
+      "low": "Low (<50)",
+      "medium": "Medium (50–70)",
+      "high": "High (>70)"
+    },
+    "layerKicker": "Decision layer",
+    "layerTitle": "Suggested behavior & risk framing",
+    "riskLevelLabel": "Risk level",
+    "positionSizeLabel": "Position size idea",
+    "invalidationLabel": "When to re-check",
+    "risk": {
+      "low": "Low",
+      "moderate": "Moderate",
+      "high": "High"
+    },
+    "behavior": {
+      "WAIT": "Wait for confirmation or cleaner momentum before committing size.",
+      "ENTER_SMALL": "If you act, use a small slice of capital—risk is meaningful and surprises are more likely.",
+      "HOLD": "If your plan already matches this lean, keep size steady and avoid adding heat without new evidence.",
+      "EXIT": "Reduce exposure or step aside until risk and structure look healthier."
+    },
+    "positionSize": {
+      "waitExit": "Use 0% of new capital—preserve optionality until the read stabilizes.",
+      "hold": "Consider keeping existing risk flat; optional adds only if your rules already allow them.",
+      "enterSmallHigh": "If engaging, think 5% of capital or less, with a hard stop and a defined invalidation.",
+      "enterSmallMod": "If engaging, think 5–10% of capital with strict risk limits.",
+      "enterSmallLow": "If engaging, up to ~10% of capital may still be aggressive—scale to your personal risk tolerance."
+    },
+    "invalidation": {
+      "WAIT": "If momentum strengthens and price closes decisively through the recent range, re-evaluate.",
+      "ENTER_SMALL": "If volatility spikes further or your stop level is touched, pause and reassess.",
+      "HOLD": "If the trend weakens materially or risk jumps a tier, re-evaluate size and stops.",
+      "EXIT": "If momentum eases and price stabilizes above key short-term support, you can revisit with a fresh read."
     }
+  },
+  "positionCalc": {
+    "title": "Position size calculator",
+    "subtitle": "Estimate size from capital at risk—not a recommendation to trade.",
+    "capital": "Capital ($)",
+    "riskPct": "Risk per trade (%)",
+    "entry": "Entry price",
+    "stop": "Stop-loss",
+    "target": "Take-profit",
+    "run": "Calculate",
+    "positionUnits": "Position size (units)",
+    "maxLoss": "Max loss ($)",
+    "potentialProfit": "Potential profit ($)",
+    "rr": "Risk / reward",
+    "explainUnits": "Units = dollars at risk ÷ per-unit risk (distance from entry to stop).",
+    "explainLoss": "Max loss is what you would lose if the stop is hit (before fees/slippage).",
+    "explainProfit": "Potential profit assumes the take-profit level is reached.",
+    "invalid": "Enter positive capital, risk % between 0.1 and 100, valid prices, and ensure stop is on the correct side of entry.",
+    "disclaimer": "Educational tool only. Not financial advice."
+  },
+  "aiAssistant": {
+    "title": "Stock Sense AI",
+    "subtitle": "Educational market assistant",
+    "intro": "Ask how to read trend, momentum, volatility, or risk. This assistant does not predict prices or tell you what to buy.",
+    "placeholder": "Ask an educational question…",
+    "send": "Send",
+    "suggested": "Suggested questions",
+    "q1": "How should I read confidence on this app?",
+    "q2": "What does higher volatility imply for position size?",
+    "q3": "How is momentum different from trend?",
+    "disclaimer": "Educational only. Not financial advice. No trade signals.",
+    "blocked": "I can’t recommend specific assets. But I can help you understand how to evaluate them using trend, momentum, and volatility. Ask how to read those signals or what they mean for risk—not which name to pick.",
+    "error": "AI is temporarily unavailable",
+    "welcome": "Ask a question below, or tap a suggested prompt.",
+    "thinking": "Thinking..."
   }
 }

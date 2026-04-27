@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import type { AnalysisResult, Market } from "../../types";
 import { useI18n } from "../../i18n";
+import { useNowTick } from "../../hooks/useNowTick";
 import { buildDecisionContext } from "../../lib/decisionSupport";
 
 const toneCard: Record<string, string> = {
@@ -21,16 +22,26 @@ type Props = {
   analysis: AnalysisResult;
   market: Market;
   ticker: string;
+  displayPrice: number;
+  lastUpdatedAt: number;
+  liveQuoteSource?: string;
 };
 
-export function DecisionHero({ analysis, market, ticker }: Props) {
+export function DecisionHero({ analysis, market, ticker, displayPrice, lastUpdatedAt, liveQuoteSource }: Props) {
   const { t } = useI18n();
+  useNowTick(1000);
   const ctx = useMemo(() => buildDecisionContext(analysis, market, ticker), [analysis, market, ticker]);
 
   const statusLabel = t(`decision.marketStatus.${ctx.marketStatus}`);
   const actionLabel = t(`decision.action.${ctx.action}`);
   const cardTone = toneCard[ctx.tone] ?? toneCard.yellow;
   const badgeTone = actionBadge[ctx.tone] ?? actionBadge.yellow;
+  const bandLabel = t(`decision.confidenceBand.${ctx.confidenceBand}`);
+  const seconds = Math.max(0, Math.floor((Date.now() - lastUpdatedAt) / 1000));
+  const priceSource =
+    liveQuoteSource === "binance" || liveQuoteSource === "alphavantage"
+      ? t("data.livePrice")
+      : t("data.closeFallback");
 
   return (
     <section
@@ -50,6 +61,18 @@ export function DecisionHero({ analysis, market, ticker }: Props) {
         {ctx.assetLabel}
       </h1>
 
+      <div className="mx-auto mt-6 text-center">
+        <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-2">{priceSource}</p>
+        <p className="mt-1 font-mono text-3xl font-semibold tabular-nums text-foreground sm:text-4xl">
+          {displayPrice.toLocaleString(undefined, {
+            style: "currency",
+            currency: "USD",
+            maximumFractionDigits: displayPrice < 1 ? 6 : 2,
+          })}
+        </p>
+        <p className="mt-2 text-xs text-muted-2">{t("data.lastUpdated", { seconds })}</p>
+      </div>
+
       <div className="mx-auto mt-8 grid max-w-2xl gap-4 sm:grid-cols-2">
         <div className="rounded-2xl border border-white/[0.08] bg-surface-0/50 px-5 py-4 text-center backdrop-blur-sm">
           <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-2">
@@ -65,6 +88,8 @@ export function DecisionHero({ analysis, market, ticker }: Props) {
             {ctx.confidencePct}
             <span className="text-lg font-medium text-muted">%</span>
           </p>
+          <p className="mt-2 text-xs font-medium text-muted">{t("decision.confidenceBandLabel")}</p>
+          <p className="mt-0.5 text-sm text-foreground/90">{bandLabel}</p>
         </div>
       </div>
 

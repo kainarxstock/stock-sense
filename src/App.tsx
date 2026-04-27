@@ -1,24 +1,28 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { AnalyzeSection } from "./components/AnalyzeSection";
+import { AiAssistant } from "./components/AiAssistant";
+import { AppTopNav, type AppRoute } from "./components/AppTopNav";
 import { AdvancedAnalyticsPanel } from "./components/decision/AdvancedAnalyticsPanel";
 import { DecisionHero } from "./components/decision/DecisionHero";
+import { DecisionLayer } from "./components/decision/DecisionLayer";
 import { WhySection } from "./components/decision/WhySection";
 import { HeroSection } from "./components/HeroSection";
 import { HowItWorksSection } from "./components/HowItWorksSection";
-import { LanguageSwitcher } from "./components/LanguageSwitcher";
-import { MarketSwitch } from "./components/MarketSwitch";
+import { PositionCalculator } from "./components/PositionCalculator";
+import { StockChart } from "./components/StockChart";
 import { TrustDisclaimer } from "./components/TrustDisclaimer";
 import { TrustLayerSection } from "./components/TrustLayerSection";
 import { useStockSeries } from "./hooks/useStockSeries";
 import { useI18n } from "./i18n";
 import { analyzeSeries } from "./lib/analyze";
+import { buildDecisionContext, buildDecisionSnapshotForAi } from "./lib/decisionSupport";
 import { needsMemeOrSpeculativePanel } from "./lib/cryptoMarket";
 import type { Market } from "./types";
 
 export default function App() {
   const { t, locale } = useI18n();
   const [market, setMarket] = useState<Market>("stocks");
-  /** Beginner: decision + why only. Advanced: full analytics (progressive disclosure). */
+  const [route, setRoute] = useState<AppRoute>("market");
   const [beginnerMode, setBeginnerMode] = useState(true);
   const [deeperOpen, setDeeperOpen] = useState(false);
   const { state, load } = useStockSeries(market);
@@ -31,12 +35,29 @@ export default function App() {
     [state, market, locale],
   );
 
+  const aiInterpretationSnapshot = useMemo(() => {
+    if (state.status !== "ready" || !analysis) return null;
+    const ctx = buildDecisionContext(analysis, market, state.ticker);
+    return buildDecisionSnapshotForAi(ctx, beginnerMode);
+  }, [state, analysis, market, beginnerMode]);
+
+  const displayPrice = useMemo(() => {
+    if (state.status !== "ready") return 0;
+    const live = state.liveQuote?.price;
+    if (typeof live === "number" && Number.isFinite(live)) return live;
+    const last = state.series.at(-1)?.close;
+    return typeof last === "number" && Number.isFinite(last) ? last : 0;
+  }, [state]);
+
   const scrollToAnalyze = useCallback(() => {
-    document.getElementById("analyze")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    setRoute("market");
+    requestAnimationFrame(() => {
+      document.getElementById("analyze")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
   }, []);
 
   const showSpeculativePanel = market === "crypto" && ready && needsMemeOrSpeculativePanel(state.ticker);
-  const showMarketing = !ready;
+  const showMarketing = !ready && route === "market";
 
   useEffect(() => {
     document.title = t("meta.title");
@@ -64,110 +85,102 @@ export default function App() {
       />
 
       <div className="relative mx-auto max-w-6xl">
-        <nav className="flex flex-wrap items-center justify-between gap-3 border-b border-white/[0.08] px-4 pb-5 pt-6 sm:px-6">
-          <div>
-            <span className="text-sm font-semibold tracking-tight text-foreground">{t("brand.name")}</span>
-            <p className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.18em] text-muted-2">
-              {t("brand.tagline")}
-            </p>
-          </div>
-          <div className="flex flex-wrap items-center justify-end gap-3 sm:gap-4">
-            <div
-              className="inline-flex rounded-full border border-white/[0.12] bg-surface-2/80 p-0.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
-              role="group"
-              aria-label={t("nav.beginnerMode")}
-            >
-              <button
-                type="button"
-                onClick={() => setBeginnerMode(true)}
-                className={`rounded-full px-3 py-1.5 text-xs font-medium transition sm:px-4 ${
-                  beginnerMode ? "bg-white/[0.12] text-foreground shadow-sm" : "text-muted hover:text-foreground"
-                }`}
-              >
-                {t("nav.modeBeginner")}
-              </button>
-              <button
-                type="button"
-                onClick={() => setBeginnerMode(false)}
-                className={`rounded-full px-3 py-1.5 text-xs font-medium transition sm:px-4 ${
-                  !beginnerMode ? "bg-white/[0.12] text-foreground shadow-sm" : "text-muted hover:text-foreground"
-                }`}
-              >
-                {t("nav.modeAdvanced")}
-              </button>
-            </div>
-            <LanguageSwitcher />
-            <MarketSwitch value={market} onChange={setMarket} />
-            <button
-              type="button"
-              onClick={scrollToAnalyze}
-              className="text-sm font-medium text-muted transition hover:text-foreground"
-            >
-              {t("nav.input")}
-            </button>
-          </div>
-        </nav>
+        <AppTopNav
+          route={route}
+          market={market}
+          beginnerMode={beginnerMode}
+          onRouteChange={setRoute}
+          onMarketChange={setMarket}
+          onBeginnerMode={setBeginnerMode}
+          onInputClick={scrollToAnalyze}
+        />
 
-        {showMarketing ? (
-          <>
-            <HeroSection onAnalyzeClick={scrollToAnalyze} />
-            <div className="space-y-12 px-0 pb-2 sm:space-y-14">
-              <HowItWorksSection />
-              <TrustLayerSection />
-            </div>
-          </>
+        {route === "calculator" ? (
+          <div className="pb-24 pt-6 sm:pb-28">
+            <PositionCalculator />
+          </div>
+        ) : route === "ai" ? (
+          <div className="pb-24 pt-6 sm:pb-28">
+            <AiAssistant beginnerMode={beginnerMode} interpretationSnapshot={aiInterpretationSnapshot} />
+          </div>
         ) : (
-          <HeroSection onAnalyzeClick={scrollToAnalyze} compact />
-        )}
-
-        <div className="space-y-16 pb-24 sm:space-y-20 sm:pb-28">
-          <AnalyzeSection market={market} initial={ticker} loading={loading} onSubmit={load} />
-
-          {state.status === "error" ? (
-            <div className="px-4 sm:px-6">
-              <div
-                role="alert"
-                className="mx-auto max-w-2xl rounded-2xl border border-white/[0.1] bg-rose-950/25 px-5 py-4 text-sm text-rose-100/95 backdrop-blur-md"
-              >
-                {t(`errors.${state.messageKey}`)}
-              </div>
-            </div>
-          ) : null}
-
-          <div id="results" className="scroll-mt-24 space-y-10 px-4 sm:px-6 sm:space-y-12">
-            {ready && analysis ? (
+          <>
+            {showMarketing ? (
               <>
-                <DecisionHero analysis={analysis} market={market} ticker={state.ticker} />
-                <WhySection analysis={analysis} market={market} ticker={state.ticker} />
-                <TrustDisclaimer />
-                {!beginnerMode ? (
-                  <AdvancedAnalyticsPanel
-                    market={market}
-                    ticker={state.ticker}
-                    series={state.series}
-                    source={state.source}
-                    analysis={analysis}
-                    explainSimply={beginnerMode}
-                    deeperOpen={deeperOpen}
-                    onDeeperToggle={() => setDeeperOpen((v) => !v)}
-                    showSpeculativePanel={showSpeculativePanel}
-                  />
-                ) : null}
+                <HeroSection onAnalyzeClick={scrollToAnalyze} />
+                <div className="space-y-12 px-0 pb-2 sm:space-y-14">
+                  <HowItWorksSection />
+                  <TrustLayerSection />
+                </div>
               </>
-            ) : loading ? (
-              <div className="space-y-6">
-                <div className="rounded-2xl border border-white/[0.09] bg-white/[0.05] p-6 sm:p-8">
-                  <p className="text-sm font-medium text-foreground">{t("loading.analyzing")}</p>
-                  <p className="mt-2 text-xs text-muted-2">{t("loading.subtitle")}</p>
-                  <div className="mt-5 h-2 w-full overflow-hidden rounded-full bg-white/[0.08]">
-                    <div className="h-full w-1/3 animate-[pulse_1.2s_ease-in-out_infinite] rounded-full bg-accent/60" />
+            ) : (
+              <HeroSection onAnalyzeClick={scrollToAnalyze} compact />
+            )}
+
+            <div className="space-y-16 pb-24 sm:space-y-20 sm:pb-28">
+              <AnalyzeSection market={market} initial={ticker} loading={loading} onSubmit={load} />
+
+              {state.status === "error" ? (
+                <div className="px-4 sm:px-6">
+                  <div
+                    role="alert"
+                    className="mx-auto max-w-2xl rounded-2xl border border-white/[0.1] bg-rose-950/25 px-5 py-4 text-sm text-rose-100/95 backdrop-blur-md"
+                  >
+                    {t(`errors.${state.messageKey}`)}
                   </div>
                 </div>
-                <div className="h-[200px] animate-pulse rounded-2xl border border-white/[0.09] bg-white/[0.05]" />
+              ) : null}
+
+              <div id="results" className="scroll-mt-24 space-y-10 px-4 sm:px-6 sm:space-y-12">
+                {ready && analysis ? (
+                  <>
+                    <DecisionHero
+                      analysis={analysis}
+                      market={market}
+                      ticker={state.ticker}
+                      displayPrice={displayPrice}
+                      lastUpdatedAt={state.lastUpdatedAt}
+                      liveQuoteSource={state.liveQuote?.source}
+                    />
+                    <DecisionLayer analysis={analysis} market={market} ticker={state.ticker} />
+                    <WhySection analysis={analysis} market={market} ticker={state.ticker} />
+                    <StockChart
+                      market={market}
+                      ticker={state.ticker}
+                      series={state.series}
+                      beginnerMode={beginnerMode}
+                      displayPrice={displayPrice}
+                    />
+                    <TrustDisclaimer />
+                    {!beginnerMode ? (
+                      <AdvancedAnalyticsPanel
+                        market={market}
+                        ticker={state.ticker}
+                        source={state.source}
+                        analysis={analysis}
+                        explainSimply={beginnerMode}
+                        deeperOpen={deeperOpen}
+                        onDeeperToggle={() => setDeeperOpen((v) => !v)}
+                        showSpeculativePanel={showSpeculativePanel}
+                      />
+                    ) : null}
+                  </>
+                ) : loading ? (
+                  <div className="space-y-6">
+                    <div className="rounded-2xl border border-white/[0.09] bg-white/[0.05] p-6 sm:p-8">
+                      <p className="text-sm font-medium text-foreground">{t("loading.analyzing")}</p>
+                      <p className="mt-2 text-xs text-muted-2">{t("loading.subtitle")}</p>
+                      <div className="mt-5 h-2 w-full overflow-hidden rounded-full bg-white/[0.08]">
+                        <div className="h-full w-1/3 animate-[pulse_1.2s_ease-in-out_infinite] rounded-full bg-accent/60" />
+                      </div>
+                    </div>
+                    <div className="h-[200px] animate-pulse rounded-2xl border border-white/[0.09] bg-white/[0.05]" />
+                  </div>
+                ) : null}
               </div>
-            ) : null}
-          </div>
-        </div>
+            </div>
+          </>
+        )}
 
         <footer className="border-t border-white/[0.08] px-4 py-12 sm:px-6">
           <div className="mx-auto max-w-3xl text-center">

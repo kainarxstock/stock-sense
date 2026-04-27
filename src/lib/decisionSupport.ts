@@ -1,9 +1,11 @@
-import type { AnalysisResult, Bias, Market, MomentumRead, TrendRead } from "../types";
+import type { AnalysisResult, Bias, Market, MomentumRead, RiskLevel, TrendRead } from "../types";
 
-export type DecisionMarketStatus = "trending" | "neutral" | "volatile" | "risky";
+export type DecisionMarketStatus = "trending" | "downtrend" | "neutral" | "volatile" | "risky";
 export type DecisionAction = "WAIT" | "ENTER_SMALL" | "HOLD" | "EXIT";
 export type DecisionTone = "green" | "yellow" | "red";
 export type VolDisplayTier = "low" | "medium" | "high";
+export type ConfidenceBand = "low" | "medium" | "high";
+export type RiskDisplay = "low" | "moderate" | "high";
 
 export type DecisionContext = {
   assetLabel: string;
@@ -11,11 +13,16 @@ export type DecisionContext = {
   action: DecisionAction;
   tone: DecisionTone;
   confidencePct: number;
+  confidenceBand: ConfidenceBand;
   trendSimple: "up" | "down" | "sideways";
   momentumSimple: "weak" | "strong";
   volTier: VolDisplayTier;
+  riskDisplay: RiskDisplay;
   combinationKey: string;
   explainKeys: readonly string[];
+  behaviorKey: string;
+  positionSizeKey: string;
+  invalidationKey: string;
 };
 
 function volTierFromPct(volatilityPct: number, market: Market): VolDisplayTier {
@@ -44,21 +51,40 @@ function momentumSimple(m: MomentumRead): "weak" | "strong" {
   return m === "strong" ? "strong" : "weak";
 }
 
+function confidenceBandFromPct(pct: number): ConfidenceBand {
+  if (pct < 50) return "low";
+  if (pct <= 70) return "medium";
+  return "high";
+}
+
+function riskDisplayFromLevel(level: RiskLevel): RiskDisplay {
+  if (level === "high") return "high";
+  if (level === "medium") return "moderate";
+  return "low";
+}
+
+/** Align headline regime with trend/vol so the story stays internally consistent. */
 function deriveMarketStatus(
   a: AnalysisResult,
   market: Market,
   volTier: VolDisplayTier,
   volatileStructure: boolean,
+  trend: TrendRead,
+  bias: Bias,
 ): DecisionMarketStatus {
-  const { beginnerBrief, bias, metrics } = a;
+  const { beginnerBrief, metrics } = a;
   const { riskLevel } = beginnerBrief;
   const vol = metrics.volatilityPct;
   const veryHighVol = market === "crypto" ? vol >= 58 : vol >= 45;
 
   if (riskLevel === "high" || veryHighVol) return "risky";
   if (volatileStructure || volTier === "high") return "volatile";
-  if (bias === "sideways") return "neutral";
-  if (bias === "up" || bias === "down") return "trending";
+
+  const downish = bias === "down" || trend === "bearish";
+  const upish = bias === "up" || trend === "bullish";
+
+  if (downish) return "downtrend";
+  if (upish) return "trending";
   return "neutral";
 }
 
@@ -115,6 +141,7 @@ function refineActionWithMomentum(
 
 function deriveTone(marketStatus: DecisionMarketStatus, action: DecisionAction): DecisionTone {
   if (action === "EXIT" || marketStatus === "risky") return "red";
+  if (marketStatus === "downtrend") return "yellow";
   if (action === "WAIT" || marketStatus === "volatile" || marketStatus === "neutral") return "yellow";
   return "green";
 }
@@ -127,6 +154,7 @@ function combinationKeyFor(
 ): string {
   if (marketStatus === "risky") return "decision.combination.risky";
   if (action === "EXIT") return "decision.combination.exitDefensive";
+  if (marketStatus === "downtrend") return "decision.combination.downtrend";
   if (marketStatus === "volatile" && trendSimple === "sideways") return "decision.combination.volatileSideways";
   if (marketStatus === "volatile") return "decision.combination.volatileTrend";
   if (action === "WAIT" && marketStatus === "neutral") return "decision.combination.neutralWait";
@@ -155,7 +183,37 @@ function explainKeysFor(
   return ["decision.explain.neutral.1", "decision.explain.neutral.2"] as const;
 }
 
-/** Map internal analysis to beginner-facing decision support (educational, not advice). */
+function positionSizeKey(action: DecisionAction, risk: RiskDisplay): string {
+  if (action === "EXIT" || action === "WAIT") return "decision.positionSize.waitExit";
+  if (action === "HOLD") return "decision.positionSize.hold";
+  if (risk === "high") return "decision.positionSize.enterSmallHigh";
+  if (risk === "moderate") return "decision.positionSize.enterSmallMod";
+  return "decision.positionSize.enterSmallLow";
+}
+
+function invalidationKey(action: DecisionAction): string {
+  return `decision.invalidation.${action}`;
+}
+
+/** Plain snapshot for the educational AI (English keys; model-only). */
+export function buildDecisionSnapshotForAi(
+  ctx: DecisionContext,
+  beginnerMode: boolean,
+): Record<string, string | number | boolean> {
+  return {
+    beginnerMode,
+    asset: ctx.assetLabel,
+    marketStatus: ctx.marketStatus,
+    suggestedAction: ctx.action,
+    confidencePercent: ctx.confidencePct,
+    confidenceQualityBand: ctx.confidenceBand,
+    trend: ctx.trendSimple,
+    momentum: ctx.momentumSimple,
+    volatilityTier: ctx.volTier,
+    riskLevel: ctx.riskDisplay,
+  };
+}
+
 export function buildDecisionContext(analysis: AnalysisResult, market: Market, ticker: string): DecisionContext {
   const vol = analysis.metrics.volatilityPct;
   const volTier = volTierFromPct(vol, market);
@@ -163,13 +221,19 @@ export function buildDecisionContext(analysis: AnalysisResult, market: Market, t
   const { trend, momentum } = analysis.reads;
 
   const trendSimple = trendSimpleFromReads(trend, analysis.bias);
-  const marketStatus = deriveMarketStatus(analysis, market, volTier, volatileStructure);
+  const marketStatus = deriveMarketStatus(analysis, market, volTier, volatileStructure, trend, analysis.bias);
   let action = deriveAction(analysis, marketStatus, volTier, volatileStructure);
   action = refineActionWithMomentum(action, analysis, volTier, volatileStructure);
 
+  const confidencePct = Math.round(analysis.confidence * 100);
+  const confidenceBand = confidenceBandFromPct(confidencePct);
+  const riskDisplay = riskDisplayFromLevel(analysis.beginnerBrief.riskLevel);
   const tone = deriveTone(marketStatus, action);
   const combinationKey = combinationKeyFor(marketStatus, action, trendSimple, volTier);
   const explainKeys = explainKeysFor(action, marketStatus, trendSimple);
+  const behaviorKey = `decision.behavior.${action}`;
+  const positionSizeKeyResolved = positionSizeKey(action, riskDisplay);
+  const invalidationKeyResolved = invalidationKey(action);
 
   const pair = market === "crypto" ? `${ticker.toUpperCase()} / USDT` : `${ticker.toUpperCase()} / USD`;
 
@@ -178,12 +242,16 @@ export function buildDecisionContext(analysis: AnalysisResult, market: Market, t
     marketStatus,
     action,
     tone,
-    confidencePct: Math.round(analysis.confidence * 100),
+    confidencePct,
+    confidenceBand,
     trendSimple,
     momentumSimple: momentumSimple(momentum),
     volTier,
+    riskDisplay,
     combinationKey,
     explainKeys,
+    behaviorKey,
+    positionSizeKey: positionSizeKeyResolved,
+    invalidationKey: invalidationKeyResolved,
   };
 }
-
