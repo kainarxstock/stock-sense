@@ -1,4 +1,4 @@
-{
+﻿{
   "meta": {
     "title": "Stock Sense - 市场解读引擎"
   },
@@ -632,16 +632,16 @@
     }
   },
   "decision": {
-    "heroKicker": "Decision support",
-    "marketStatusLabel": "Market status",
-    "confidenceLabel": "Confidence",
-    "suggestedAction": "Suggested action",
-    "notAdvice": "Educational interpretation only. Not financial advice. Apply your own plan and risk rules.",
+    "heroKicker": "决策支持",
+    "marketStatusLabel": "市场状态",
+    "confidenceLabel": "置信度",
+    "suggestedAction": "建议动作",
+    "notAdvice": "仅用于教育解读，不构成投资建议。请使用你自己的交易计划与风控规则。",
     "marketStatus": {
-      "trending": "Trending",
-      "neutral": "Neutral",
-      "volatile": "Volatile",
-      "risky": "Risky"
+      "trending": "趋势中",
+      "neutral": "中性",
+      "volatile": "高波动",
+      "risky": "高风险"
     },
     "action": {
       "WAIT": "WAIT",
@@ -650,78 +650,78 @@
       "EXIT": "EXIT"
     },
     "why": {
-      "title": "Why this read?",
-      "subtitle": "Three inputs we weight before suggesting an action.",
-      "trend": "Trend",
-      "momentum": "Momentum",
-      "volatility": "Volatility",
-      "combinationLead": "This combination suggests"
+      "title": "为什么是这个解读？",
+      "subtitle": "给出动作建议前，我们重点评估三个输入。",
+      "trend": "趋势",
+      "momentum": "动能",
+      "volatility": "波动率",
+      "combinationLead": "该组合意味着"
     },
     "trend": {
-      "up": "Up",
-      "down": "Down",
-      "sideways": "Sideways"
+      "up": "上行",
+      "down": "下行",
+      "sideways": "横盘"
     },
     "momentum": {
-      "weak": "Weak",
-      "strong": "Strong"
+      "weak": "弱",
+      "strong": "强"
     },
     "vol": {
-      "low": "Low",
-      "medium": "Medium",
-      "high": "High"
+      "low": "低",
+      "medium": "中",
+      "high": "高"
     },
     "combination": {
-      "risky": "Conditions are stressed—prioritize capital preservation and avoid adding risk until the tape stabilizes.",
-      "exitDefensive": "Pressure and risk are elevated—defensive positioning is appropriate until structure improves.",
-      "volatileSideways": "Wide ranges without a clean trend—false moves are common; wait for a decisive close outside the range.",
-      "volatileTrend": "A directional lean exists, but volatility is high—size down and plan for two-way noise.",
-      "neutralWait": "No durable edge yet—patience usually beats forcing a direction in this regime.",
-      "wait": "Signals disagree or risk is unclear—standing aside preserves optionality.",
-      "enterSmall": "There is opportunity, but uncertainty is meaningful—only small, well-defined risk is appropriate.",
-      "hold": "Conditions are relatively orderly and the lean is constructive—maintain discipline without adding aggressive risk.",
-      "trendingCalm": "Trend and volatility are aligned in a calmer band—continuation is plausible, but still manage extension risk.",
-      "default": "Use this read as context, then align entries, size, and invalidation with your own plan."
+      "risky": "当前条件偏紧张，应优先保护本金，在市场稳定前不要增加风险敞口。",
+      "exitDefensive": "压力和风险都偏高，在结构改善前更适合防守。",
+      "volatileSideways": "宽幅震荡且趋势不清，假突破常见；等待明确收盘突破区间更稳妥。",
+      "volatileTrend": "方向倾向存在，但波动率较高；应缩小仓位并预期双向噪音。",
+      "neutralWait": "尚无持续性优势，在该阶段耐心通常优于强行下注方向。",
+      "wait": "信号不一致或风险不清晰，观望可保留决策空间。",
+      "enterSmall": "有机会但不确定性较大，仅适合小仓位并严格定义风险。",
+      "hold": "环境相对有序且倾向仍偏建设性，应保持纪律，避免激进加仓。",
+      "trendingCalm": "趋势与波动较为协调，延续性存在，但仍需控制追高风险。",
+      "default": "将此解读作为上下文，再用你的计划来统一入场、仓位和失效条件。"
     },
     "explain": {
       "wait": {
-        "1": "The setup is not clean enough to justify a confident directional step.",
-        "2": "When signals conflict or the tape is choppy, waiting for confirmation usually reduces costly mistakes.",
-        "3": "Confidence is {{confidence}}%—treat this as context, not certainty."
+        "1": "当前形态还不够干净，不足以支持有把握的方向性动作。",
+        "2": "当信号冲突或行情噪音较大时，等待确认通常能减少高成本错误。",
+        "3": "置信度 {{confidence}}% 仅代表参考背景，不代表确定性。"
       },
       "waitVolatile": {
-        "1": "Volatility is elevated, so outcomes can swing quickly even if a bias exists.",
-        "2": "Smaller size and clearer levels matter more until the tape compresses or proves a break."
+        "1": "波动率较高，即使有方向倾向，结果也可能快速反转。",
+        "2": "在行情收敛或确认突破前，更小仓位和更清晰的价位更重要。"
       },
       "enterSmall": {
-        "1": "There is a constructive lean for {{asset}}, but risk is not negligible.",
-        "2": "If you participate, keep risk small and define where the idea is wrong before you add."
+        "1": "{{asset}} 存在建设性倾向，但风险仍不可忽视。",
+        "2": "若要参与，请先控制小风险，并明确何处说明原假设失效。"
       },
       "hold": {
-        "1": "{{asset}} shows a relatively orderly constructive lean in this window.",
-        "2": "If you are already aligned with your plan, the priority is discipline—not chasing marginal extension."
+        "1": "{{asset}} 在该窗口内呈现相对有序的建设性倾向。",
+        "2": "若你已按计划持仓，重点应是执行纪律，而非追逐边际延伸。"
       },
       "exit": {
-        "1": "Downside pressure or risk is dominant in this read—defensive action fits the current tape.",
-        "2": "This is not a timing guarantee; it is a risk-first interpretation of recent behavior."
+        "1": "当前解读以下行压力或风险主导，防守动作更匹配当下结构。",
+        "2": "这不是择时保证，而是基于近期行为的风险优先解读。"
       },
       "up": {
-        "1": "Price behavior recently skews upward, but pace and volatility still matter for entries.",
-        "2": "Confidence is {{confidence}}%—higher agreement is not the same as a guaranteed outcome."
+        "1": "近期价格行为偏上行，但入场仍需关注节奏与波动。",
+        "2": "置信度 {{confidence}}%：一致性更高不等于结果有保证。"
       },
       "down": {
-        "1": "Price behavior recently skews downward; respect the trend until evidence of stabilization.",
-        "2": "Confidence is {{confidence}}%—use it as a quality gauge for how aligned the inputs are."
+        "1": "近期价格行为偏下行，在出现稳定证据前应尊重趋势。",
+        "2": "置信度 {{confidence}}%：可作为输入一致性的质量刻度。"
       },
       "neutral": {
-        "1": "The tape is mixed—direction is not the main story yet.",
-        "2": "Confidence is {{confidence}}%—when agreement is lower, smaller risk and clearer triggers help."
+        "1": "当前市场读数偏混合，方向尚不是主线。",
+        "2": "置信度 {{confidence}}%：一致性较低时，小风险与清晰触发条件更关键。"
       }
     },
     "advanced": {
-      "kicker": "Advanced",
-      "title": "Charts & detailed analytics",
-      "subtitle": "Open when you want the full stack—same engine, more granularity."
+      "kicker": "进阶",
+      "title": "图表与深度分析",
+      "subtitle": "需要完整视图时开启——同一套引擎，更细粒度输出。"
     }
   },
   "positionCalc": {

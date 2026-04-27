@@ -1,6 +1,13 @@
 import { useI18n, type Locale } from "../i18n";
 
-const LOCALES: Locale[] = ["en", "ru", "kz", "zh-CN", "zh-HK"];
+const LOCALES: Locale[] = ["en", "ru", "kz", "zhCN", "zhTW"];
+const LABELS: Record<Locale, string> = {
+  en: "EN",
+  ru: "RU",
+  kz: "KZ",
+  zhCN: "简体",
+  zhTW: "繁體",
+};
 
 export function LanguageSwitcher() {
   const { locale, setLocale, t } = useI18n();
@@ -22,7 +29,7 @@ export function LanguageSwitcher() {
             locale === item ? "bg-white/[0.12] text-foreground shadow-sm" : "text-muted hover:text-foreground"
           }`}
         >
-          {t(`language.${item}`)}
+          {LABELS[item]}
         </button>
       ))}
     </div>

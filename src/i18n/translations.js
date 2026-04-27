@@ -8,8 +8,8 @@ const translations = {
   en,
   ru,
   kz,
-  "zh-CN": zhCN,
-  "zh-HK": zhHK,
+  zhCN,
+  zhTW: zhHK,
 };
 
 export default translations;

@@ -1,13 +1,14 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import translations from "./translations.js";
 
-export type Locale = "en" | "ru" | "kz" | "zh-CN" | "zh-HK";
+export type Locale = "en" | "ru" | "kz" | "zhCN" | "zhTW";
 
 type DictValue = string | number | boolean | null | DictObject | DictValue[];
 type DictObject = { [key: string]: DictValue };
 
-const STORAGE_KEY = "stocksense.locale";
+const STORAGE_KEY = "language";
 const DEFAULT_LOCALE: Locale = "en";
+const SUPPORTED_LANGS: Locale[] = ["en", "ru", "kz", "zhCN", "zhTW"];
 
 const dictionaries = translations as unknown as Record<Locale, DictObject>;
 
@@ -33,7 +34,22 @@ export function translate(locale: Locale, key: string, vars?: Record<string, str
 }
 
 function isLocale(input: string | null): input is Locale {
-  return input === "en" || input === "ru" || input === "kz" || input === "zh-CN" || input === "zh-HK";
+  return typeof input === "string" && SUPPORTED_LANGS.includes(input as Locale);
+}
+
+const getInitialLanguage = (): Locale => {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (isLocale(saved)) return saved;
+  if (saved !== null) {
+    localStorage.setItem(STORAGE_KEY, DEFAULT_LOCALE);
+  }
+  return DEFAULT_LOCALE;
+};
+
+function toHtmlLang(locale: Locale): string {
+  if (locale === "zhCN") return "zh-CN";
+  if (locale === "zhTW") return "zh-TW";
+  return locale;
 }
 
 type I18nContextValue = {
@@ -45,14 +61,11 @@ type I18nContextValue = {
 const I18nContext = createContext<I18nContextValue | null>(null);
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocale] = useState<Locale>(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    return isLocale(stored) ? stored : DEFAULT_LOCALE;
-  });
+  const [locale, setLocale] = useState<Locale>(getInitialLanguage);
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, locale);
-    document.documentElement.lang = locale;
+    document.documentElement.lang = toHtmlLang(locale);
   }, [locale]);
 
   const value = useMemo<I18nContextValue>(

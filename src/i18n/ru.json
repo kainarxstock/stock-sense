@@ -1,4 +1,4 @@
-{
+﻿{
   "meta": {
     "title": "Stock Sense - Движок рыночной интерпретации"
   },
@@ -632,16 +632,16 @@
     }
   },
   "decision": {
-    "heroKicker": "Decision support",
-    "marketStatusLabel": "Market status",
-    "confidenceLabel": "Confidence",
-    "suggestedAction": "Suggested action",
-    "notAdvice": "Educational interpretation only. Not financial advice. Apply your own plan and risk rules.",
+    "heroKicker": "Поддержка решений",
+    "marketStatusLabel": "Состояние рынка",
+    "confidenceLabel": "Уверенность",
+    "suggestedAction": "Рекомендуемое действие",
+    "notAdvice": "Только образовательная интерпретация. Не финансовый совет. Применяйте собственный план и правила риска.",
     "marketStatus": {
-      "trending": "Trending",
-      "neutral": "Neutral",
-      "volatile": "Volatile",
-      "risky": "Risky"
+      "trending": "Трендовый",
+      "neutral": "Нейтральный",
+      "volatile": "Волатильный",
+      "risky": "Рискованный"
     },
     "action": {
       "WAIT": "ЖДАТЬ",
@@ -650,78 +650,78 @@
       "EXIT": "ВЫХОД"
     },
     "why": {
-      "title": "Why this read?",
-      "subtitle": "Three inputs we weight before suggesting an action.",
-      "trend": "Trend",
-      "momentum": "Momentum",
-      "volatility": "Volatility",
-      "combinationLead": "This combination suggests"
+      "title": "Почему такой вывод?",
+      "subtitle": "Три сигнала, которые мы взвешиваем перед рекомендацией.",
+      "trend": "Тренд",
+      "momentum": "Импульс",
+      "volatility": "Волатильность",
+      "combinationLead": "Эта комбинация подсказывает"
     },
     "trend": {
-      "up": "Up",
-      "down": "Down",
-      "sideways": "Sideways"
+      "up": "Вверх",
+      "down": "Вниз",
+      "sideways": "Боковик"
     },
     "momentum": {
-      "weak": "Weak",
-      "strong": "Strong"
+      "weak": "Слабый",
+      "strong": "Сильный"
     },
     "vol": {
-      "low": "Low",
-      "medium": "Medium",
-      "high": "High"
+      "low": "Низкая",
+      "medium": "Средняя",
+      "high": "Высокая"
     },
     "combination": {
-      "risky": "Conditions are stressed—prioritize capital preservation and avoid adding risk until the tape stabilizes.",
-      "exitDefensive": "Pressure and risk are elevated—defensive positioning is appropriate until structure improves.",
-      "volatileSideways": "Wide ranges without a clean trend—false moves are common; wait for a decisive close outside the range.",
-      "volatileTrend": "A directional lean exists, but volatility is high—size down and plan for two-way noise.",
-      "neutralWait": "No durable edge yet—patience usually beats forcing a direction in this regime.",
-      "wait": "Signals disagree or risk is unclear—standing aside preserves optionality.",
-      "enterSmall": "There is opportunity, but uncertainty is meaningful—only small, well-defined risk is appropriate.",
-      "hold": "Conditions are relatively orderly and the lean is constructive—maintain discipline without adding aggressive risk.",
-      "trendingCalm": "Trend and volatility are aligned in a calmer band—continuation is plausible, but still manage extension risk.",
-      "default": "Use this read as context, then align entries, size, and invalidation with your own plan."
+      "risky": "Условия напряженные — сохраняйте капитал и не увеличивайте риск до стабилизации рынка.",
+      "exitDefensive": "Давление и риск повышены — защитная позиция уместна до улучшения структуры.",
+      "volatileSideways": "Широкий диапазон без чистого тренда — ложные движения часты; ждите уверенного выхода из диапазона.",
+      "volatileTrend": "Направленный уклон есть, но волатильность высокая — уменьшайте размер позиции и учитывайте шум.",
+      "neutralWait": "Устойчивого преимущества пока нет — в таком режиме терпение обычно лучше форсирования входа.",
+      "wait": "Сигналы расходятся или риск неясен — выжидание сохраняет гибкость.",
+      "enterSmall": "Возможность есть, но неопределенность значима — уместен только малый и четко ограниченный риск.",
+      "hold": "Условия относительно упорядочены и уклон конструктивный — сохраняйте дисциплину, не наращивая агрессивный риск.",
+      "trendingCalm": "Тренд и волатильность согласованы в более спокойной зоне — продолжение вероятно, но риск растяжения остается.",
+      "default": "Используйте этот вывод как контекст и согласуйте вход, размер и отмену сценария со своим планом."
     },
     "explain": {
       "wait": {
-        "1": "The setup is not clean enough to justify a confident directional step.",
-        "2": "When signals conflict or the tape is choppy, waiting for confirmation usually reduces costly mistakes.",
-        "3": "Confidence is {{confidence}}%—treat this as context, not certainty."
+        "1": "Сетап недостаточно чистый для уверенного направленного шага.",
+        "2": "Когда сигналы конфликтуют или рынок рваный, ожидание подтверждения обычно снижает число дорогих ошибок.",
+        "3": "Уверенность {{confidence}}% — это контекст, а не гарантия."
       },
       "waitVolatile": {
-        "1": "Volatility is elevated, so outcomes can swing quickly even if a bias exists.",
-        "2": "Smaller size and clearer levels matter more until the tape compresses or proves a break."
+        "1": "Волатильность повышена, поэтому исход может быстро меняться даже при наличии уклона.",
+        "2": "Меньший размер и четкие уровни особенно важны, пока рынок не сожмется или не подтвердит пробой."
       },
       "enterSmall": {
-        "1": "There is a constructive lean for {{asset}}, but risk is not negligible.",
-        "2": "If you participate, keep risk small and define where the idea is wrong before you add."
+        "1": "По {{asset}} есть конструктивный уклон, но риск остается заметным.",
+        "2": "Если участвуете, держите риск малым и заранее определите уровень, где идея неверна."
       },
       "hold": {
-        "1": "{{asset}} shows a relatively orderly constructive lean in this window.",
-        "2": "If you are already aligned with your plan, the priority is discipline—not chasing marginal extension."
+        "1": "{{asset}} в этом окне показывает относительно упорядоченный конструктивный уклон.",
+        "2": "Если вы уже действуете по плану, приоритет — дисциплина, а не погоня за остаточным движением."
       },
       "exit": {
-        "1": "Downside pressure or risk is dominant in this read—defensive action fits the current tape.",
-        "2": "This is not a timing guarantee; it is a risk-first interpretation of recent behavior."
+        "1": "Нисходящее давление или риск доминируют — защитное действие соответствует текущей структуре.",
+        "2": "Это не гарантия тайминга, а риск-ориентированная интерпретация недавнего поведения."
       },
       "up": {
-        "1": "Price behavior recently skews upward, but pace and volatility still matter for entries.",
-        "2": "Confidence is {{confidence}}%—higher agreement is not the same as a guaranteed outcome."
+        "1": "Поведение цены смещено вверх, но для входов по-прежнему важны темп и волатильность.",
+        "2": "Уверенность {{confidence}}% — более высокая согласованность не равна гарантированному результату."
       },
       "down": {
-        "1": "Price behavior recently skews downward; respect the trend until evidence of stabilization.",
-        "2": "Confidence is {{confidence}}%—use it as a quality gauge for how aligned the inputs are."
+        "1": "Поведение цены смещено вниз; уважайте тренд, пока не появятся признаки стабилизации.",
+        "2": "Уверенность {{confidence}}% — используйте ее как индикатор качества согласованности сигналов."
       },
       "neutral": {
-        "1": "The tape is mixed—direction is not the main story yet.",
-        "2": "Confidence is {{confidence}}%—when agreement is lower, smaller risk and clearer triggers help."
+        "1": "Рынок смешанный — направление пока не является главным сигналом.",
+        "2": "Уверенность {{confidence}}% — при низкой согласованности помогают меньший риск и более четкие триггеры."
       }
     },
     "advanced": {
-      "kicker": "Advanced",
-      "title": "Charts & detailed analytics",
-      "subtitle": "Open when you want the full stack—same engine, more granularity."
+      "kicker": "Продвинутый режим",
+      "title": "Графики и детальная аналитика",
+      "subtitle": "Открывайте, когда нужен полный стек — тот же движок, но глубже детализация."
     }
   },
   "positionCalc": {

@@ -1,4 +1,4 @@
-{
+﻿{
   "meta": {
     "title": "Stock Sense - Нарықты интерпретациялау жүйесі"
   },
@@ -632,16 +632,16 @@
     }
   },
   "decision": {
-    "heroKicker": "Decision support",
-    "marketStatusLabel": "Market status",
-    "confidenceLabel": "Confidence",
-    "suggestedAction": "Suggested action",
-    "notAdvice": "Educational interpretation only. Not financial advice. Apply your own plan and risk rules.",
+    "heroKicker": "Шешім қолдауы",
+    "marketStatusLabel": "Нарық күйі",
+    "confidenceLabel": "Сенім",
+    "suggestedAction": "Ұсынылған әрекет",
+    "notAdvice": "Тек білім беру интерпретациясы. Қаржылық кеңес емес. Өз жоспарыңыз бен тәуекел ережелерін қолданыңыз.",
     "marketStatus": {
-      "trending": "Trending",
-      "neutral": "Neutral",
-      "volatile": "Volatile",
-      "risky": "Risky"
+      "trending": "Трендті",
+      "neutral": "Бейтарап",
+      "volatile": "Құбылмалы",
+      "risky": "Тәуекелі жоғары"
     },
     "action": {
       "WAIT": "WAIT",
@@ -650,78 +650,78 @@
       "EXIT": "EXIT"
     },
     "why": {
-      "title": "Why this read?",
-      "subtitle": "Three inputs we weight before suggesting an action.",
-      "trend": "Trend",
-      "momentum": "Momentum",
-      "volatility": "Volatility",
-      "combinationLead": "This combination suggests"
+      "title": "Неге осындай қорытынды?",
+      "subtitle": "Әрекет ұсынбас бұрын өлшенетін үш негізгі сигнал.",
+      "trend": "Тренд",
+      "momentum": "Импульс",
+      "volatility": "Құбылмалылық",
+      "combinationLead": "Бұл комбинация мынаны көрсетеді"
     },
     "trend": {
-      "up": "Up",
-      "down": "Down",
-      "sideways": "Sideways"
+      "up": "Жоғары",
+      "down": "Төмен",
+      "sideways": "Бүйірлік"
     },
     "momentum": {
-      "weak": "Weak",
-      "strong": "Strong"
+      "weak": "Әлсіз",
+      "strong": "Күшті"
     },
     "vol": {
-      "low": "Low",
-      "medium": "Medium",
-      "high": "High"
+      "low": "Төмен",
+      "medium": "Орташа",
+      "high": "Жоғары"
     },
     "combination": {
-      "risky": "Conditions are stressed—prioritize capital preservation and avoid adding risk until the tape stabilizes.",
-      "exitDefensive": "Pressure and risk are elevated—defensive positioning is appropriate until structure improves.",
-      "volatileSideways": "Wide ranges without a clean trend—false moves are common; wait for a decisive close outside the range.",
-      "volatileTrend": "A directional lean exists, but volatility is high—size down and plan for two-way noise.",
-      "neutralWait": "No durable edge yet—patience usually beats forcing a direction in this regime.",
-      "wait": "Signals disagree or risk is unclear—standing aside preserves optionality.",
-      "enterSmall": "There is opportunity, but uncertainty is meaningful—only small, well-defined risk is appropriate.",
-      "hold": "Conditions are relatively orderly and the lean is constructive—maintain discipline without adding aggressive risk.",
-      "trendingCalm": "Trend and volatility are aligned in a calmer band—continuation is plausible, but still manage extension risk.",
-      "default": "Use this read as context, then align entries, size, and invalidation with your own plan."
+      "risky": "Нарық стресс аймағында — капиталды сақтауды басым етіп, жағдай тұрақтанғанша тәуекел қоспаңыз.",
+      "exitDefensive": "Қысым мен тәуекел жоғары — құрылым жақсарғанға дейін қорғаныс позициясы орынды.",
+      "volatileSideways": "Кең диапазон, таза тренд жоқ — жалған қозғалыс жиі; диапазоннан сенімді шығуды күтіңіз.",
+      "volatileTrend": "Бағыт бар, бірақ құбылмалылық жоғары — позицияны кішірейтіп, екіжақты шуды ескеріңіз.",
+      "neutralWait": "Тұрақты артықшылық жоқ — мұндай режимде асықпай күту әдетте тиімді.",
+      "wait": "Сигналдар сәйкес емес немесе тәуекел түсініксіз — күту икемділікті сақтайды.",
+      "enterSmall": "Мүмкіндік бар, бірақ белгісіздік жоғары — тек шағын және нақты шектелген тәуекел орынды.",
+      "hold": "Жағдай салыстырмалы реттелген және уклон конструктивті — агрессивті тәуекел қоспай тәртіпті сақтаңыз.",
+      "trendingCalm": "Тренд пен құбылмалылық тыныш аймақта үйлескен — жалғасу мүмкін, бірақ созылу тәуекелін басқарыңыз.",
+      "default": "Осы қорытындыны контекст ретінде қолданып, кіру, көлем және инвалидацияны өз жоспарыңызбен сәйкестендіріңіз."
     },
     "explain": {
       "wait": {
-        "1": "The setup is not clean enough to justify a confident directional step.",
-        "2": "When signals conflict or the tape is choppy, waiting for confirmation usually reduces costly mistakes.",
-        "3": "Confidence is {{confidence}}%—treat this as context, not certainty."
+        "1": "Сетап сенімді бағыттық қадамға жеткілікті таза емес.",
+        "2": "Сигналдар қайшы не нарық шуылдақ болса, растауды күту қымбат қателіктерді азайтады.",
+        "3": "Сенім {{confidence}}% — бұл кепіл емес, контекст."
       },
       "waitVolatile": {
-        "1": "Volatility is elevated, so outcomes can swing quickly even if a bias exists.",
-        "2": "Smaller size and clearer levels matter more until the tape compresses or proves a break."
+        "1": "Құбылмалылық жоғары, сондықтан уклон болса да нәтиже тез өзгеруі мүмкін.",
+        "2": "Нарық сығылғанша не бұзылуды дәлелдегенше, кіші көлем мен айқын деңгейлер маңызды."
       },
       "enterSmall": {
-        "1": "There is a constructive lean for {{asset}}, but risk is not negligible.",
-        "2": "If you participate, keep risk small and define where the idea is wrong before you add."
+        "1": "{{asset}} бойынша конструктивті уклон бар, бірақ тәуекел елеулі.",
+        "2": "Қатыссаңыз, тәуекелді шағын ұстаңыз және идея қате болатын деңгейді алдын ала белгілеңіз."
       },
       "hold": {
-        "1": "{{asset}} shows a relatively orderly constructive lean in this window.",
-        "2": "If you are already aligned with your plan, the priority is discipline—not chasing marginal extension."
+        "1": "{{asset}} осы терезеде салыстырмалы реттелген конструктивті уклон көрсетеді.",
+        "2": "Егер жоспарыңызбен үйлессеңіз, басымдық — тәртіп, шеткі қозғалысты қуу емес."
       },
       "exit": {
-        "1": "Downside pressure or risk is dominant in this read—defensive action fits the current tape.",
-        "2": "This is not a timing guarantee; it is a risk-first interpretation of recent behavior."
+        "1": "Төмен қысым не тәуекел басым — қорғаныс әрекеті ағымдағы құрылымға сай.",
+        "2": "Бұл тайминг кепілі емес; соңғы мінез-құлықтың тәуекелге басым интерпретациясы."
       },
       "up": {
-        "1": "Price behavior recently skews upward, but pace and volatility still matter for entries.",
-        "2": "Confidence is {{confidence}}%—higher agreement is not the same as a guaranteed outcome."
+        "1": "Баға мінезі жоғарыға ығысқан, бірақ кіру үшін қарқын мен құбылмалылық әлі де маңызды.",
+        "2": "Сенім {{confidence}}% — жоғары келісім кепілденген нәтиже емес."
       },
       "down": {
-        "1": "Price behavior recently skews downward; respect the trend until evidence of stabilization.",
-        "2": "Confidence is {{confidence}}%—use it as a quality gauge for how aligned the inputs are."
+        "1": "Баға мінезі төменге ығысқан; тұрақтану дәлелі шыққанша трендті құрметтеңіз.",
+        "2": "Сенім {{confidence}}% — оны сигналдардың сәйкестік сапасының өлшемі ретінде қолданыңыз."
       },
       "neutral": {
-        "1": "The tape is mixed—direction is not the main story yet.",
-        "2": "Confidence is {{confidence}}%—when agreement is lower, smaller risk and clearer triggers help."
+        "1": "Нарық аралас — бағыт әзірге негізгі фактор емес.",
+        "2": "Сенім {{confidence}}% — келісім төмен кезде кіші тәуекел мен айқын триггерлер көмектеседі."
       }
     },
     "advanced": {
-      "kicker": "Advanced",
-      "title": "Charts & detailed analytics",
-      "subtitle": "Open when you want the full stack—same engine, more granularity."
+      "kicker": "Кеңейтілген",
+      "title": "Графиктер және егжей-тегжейлі талдау",
+      "subtitle": "Толық көрініс керек кезде ашыңыз — сол қозғалтқыш, бірақ тереңірек деңгей."
     }
   },
   "positionCalc": {
